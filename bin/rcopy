@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+port=52698
+
+while getopts ":p:" o; do
+  case "${o}" in
+    p)
+      port=${OPTARG}
+      ;;
+    *)
+      echo "Usage: ${0} [-p <int>]" 1>&2; exit 1
+      ;;
+  esac
+done
+
+exec 3<>/dev/tcp/localhost/${port}
+echo "put" >&3
+cat >&3
+exec 3>&-
