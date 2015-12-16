@@ -44,6 +44,9 @@ NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'nelstrom/vim-visual-star-search'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'burnettk/vim-angular'
 
 call neobundle#end()
 
