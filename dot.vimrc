@@ -47,6 +47,7 @@ NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'burnettk/vim-angular'
+NeoBundle 'vim-scripts/modelica'
 
 call neobundle#end()
 
@@ -215,6 +216,8 @@ au FileType tex setlocal textwidth=80 spell spelllang=en_us
 au FileType python setlocal ts=4 sts=4 sw=4
 " Set filetype for gnuplot scripts.
 au BufNewFile,BufRead *.gnuplot setf gnuplot
+" Set filetype for modelica files.
+au BufNewFile,BufRead *.mo setlocal ft=modelica
 " Restore cursor position.
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Settings for quickfix.
