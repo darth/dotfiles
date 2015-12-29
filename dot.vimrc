@@ -81,7 +81,11 @@ let maplocalleader = ','
 set number
 if version >= 703
   set relativenumber
-  nnoremap <Leader>n :set rnu!<CR>:set nu!<CR>
+  if version>=704
+    nnoremap <Leader>n :set rnu!<CR>:set nu!<CR>
+  else
+    nnoremap <Leader>n :set rnu!<CR>
+  endif
 else
   nnoremap <Leader>n :set nu!<CR>
 endif
