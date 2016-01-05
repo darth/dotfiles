@@ -19,7 +19,7 @@ export LC_ALL=en_US.UTF-8
 export EDITOR='vim'
 
 # history stuff
-export HISTCONTROL=erasedups
+export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
 shopt -s histappend
 
