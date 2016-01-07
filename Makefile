@@ -7,7 +7,7 @@ DOTOBJS = $(subst dot, ${HOME}/, ${DOTSRCS})
 BINSRCS = $(wildcard bin/*)
 BINOBJS = $(subst bin, ${HOME}/bin, ${BINSRCS})
 
-all: ${DOTOBJS} ${BINOBJS} ${HOME}/.vim
+all: ${DOTOBJS} ${HOME}/bin ${BINOBJS} ${HOME}/.vim
 
 ${HOME}/.vim:
 	mkdir ${HOME}/.vim ${HOME}/.vim/undo ${HOME}/.vim/tmp ${HOME}/.vim/bundle
@@ -19,7 +19,7 @@ ${HOME}/bin:
 ${DOTOBJS}:
 	${LN} $(subst ${HOME}/, ${PWD}/dot, $@) $@
 
-${BINOBJS}: ${HOME}/bin
+${BINOBJS}:
 	${LN} $(subst ${HOME}/bin, ${PWD}/bin, $@) $@
 
 clean:
