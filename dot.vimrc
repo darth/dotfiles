@@ -240,15 +240,6 @@ function! Preserve(command)
 endfunction
 " }}}
 " Misc mappings {{{
-" Disable arrows in normal, visual and insert modes.
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
 " Exit from insert mode.
 inoremap jj <Esc>
 inoremap оо <Esc>
