@@ -75,10 +75,6 @@ let &termencoding=&encoding
 set encoding=utf-8
 set fileencodings=utf-8,cp1251,koi8-r,latin1
 " }}}
-" Leader key {{{
-let mapleader = ','
-let maplocalleader = ','
-" }}}
 " Numbering {{{
 set number
 if version >= 703
