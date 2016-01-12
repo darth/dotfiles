@@ -240,11 +240,6 @@ function! Preserve(command)
 endfunction
 " }}}
 " Misc mappings {{{
-" Easy movement around windows.
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
 " Strip trailing whitespaces.
 nnoremap <silent> <Leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 " Help.
