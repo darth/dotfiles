@@ -240,9 +240,6 @@ function! Preserve(command)
 endfunction
 " }}}
 " Misc mappings {{{
-" Exit from insert mode.
-inoremap jj <Esc>
-inoremap оо <Esc>
 " Easy movement around windows.
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
