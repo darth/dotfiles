@@ -159,6 +159,8 @@ set wildmode=list:longest
 set backspace=indent,eol,start
 " Enable reading man pages.
 runtime ftplugin/man.vim
+" Enable jumps to matching objects (tags, parentheses, etc).
+runtime macros/matchit.vim
 " Completion.
 set completeopt-=preview
 " }}}
