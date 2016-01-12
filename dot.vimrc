@@ -141,7 +141,13 @@ endif
 nnoremap <Leader>i :set list!<CR>
 " }}}
 " Clipboard {{{
-set clipboard=unnamed
+if has("macunix")
+  nnoremap <Leader>y :let @+ = @"<CR>
+  nnoremap <Leader>p :let @" = @+<CR>
+else
+  nnoremap <Leader>y :call system('rcopy', @")<CR>
+  nnoremap <Leader>p :let @" = system('rpaste')<CR>
+endif
 " }}}
 " Misc settings {{{
 " Fast terminal connection.
