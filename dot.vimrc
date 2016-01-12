@@ -183,9 +183,6 @@ let g:airline#extensions#whitespace#enabled = 0
 " bufferline {{{
 let g:bufferline_echo = 0
 " }}}
-" kls {{{
-let g:kls_insertEnterRestoresLast = 1
-" }}}
 " ctrlp {{{
 let g:ctrlp_map = '<Leader>f'
 let g:ctrlp_match_window = 'bottom,order:ttb'
