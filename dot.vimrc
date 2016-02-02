@@ -18,6 +18,8 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-session'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'szw/vim-tags'
 NeoBundle 'scrooloose/syntastic'
@@ -166,6 +168,9 @@ runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " Completion.
 set completeopt-=preview
+" }}}
+" {{{ vim-session
+let g:session_autosave = 'no'
 " }}}
 " supertab {{{
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
