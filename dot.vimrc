@@ -20,6 +20,7 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
+NeoBundle 'gcmt/taboo.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'szw/vim-tags'
 NeoBundle 'scrooloose/syntastic'
