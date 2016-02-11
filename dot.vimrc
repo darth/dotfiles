@@ -39,9 +39,6 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'ervandew/supertab'
 NeoBundle 'lervag/vim-latex'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'vim-scripts/a.vim'
@@ -172,10 +169,6 @@ set completeopt-=preview
 " }}}
 " {{{ vim-session
 let g:session_autosave = 'no'
-" }}}
-" supertab {{{
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-let g:SuperTabClosePreviewOnPopupClose = 1
 " }}}
 " clang_complete {{{
 let g:clang_complete_macros = 1
