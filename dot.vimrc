@@ -105,6 +105,8 @@ set showmatch
 set hlsearch
 set gdefault
 nnoremap <Leader><Space> :noh<CR>
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 " }}}
 " Colors {{{
 if !has("gui_running")
