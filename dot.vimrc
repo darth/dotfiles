@@ -39,7 +39,7 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'lervag/vim-latex'
+NeoBundle 'lervag/vimtex'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'nelstrom/vim-visual-star-search'
@@ -210,9 +210,8 @@ let g:tex_flavor = 'latex'
 let g:tex_comment_nospell= 1
 let g:latex_fold_enabled = 1
 if has('mac')
-  let g:latex_view_general_viewer = 'open'
-  let g:latex_view_general_options = '-a Skim'
-  nnoremap <Leader>ls :silent !~/Applications/Skim.app/Contents/SharedSupport/displayline -g <C-r>=line('.')<CR> <C-r>=g:latex#data[b:latex.id].out()<CR> "%:p"<CR><CR>
+  let g:vimtex_view_general_viewer = '/Users/darth/Applications/Skim.app/Contents/SharedSupport/displayline'
+  let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
 " }}}
 " {{{ gundo
