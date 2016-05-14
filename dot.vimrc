@@ -53,6 +53,7 @@ NeoBundle 'burnettk/vim-angular'
 NeoBundle 'vim-scripts/modelica'
 NeoBundle 'EinfachToll/DidYouMean'
 NeoBundle 'exu/pgsql.vim'
+
 call neobundle#end()
 
 filetype plugin indent on
@@ -91,7 +92,6 @@ else
 endif
 " }}}
 " Indentation {{{
-filetype indent on
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
