@@ -91,8 +91,7 @@ else
 endif
 " }}}
 " Indentation {{{
-set autoindent
-set smartindent
+filetype indent on
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
