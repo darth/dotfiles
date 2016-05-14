@@ -193,7 +193,6 @@ let g:bufferline_echo = 0
 let g:ctrlp_map = '<Leader>f'
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_extensions = ['tag']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 nnoremap <Leader>t :CtrlPTag<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 " }}}
