@@ -52,7 +52,6 @@ NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'burnettk/vim-angular'
 NeoBundle 'vim-scripts/modelica'
 NeoBundle 'EinfachToll/DidYouMean'
-NeoBundle 'exu/pgsql.vim'
 
 call neobundle#end()
 
@@ -212,9 +211,6 @@ if has('mac')
   let g:vimtex_view_general_viewer = '/Users/darth/Applications/Skim.app/Contents/SharedSupport/displayline'
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
-" }}}
-" {{{ sql
-let g:sql_type_default = 'pgsql'
 " }}}
 " {{{ gundo
 nnoremap <Leader>u :GundoToggle<CR>
