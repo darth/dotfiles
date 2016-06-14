@@ -61,6 +61,9 @@ NeoBundleCheck
 set exrc
 set secure
 " }}}
+" Sessions {{{
+set sessionoptions+=tabpages,globals
+" }}}
 " Directories and files {{{
 set viminfo=!,'50,n~/.vim/viminfo
 set dir=~/.vim/tmp//
