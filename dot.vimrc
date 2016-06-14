@@ -51,7 +51,6 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'burnettk/vim-angular'
 NeoBundle 'vim-scripts/modelica'
-NeoBundle 'EinfachToll/DidYouMean'
 
 call neobundle#end()
 
