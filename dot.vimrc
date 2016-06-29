@@ -50,6 +50,8 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'burnettk/vim-angular'
 NeoBundle 'vim-scripts/modelica'
+NeoBundle 'vim-utils/vim-husk'
+NeoBundle 'tmux-plugins/vim-tmux'
 
 call neobundle#end()
 
