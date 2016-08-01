@@ -1,9 +1,9 @@
 " vim:foldmethod=marker:foldlevel=0
 " NeoBundle {{{
- if has('vim_starting')
-   set nocompatible
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
+if has('vim_starting')
+  set nocompatible
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 
