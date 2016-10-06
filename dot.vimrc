@@ -19,7 +19,6 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 NeoBundle 'gcmt/taboo.vim'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'szw/vim-tags'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -188,13 +187,6 @@ let g:airline#extensions#whitespace#enabled = 0
 " }}}
 " bufferline {{{
 let g:bufferline_echo = 0
-" }}}
-" ctrlp {{{
-let g:ctrlp_map = '<Leader>f'
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_extensions = ['tag']
-nnoremap <Leader>t :CtrlPTag<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
