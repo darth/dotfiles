@@ -52,6 +52,7 @@ NeoBundle 'burnettk/vim-angular'
 NeoBundle 'vim-scripts/modelica'
 NeoBundle 'vim-utils/vim-husk'
 NeoBundle 'tmux-plugins/vim-tmux'
+NeoBundle 'JamshedVesuna/vim-markdown-preview'
 
 call neobundle#end()
 
@@ -215,6 +216,10 @@ endif
 " {{{ gundo
 nnoremap <Leader>u :GundoToggle<CR>
 " }}}
+" {{{ markdown
+let vim_markdown_preview_browser='Safari'
+let vim_markdown_preview_github=1
+ " }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
 au FileType tex setlocal textwidth=80 spell spelllang=en_us
