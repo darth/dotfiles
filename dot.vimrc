@@ -208,7 +208,7 @@ let g:tex_flavor = 'latex'
 let g:tex_comment_nospell= 1
 let g:latex_fold_enabled = 1
 if has('mac')
-  let g:vimtex_view_general_viewer = '/Users/darth/Applications/Skim.app/Contents/SharedSupport/displayline'
+  let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
   let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
 " }}}
