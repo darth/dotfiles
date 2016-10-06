@@ -55,6 +55,8 @@ NeoBundle 'JamshedVesuna/vim-markdown-preview'
 
 call neobundle#end()
 
+set rtp+=~/.fzf
+
 filetype plugin indent on
 
 NeoBundleCheck
@@ -170,6 +172,9 @@ runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " Completion.
 set completeopt-=preview
+" }}}
+" {{{ FZF
+nnoremap <Leader>f :FZF<CR>
 " }}}
 " clang_complete {{{
 let g:clang_complete_macros = 1
