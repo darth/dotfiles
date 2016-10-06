@@ -203,6 +203,8 @@ nnoremap <silent> <Leader>gd :Gdiff<CR>
 " }}}
 " syntastic {{{
 let g:syntastic_check_on_open=1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
 " latex {{{
 let g:tex_flavor = 'latex'
