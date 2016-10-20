@@ -21,6 +21,8 @@ export EDITOR='vim'
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+export PS1=' '
+
 # history stuff
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
@@ -45,8 +47,6 @@ if [ -f ${HOME}/.bashrc.local ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-[ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
 
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session
