@@ -11,7 +11,7 @@ fi
 
 export GOPATH="${HOME}/go"
 
-export PATH="${HOME}/bin:${GOPATH}/bin:/usr/local/bin:${PATH}"
+export PATH="${HOME}/bin:node_modules/.bin:${GOPATH}/bin:/usr/local/bin:${PATH}"
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
