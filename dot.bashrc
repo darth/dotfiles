@@ -18,6 +18,9 @@ export LC_ALL=en_US.UTF-8
 
 export EDITOR='vim'
 
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # history stuff
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
