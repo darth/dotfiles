@@ -233,6 +233,14 @@ au BufNewFile,BufRead *.mo setlocal ft=modelica
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Settings for quickfix.
 au Filetype qf setlocal nonumber colorcolumn=
+" Golang
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>e <Plug>(go-rename)
 " }}}
 " Functions {{{
 function! Preserve(command)
