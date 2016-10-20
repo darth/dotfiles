@@ -30,12 +30,6 @@ shopt -s histappend
 shopt -s cdspell
 shopt -s autocd
 
-# prompt
-function _update_ps1() {
-  export PS1="$(~/.powerline-shell.py $?)"
-}
-export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-
 # aliases
 alias ls='ls -F'
 alias l='ls'
@@ -51,6 +45,8 @@ if [ -f ${HOME}/.bashrc.local ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+[ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
 
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session
