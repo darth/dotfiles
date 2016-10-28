@@ -21,7 +21,7 @@ export EDITOR='vim'
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export PS1=' '
+export PS1='\['"`tput sc`"'\]  \['"`tput rc`"' \]'
 
 # history stuff
 export HISTCONTROL=ignoreboth
