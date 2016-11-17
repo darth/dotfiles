@@ -222,7 +222,7 @@ let vim_markdown_preview_github=1
  " }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
-au FileType tex setlocal textwidth=80 spell spelllang=en_us
+au FileType tex setlocal textwidth=80 spell spelllang=en_gb
 " PEP8
 au FileType python setlocal ts=4 sts=4 sw=4
 " Set filetype for gnuplot scripts.
