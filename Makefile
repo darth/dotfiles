@@ -31,6 +31,6 @@ ${BINOBJS}:
 	${LN} $(subst ${HOME}/bin, ${PWD}/bin, $@) $@
 
 clean:
-	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux
+	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.fzf
 
 .PHONY: all clean
