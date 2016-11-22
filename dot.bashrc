@@ -21,7 +21,7 @@ export EDITOR='vim'
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-tty -s && export PS1='\['"`tput sc`"'\]  \['"`tput rc`"' \]'
+tty -s && [ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
 
 # history stuff
 export HISTCONTROL=ignoreboth

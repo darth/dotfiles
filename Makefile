@@ -7,7 +7,7 @@ DOTOBJS = $(subst dot, ${HOME}/, ${DOTSRCS})
 BINSRCS = $(wildcard bin/*)
 BINOBJS = $(subst bin, ${HOME}/bin, ${BINSRCS})
 
-all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux
+all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.bash-powerline.sh
 
 ${HOME}/.vim:
 	mkdir ${HOME}/.vim ${HOME}/.vim/undo ${HOME}/.vim/tmp ${HOME}/.vim/bundle
@@ -24,6 +24,9 @@ ${HOME}/.fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
 	${HOME}/.fzf/install --key-bindings --completion --no-update-rc
 
+${HOME}/.bash-powerline.sh:
+	curl https://raw.githubusercontent.com/riobard/bash-powerline/master/bash-powerline.sh >$@
+
 ${DOTOBJS}:
 	${LN} $(subst ${HOME}/, ${PWD}/dot, $@) $@
 
@@ -31,6 +34,6 @@ ${BINOBJS}:
 	${LN} $(subst ${HOME}/bin, ${PWD}/bin, $@) $@
 
 clean:
-	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.fzf
+	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.fzf ${HOME}/.bash-powerline.sh
 
 .PHONY: all clean
