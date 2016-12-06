@@ -1,10 +1,10 @@
+BREW_PREFIX=$(brew --prefix)
+
 if [ $(uname) = 'Darwin' ]; then # OS X specific stuff
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+  if [ -f ${BREW_PREFIX}/share/bash-completion/bash_completion ]; then
+    . ${BREW_PREFIX}/share/bash-completion/bash_completion
   fi
-  if [ -d $(brew --prefix python) ]; then
-    export PKG_CONFIG_PATH=$(brew --prefix python)/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
-  fi
+  export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
 else
   export PATH="/usr/sbin:/sbin:${PATH}"
 fi
