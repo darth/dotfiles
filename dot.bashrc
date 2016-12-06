@@ -1,17 +1,33 @@
-BREW_PREFIX=$(brew --prefix)
+function prepend_to_var() {
+  eval value=\$${1}
+  if [[ ! "${value}" == *${2}* ]]; then
+    if [ -z "${value}" ]; then
+      export ${1}="${2}"
+    else
+      export ${1}="${2}:${value}"
+    fi
+  fi
+}
 
 if [ $(uname) = 'Darwin' ]; then # OS X specific stuff
+  BREW_PREFIX=$(brew --prefix)
   if [ -f ${BREW_PREFIX}/share/bash-completion/bash_completion ]; then
     . ${BREW_PREFIX}/share/bash-completion/bash_completion
   fi
   export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
-else
-  export PATH="/usr/sbin:/sbin:${PATH}"
+
+  # this is the hack to avoid prepending system paths in subshells
+  unset PATH
+  eval $(/usr/libexec/path_helper -s)
 fi
 
 export GOPATH="${HOME}/go"
 
-export PATH="${HOME}/bin:node_modules/.bin:${GOPATH}/bin:/usr/local/bin:${PATH}"
+prepend_to_var '/sbin'
+prepend_to_var '/usr/sbin'
+prepend_to_var "${HOME}/bin"
+prepend_to_var "${GOPATH}/bin"
+prepend_to_var PATH 'node_modules/.bin'
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
