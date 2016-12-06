@@ -23,10 +23,10 @@ fi
 
 export GOPATH="${HOME}/go"
 
-prepend_to_var '/sbin'
-prepend_to_var '/usr/sbin'
-prepend_to_var "${HOME}/bin"
-prepend_to_var "${GOPATH}/bin"
+prepend_to_var PATH '/sbin'
+prepend_to_var PATH '/usr/sbin'
+prepend_to_var PATH "${HOME}/bin"
+prepend_to_var PATH "${GOPATH}/bin"
 prepend_to_var PATH 'node_modules/.bin'
 
 export LANG=en_US.UTF-8
