@@ -102,6 +102,9 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 " }}}
+" Indentation {{{
+set mouse=a
+" }}}
 " Searching/Replacing {{{
 set smartcase
 set ignorecase
