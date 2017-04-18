@@ -9,7 +9,7 @@ function prepend_to_var() {
   fi
 }
 
-if [ $(uname) = 'Darwin' ]; then # OS X specific stuff
+if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   BREW_PREFIX=$(brew --prefix)
   if [ -f ${BREW_PREFIX}/share/bash-completion/bash_completion ]; then
     . ${BREW_PREFIX}/share/bash-completion/bash_completion
