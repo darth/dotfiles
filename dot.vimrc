@@ -220,6 +220,7 @@ if has('mac')
   let g:vimtex_view_general_viewer = 'displayline'
   let g:vimtex_view_general_options = '-g -r @line @pdf @tex'
 endif
+let g:vimtex_compiler_latexmk = {'callback' : 0}
 " }}}
 " {{{ gundo
 nnoremap <Leader>u :GundoToggle<CR>
