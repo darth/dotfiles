@@ -55,6 +55,7 @@ NeoBundle 'tmux-plugins/vim-tmux'
 NeoBundle 'JamshedVesuna/vim-markdown-preview'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'Rykka/riv.vim'
+NeoBundle 'junegunn/fzf.vim'
 
 call neobundle#end()
 
@@ -180,7 +181,8 @@ runtime macros/matchit.vim
 set completeopt-=preview
 " }}}
 " {{{ FZF
-nnoremap <Leader>f :FZF<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>t :Tags<CR>
 " }}}
 " clang_complete {{{
 let g:clang_complete_macros = 1
