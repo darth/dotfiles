@@ -34,6 +34,12 @@ export LC_ALL=en_US.UTF-8
 
 export EDITOR='vim'
 
+LESSPIPE=`which src-hilite-lesspipe.sh`
+if [ -n "${LESSPIPE}" ]; then
+  export LESSOPEN="| ${LESSPIPE} %s"
+  export LESS=' -R -X -F '
+fi
+
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
