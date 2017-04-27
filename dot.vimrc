@@ -54,6 +54,7 @@ NeoBundle 'vim-utils/vim-husk'
 NeoBundle 'tmux-plugins/vim-tmux'
 NeoBundle 'JamshedVesuna/vim-markdown-preview'
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'Rykka/riv.vim'
 
 call neobundle#end()
 
