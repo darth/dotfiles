@@ -187,6 +187,9 @@ if has('mac')
   let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
 endif
 " }}}
+" tags {{{
+let g:vim_tags_ignore_files = ['.gitignore', '.agignore']
+" }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
