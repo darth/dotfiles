@@ -58,6 +58,7 @@ NeoBundle 'mxw/vim-jsx'
 NeoBundle 'Rykka/riv.vim'
 NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'embear/vim-localvimrc'
+NeoBundle 'Squareys/vim-cmake'
 
 call neobundle#end()
 
