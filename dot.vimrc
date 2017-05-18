@@ -43,6 +43,7 @@ NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'nelstrom/vim-visual-star-search'
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'kana/vim-textobj-entire'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'davidhalter/jedi-vim'
@@ -56,6 +57,7 @@ NeoBundle 'JamshedVesuna/vim-markdown-preview'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'Rykka/riv.vim'
 NeoBundle 'junegunn/fzf.vim'
+NeoBundle 'embear/vim-localvimrc'
 
 call neobundle#end()
 
@@ -65,10 +67,6 @@ filetype plugin indent on
 
 NeoBundleCheck
 "}}}
-" Loading of local settings {{{
-set exrc
-set secure
-" }}}
 " Sessions {{{
 set sessionoptions+=tabpages,globals
 " }}}
@@ -186,6 +184,7 @@ nnoremap <Leader>t :Tags<CR>
 " }}}
 " clang_complete {{{
 let g:clang_complete_macros = 1
+let g:clang_snippets = 1
 let g:clang_use_library = 1
 if has('mac')
   let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
@@ -232,6 +231,10 @@ nnoremap <Leader>u :GundoToggle<CR>
 let vim_markdown_preview_browser='Safari'
 let vim_markdown_preview_github=1
  " }}}
+" {{{ localvimrc
+let g:localvimrc_sandbox=0
+let g:localvimrc_persistent=1
+" }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
 au FileType tex setlocal textwidth=80 spell spelllang=en_gb
