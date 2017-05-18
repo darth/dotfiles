@@ -33,6 +33,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export EDITOR='vim'
+export PAGER='less'
 
 LESSPIPE=`which src-hilite-lesspipe.sh`
 if [ -n "${LESSPIPE}" ]; then
@@ -63,6 +64,7 @@ alias df='df -h'
 alias du='du -h'
 alias grep='grep --color'
 alias e="${EDITOR}"
+alias r="${PAGER}"
 
 if [ -f ${HOME}/.bashrc.local ]; then
   source ${HOME}/.bashrc.local
