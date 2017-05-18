@@ -183,6 +183,7 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 " }}}
 " clang_complete {{{
+let g:clang_auto_user_options = '.clang_complete, path, compile_commands.json'
 let g:clang_complete_macros = 1
 let g:clang_snippets = 1
 let g:clang_use_library = 1
