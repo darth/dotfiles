@@ -225,6 +225,9 @@ endif
 let g:vimtex_compiler_latexmk = {'callback' : 0}
 " }}}
 " {{{ gundo
+if has('python3')
+  let g:gundo_prefer_python3=1
+endif
 nnoremap <Leader>u :GundoToggle<CR>
 " }}}
 " {{{ markdown
