@@ -240,6 +240,10 @@ let vim_markdown_preview_github=1
 let g:localvimrc_sandbox=0
 let g:localvimrc_persistent=1
 " }}}
+" {{{ cmake
+let g:cmake_export_compile_commands = 1
+let g:cmake_ycm_symlinks = 1
+" }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
 au FileType tex setlocal textwidth=80 spell spelllang=en_gb
