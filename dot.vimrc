@@ -59,6 +59,7 @@ NeoBundle 'Rykka/riv.vim'
 NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'embear/vim-localvimrc'
 NeoBundle 'darth/vim-cmake'
+NeoBundle 'pboettch/vim-cmake-syntax'
 
 call neobundle#end()
 
@@ -251,6 +252,8 @@ au FileType tex setlocal textwidth=80 spell spelllang=en_gb
 au FileType python setlocal ts=4 sts=4 sw=4
 " Use tabs in C
 au FileType c setlocal noet
+" Comments for cmake files
+au FileType cmake setlocal commentstring=#\ %s
 " Set filetype for gnuplot scripts.
 au BufNewFile,BufRead *.gnuplot setf gnuplot
 " Set filetype for modelica files.
