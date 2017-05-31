@@ -9,6 +9,14 @@ function prepend_to_var() {
   fi
 }
 
+function is_remote_session() {
+  [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]
+}
+
+function is_port_listened() {
+  [ -n "${1}" ] && netstat -na | grep "${1}" 2>&1 >/dev/null
+}
+
 if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   BREW_PREFIX=$(brew --prefix)
   if [ -f ${BREW_PREFIX}/share/bash-completion/bash_completion ]; then
@@ -16,10 +24,17 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   fi
   export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
 
+  export CLIPBOARD_PORT='52699'
+
   # this is the hack to avoid prepending system paths in subshells
   unset PATH
   eval $(/usr/libexec/path_helper -s)
+else
+  export CLIPBOARD_PORT='52698'
 fi
+
+export COPY_COMMAND="${HOME}/bin/rcopy -p ${CLIPBOARD_PORT}"
+export PASTE_COMMAND="${HOME}/bin/rpaste -p ${CLIPBOARD_PORT}"
 
 export GOPATH="${HOME}/go"
 
@@ -71,11 +86,6 @@ if [ -f ${HOME}/.bashrc.local ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  export COPY_COMMAND="${HOME}/bin/rcopy"
-  export PASTE_COMMAND="${HOME}/bin/rpaste"
-fi
 
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session

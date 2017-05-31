@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
-port=52698
+port_default=52698
+port=${port_default}
 
 while getopts ":p:" o; do
   case "${o}" in
@@ -12,6 +13,10 @@ while getopts ":p:" o; do
       ;;
   esac
 done
+
+if [ ! $(is_port_listened) ]; then
+  port=${port_default}
+fi
 
 exec 3<>/dev/tcp/localhost/${port}
 echo "put" >&3

@@ -155,16 +155,8 @@ endif
 nnoremap <Leader>i :set list!<CR>
 " }}}
 " Clipboard {{{
-if !empty($COPY_COMMAND)
-  nnoremap <Leader>y :call system($COPY_COMMAND, @")<CR>
-else
-  nnoremap <Leader>y :let @+ = @"<CR>
-endif
-if !empty($PASTE_COMMAND)
-  nnoremap <Leader>p :let @" = system(${PASTE_COMMAND)<CR>
-else
-  nnoremap <Leader>p :let @" = @+<CR>
-endif
+nnoremap <Leader>y :call system("$COPY_COMMAND", @")<CR>
+nnoremap <Leader>p :let @" = system("$PASTE_COMMAND")<CR>
 " }}}
 " Misc settings {{{
 " Fast terminal connection.
