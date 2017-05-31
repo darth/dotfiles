@@ -3,8 +3,8 @@
 port_default=52698
 port=${port_default}
 
-function port_is_listened() {
-  netstat -na | grep "${1}" 2>&1 >/dev/null
+function is_port_listened() {
+  [ -n "${1}" ] && netstat -na | grep "127.0.0.1.${1}" 2>&1 >/dev/null
 }
 
 while getopts ":p:" o; do
@@ -18,7 +18,7 @@ while getopts ":p:" o; do
   esac
 done
 
-if [ ! $(is_port_listened) ]; then
+if ! $(is_port_listened); then
   port=${port_default}
 fi
 

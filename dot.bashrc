@@ -13,10 +13,6 @@ function is_remote_session() {
   [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]
 }
 
-function is_port_listened() {
-  [ -n "${1}" ] && netstat -na | grep "${1}" 2>&1 >/dev/null
-}
-
 if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   BREW_PREFIX=$(brew --prefix)
   if [ -f ${BREW_PREFIX}/share/bash-completion/bash_completion ]; then
