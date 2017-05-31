@@ -155,12 +155,15 @@ endif
 nnoremap <Leader>i :set list!<CR>
 " }}}
 " Clipboard {{{
-if has("macunix")
-  nnoremap <Leader>y :let @+ = @"<CR>
-  nnoremap <Leader>p :let @" = @+<CR>
+if !empty($COPY_COMMAND)
+  nnoremap <Leader>y :call system($COPY_COMMAND, @")<CR>
 else
-  nnoremap <Leader>y :call system('rcopy', @")<CR>
-  nnoremap <Leader>p :let @" = system('rpaste')<CR>
+  nnoremap <Leader>y :let @+ = @"<CR>
+endif
+if !empty($PASTE_COMMAND)
+  nnoremap <Leader>p :let @" = system(${PASTE_COMMAND)<CR>
+else
+  nnoremap <Leader>p :let @" = @+<CR>
 endif
 " }}}
 " Misc settings {{{

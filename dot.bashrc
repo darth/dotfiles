@@ -72,6 +72,11 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  export COPY_COMMAND="${HOME}/bin/rcopy"
+  export PASTE_COMMAND="${HOME}/bin/rpaste"
+fi
+
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session
   if [ "$TERM" != "screen-256color" ]; then
