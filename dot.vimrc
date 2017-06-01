@@ -21,7 +21,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 NeoBundle 'gcmt/taboo.vim'
-NeoBundle 'szw/vim-tags'
+NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'altercation/vim-colors-solarized'
@@ -192,7 +192,8 @@ let g:ycm_key_list_previous_completion=[]
 let g:ycm_key_invoke_completion = '<TAB>'
 " }}}
 " tags {{{
-let g:vim_tags_ignore_files = ['.gitignore', '.agignore']
+let g:gutentags_ctags_tagfile='.tags'
+let g:gutentags_ctags_extra_args=['--c-kinds=+px']
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
