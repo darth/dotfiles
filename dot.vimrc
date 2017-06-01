@@ -68,7 +68,6 @@ NeoBundle 'oblitum/YouCompleteMe', {
      \    }
      \ }
 NeoBundle 'Valloric/ListToggle'
-NeoBundle 'christoomey/vim-tmux-navigator'
 
 call neobundle#end()
 
