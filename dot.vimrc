@@ -68,6 +68,7 @@ NeoBundle 'oblitum/YouCompleteMe', {
      \    }
      \ }
 NeoBundle 'Valloric/ListToggle'
+NeoBundle 'christoomey/vim-tmux-navigator'
 
 call neobundle#end()
 
@@ -289,7 +290,7 @@ endfunction
 " Strip trailing whitespaces.
 nnoremap <silent> <Leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 " Help.
-nnoremap <Leader>h :vert help
+nnoremap <Leader>h :vert help 
 " Toggle fold.
 nnoremap <Space> za
 " Select last edited text.
