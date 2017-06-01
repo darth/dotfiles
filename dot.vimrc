@@ -9,6 +9,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+let g:neobundle#install_process_timeout = 9000
+
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -20,7 +22,6 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'gcmt/taboo.vim'
 NeoBundle 'szw/vim-tags'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'altercation/vim-colors-solarized'
@@ -39,14 +40,12 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-obsession'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'lervag/vimtex'
-NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'nelstrom/vim-visual-star-search'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'kana/vim-textobj-entire'
 NeoBundle 'fatih/vim-go'
-NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'burnettk/vim-angular'
@@ -60,6 +59,14 @@ NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'embear/vim-localvimrc'
 NeoBundle 'darth/vim-cmake'
 NeoBundle 'pboettch/vim-cmake-syntax'
+NeoBundle 'oblitum/YouCompleteMe', {
+     \ 'build' : {
+     \     'mac' : './install.sh --clang-completer',
+     \     'unix' : './install.sh --clang-completer',
+     \     'windows' : './install.sh --clang-completer',
+     \     'cygwin' : './install.sh --clang-completer'
+     \    }
+     \ }
 
 call neobundle#end()
 
@@ -179,14 +186,10 @@ set completeopt-=preview
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 " }}}
-" clang_complete {{{
-let g:clang_auto_user_options = '.clang_complete, path, compile_commands.json'
-let g:clang_complete_macros = 1
-let g:clang_snippets = 1
-let g:clang_use_library = 1
-if has('mac')
-  let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
-endif
+" YouCompleteMe {{{
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_invoke_completion = '<TAB>'
 " }}}
 " tags {{{
 let g:vim_tags_ignore_files = ['.gitignore', '.agignore']
