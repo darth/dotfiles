@@ -67,6 +67,7 @@ NeoBundle 'oblitum/YouCompleteMe', {
      \     'cygwin' : './install.sh --clang-completer'
      \    }
      \ }
+NeoBundle 'Valloric/ListToggle'
 
 call neobundle#end()
 
@@ -190,6 +191,7 @@ nnoremap <Leader>t :Tags<CR>
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 let g:ycm_key_invoke_completion = '<TAB>'
+let g:ycm_always_populate_location_list=1
 " }}}
 " tags {{{
 let g:gutentags_ctags_tagfile='.tags'
@@ -287,7 +289,7 @@ endfunction
 " Strip trailing whitespaces.
 nnoremap <silent> <Leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 " Help.
-nnoremap <Leader>h :vert help 
+nnoremap <Leader>h :vert help
 " Toggle fold.
 nnoremap <Space> za
 " Select last edited text.
