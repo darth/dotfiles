@@ -22,6 +22,8 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
 
   export CLIPBOARD_PORT='52699'
 
+  export FZF_DEFAULT_COMMAND='rg --files --follow -g ""'
+
   # this is the hack to avoid prepending system paths in subshells
   unset PATH
   eval $(/usr/libexec/path_helper -s)
@@ -52,7 +54,6 @@ if [ -n "${LESSPIPE}" ]; then
   export LESS=' -R -X -F '
 fi
 
-export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 tty -s && [ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
