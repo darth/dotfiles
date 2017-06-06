@@ -61,10 +61,10 @@ NeoBundle 'darth/vim-cmake'
 NeoBundle 'pboettch/vim-cmake-syntax'
 NeoBundle 'oblitum/YouCompleteMe', {
      \ 'build' : {
-     \     'mac' : './install.sh --clang-completer',
-     \     'unix' : './install.sh --clang-completer',
-     \     'windows' : './install.sh --clang-completer',
-     \     'cygwin' : './install.sh --clang-completer'
+     \     'mac' : './install.sh --clang-completer --gocode-completer',
+     \     'unix' : './install.sh --clang-completer --gocode-completer',
+     \     'windows' : './install.sh --clang-completer --gocode-completer',
+     \     'cygwin' : './install.sh --clang-completer --gocode-completer'
      \    }
      \ }
 NeoBundle 'Valloric/ListToggle'
