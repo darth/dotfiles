@@ -68,6 +68,8 @@ NeoBundle 'oblitum/YouCompleteMe', {
      \    }
      \ }
 NeoBundle 'Valloric/ListToggle'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'rhysd/vim-clang-format'
 
 call neobundle#end()
 
@@ -252,8 +254,8 @@ let g:cmake_ycm_symlinks = 1
 au FileType tex setlocal textwidth=80 spell spelllang=en_gb
 " PEP8
 au FileType python setlocal ts=4 sts=4 sw=4
-" Use tabs in C/C++
-au FileType c,h,cpp,hpp setlocal noet
+" Apply clang-format automatically for c/c++ files
+au FileType c,h,cpp,hpp ClangFormatAutoEnable
 " Comments for cmake files
 au FileType cmake setlocal commentstring=#\ %s
 " Set filetype for gnuplot scripts.
