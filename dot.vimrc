@@ -24,7 +24,7 @@ NeoBundle 'gcmt/taboo.vim'
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 's-stefano/vim-colors-solarized'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
@@ -133,6 +133,7 @@ if !has("gui_running")
 endif
 set background=dark
 colorscheme solarized
+let g:solarized_visibility="bg-none"
 " }}}
 " Visual stuff {{{
 " Enable syntax highlighting.
