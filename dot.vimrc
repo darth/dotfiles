@@ -260,8 +260,11 @@ let g:neoformat_try_formatprg = 1
 au FileType tex setlocal textwidth=80 spell spelllang=en_gb
 " PEP8
 au FileType python setlocal ts=4 sts=4 sw=4
-" Apply clang-format automatically for c/c++ files
+" Use prettier for js formatting
+au FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ all\ --use-tabs\ --tab-width=2
+" Apply formatter automatically for c/c++/js files
 au BufWritePre *.h,*.c,*.hpp,*.cpp Neoformat
+au BufWritePre *.js,*.jsx Neoformat
 " Comments for cmake files
 au FileType cmake setlocal commentstring=#\ %s
 " Set filetype for gnuplot scripts.
