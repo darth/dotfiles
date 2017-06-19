@@ -27,6 +27,7 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   # this is the hack to avoid prepending system paths in subshells
   unset PATH
   eval $(/usr/libexec/path_helper -s)
+  prepend_to_var PATH "${BREW_PREFIX}/opt/node/bin"
 else
   export CLIPBOARD_PORT='52698'
 fi
