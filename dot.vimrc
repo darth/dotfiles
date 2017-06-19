@@ -69,7 +69,7 @@ NeoBundle 'oblitum/YouCompleteMe', {
      \ }
 NeoBundle 'Valloric/ListToggle'
 NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'rhysd/vim-clang-format'
+NeoBundle 'sbdchd/neoformat'
 
 call neobundle#end()
 
@@ -252,13 +252,16 @@ let g:cmake_ycm_symlinks = 1
 " {{{ jsx
 let g:jsx_ext_required = 0
 " }}}
+" {{{ neoformat
+let g:neoformat_try_formatprg = 1
+" }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
 au FileType tex setlocal textwidth=80 spell spelllang=en_gb
 " PEP8
 au FileType python setlocal ts=4 sts=4 sw=4
 " Apply clang-format automatically for c/c++ files
-au FileType c,h,cpp,hpp ClangFormatAutoEnable
+au BufWritePre *.h,*.c,*.hpp,*.cpp Neoformat
 " Comments for cmake files
 au FileType cmake setlocal commentstring=#\ %s
 " Set filetype for gnuplot scripts.
