@@ -70,6 +70,7 @@ NeoBundle 'oblitum/YouCompleteMe', {
 NeoBundle 'Valloric/ListToggle'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'sbdchd/neoformat'
+NeoBundle 'flowtype/vim-flow'
 
 call neobundle#end()
 
@@ -254,6 +255,9 @@ let g:jsx_ext_required = 0
 " }}}
 " {{{ neoformat
 let g:neoformat_try_formatprg = 1
+" }}}
+" {{{ vim-flow
+let g:flow#autoclose = 1
 " }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
