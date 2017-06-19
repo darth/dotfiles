@@ -249,6 +249,9 @@ let g:localvimrc_persistent=1
 let g:cmake_export_compile_commands = 1
 let g:cmake_ycm_symlinks = 1
 " }}}
+" {{{ jsx
+let g:jsx_ext_required = 0
+" }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
 au FileType tex setlocal textwidth=80 spell spelllang=en_gb
