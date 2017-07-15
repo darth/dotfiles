@@ -71,7 +71,6 @@ NeoBundle 'Valloric/ListToggle'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'sbdchd/neoformat'
 NeoBundle 'flowtype/vim-flow'
-NeoBundle 'chriskempson/base16-vim'
 
 call neobundle#end()
 
@@ -135,6 +134,9 @@ xnoremap & :&&<CR>
 if !has("gui_running")
   set t_Co=256
 endif
+set background=dark
+colorscheme solarized
+let g:solarized_visibility="bg-none"
 " }}}
 " Visual stuff {{{
 " Enable syntax highlighting.
@@ -201,6 +203,7 @@ let g:gutentags_ctags_extra_args=['--c-kinds=+px']
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
 let g:airline_exclude_preview = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
@@ -304,12 +307,6 @@ nnoremap <Leader>h :vert help
 nnoremap <Space> za
 " Select last edited text.
 nnoremap gV `[v`]
-" }}}
-" {{{ vimrc_background
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
 " }}}
 " vimrc.local {{{
 if filereadable(glob("~/.vimrc.local"))
