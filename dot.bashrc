@@ -85,9 +85,6 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session
   if [ "$TERM" != "screen-256color" ]; then
