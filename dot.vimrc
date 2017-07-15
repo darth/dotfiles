@@ -24,7 +24,6 @@ NeoBundle 'gcmt/taboo.vim'
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'chrisbra/csv.vim'
-NeoBundle 's-stefano/vim-colors-solarized'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
@@ -213,12 +212,6 @@ nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 " }}}
-" syntastic {{{
-let g:syntastic_check_on_open=1
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:syntastic_tex_checkers=['']
-" }}}
 " latex {{{
 let g:tex_flavor = 'latex'
 let g:tex_comment_nospell= 1
@@ -262,7 +255,7 @@ au FileType tex setlocal textwidth=80 spell spelllang=en_gb
 " PEP8
 au FileType python setlocal ts=4 sts=4 sw=4
 " Use prettier for js formatting
-au FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ all\ --use-tabs\ --tab-width=2
+au FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ all
 " Comments for cmake files
 au FileType cmake setlocal commentstring=#\ %s
 " Set filetype for gnuplot scripts.
