@@ -21,12 +21,9 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 NeoBundle 'gcmt/taboo.vim'
-NeoBundle 'ludovicchabant/vim-gutentags'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 's-stefano/vim-colors-solarized'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -39,7 +36,6 @@ NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-obsession'
 NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'lervag/vimtex'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'nelstrom/vim-visual-star-search'
 NeoBundle 'kana/vim-textobj-user'
@@ -52,13 +48,15 @@ NeoBundle 'burnettk/vim-angular'
 NeoBundle 'vim-scripts/modelica'
 NeoBundle 'vim-utils/vim-husk'
 NeoBundle 'tmux-plugins/vim-tmux'
-NeoBundle 'JamshedVesuna/vim-markdown-preview'
 NeoBundle 'mxw/vim-jsx'
-NeoBundle 'Rykka/riv.vim'
 NeoBundle 'junegunn/fzf.vim'
 NeoBundle 'embear/vim-localvimrc'
-NeoBundle 'darth/vim-cmake'
 NeoBundle 'pboettch/vim-cmake-syntax'
+NeoBundle 'Valloric/ListToggle'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'sbdchd/neoformat'
+
+if has('mac')
 NeoBundle 'oblitum/YouCompleteMe', {
      \ 'build' : {
      \     'mac' : './install.sh --clang-completer --gocode-completer',
@@ -67,10 +65,13 @@ NeoBundle 'oblitum/YouCompleteMe', {
      \     'cygwin' : './install.sh --clang-completer --gocode-completer'
      \    }
      \ }
-NeoBundle 'Valloric/ListToggle'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'sbdchd/neoformat'
+NeoBundle 'ludovicchabant/vim-gutentags'
+NeoBundle 'darth/vim-cmake'
 NeoBundle 'flowtype/vim-flow'
+NeoBundle 'JamshedVesuna/vim-markdown-preview'
+NeoBundle 'Rykka/riv.vim'
+NeoBundle 'lervag/vimtex'
+endif
 
 call neobundle#end()
 
