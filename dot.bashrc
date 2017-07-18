@@ -79,11 +79,28 @@ alias grep='grep --color'
 alias e="${EDITOR}"
 alias r="${PAGER}"
 
+[ -f ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -n "$TMUX" ]; then
+  function refresh() {
+    eval $(tmux showenv DISPLAY)
+    eval $(tmux showenv SSH_AUTH_SOCK)
+  }
+else
+  function refresh() {
+    return
+  }
+fi
+
+preexec() {
+  refresh
+}
+
 if [ -f ${HOME}/.bashrc.local ]; then
   source ${HOME}/.bashrc.local
 fi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session

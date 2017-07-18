@@ -7,7 +7,7 @@ DOTOBJS = $(subst dot, ${HOME}/, ${DOTSRCS})
 BINSRCS = $(wildcard bin/*)
 BINOBJS = $(subst bin, ${HOME}/bin, ${BINSRCS})
 
-all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.bash-powerline.sh
+all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh
 
 ${HOME}/.vim:
 	mkdir ${HOME}/.vim ${HOME}/.vim/undo ${HOME}/.vim/tmp ${HOME}/.vim/bundle
@@ -26,6 +26,9 @@ ${HOME}/.fzf:
 
 ${HOME}/.bash-powerline.sh:
 	curl https://raw.githubusercontent.com/riobard/bash-powerline/master/bash-powerline.sh >$@
+
+${HOME}/.bash-preexec.sh:
+	curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o $@
 
 ${DOTOBJS}:
 	${LN} $(subst ${HOME}/, ${PWD}/dot, $@) $@
