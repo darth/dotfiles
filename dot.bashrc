@@ -85,8 +85,10 @@ alias r="${PAGER}"
 
 if [ -n "$TMUX" ]; then
   function refresh() {
-    eval $(tmux showenv DISPLAY)
-    eval $(tmux showenv SSH_AUTH_SOCK)
+    v=$(tmux showenv DISPLAY)
+    [[ ${v:0:1} != '-' ]] && eval ${v}
+    v=$(tmux showenv SSH_AUTH_SOCK)
+    [[ ${v:0:1} != '-' ]] && eval ${v}
   }
 else
   function refresh() {
