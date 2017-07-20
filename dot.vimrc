@@ -266,7 +266,7 @@ au FileType tex setlocal textwidth=80 spell spelllang=en_gb
 " PEP8
 au FileType python setlocal ts=4 sts=4 sw=4
 " Use prettier for js formatting
-au FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ all\ --use-tabs\ --tab-width=2
+au FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ all
 " Comments for cmake files
 au FileType cmake setlocal commentstring=#\ %s
 " Set filetype for gnuplot scripts.
