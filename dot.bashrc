@@ -28,8 +28,10 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   unset PATH
   eval $(/usr/libexec/path_helper -s)
   prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
+  export EDITOR='nvim'
 else
   export CLIPBOARD_PORT='52698'
+  export EDITOR='vim'
 fi
 
 export COPY_COMMAND="${HOME}/bin/rcopy -p ${CLIPBOARD_PORT}"
@@ -46,7 +48,6 @@ prepend_to_var PATH 'node_modules/.bin'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export EDITOR='vim'
 export PAGER='less'
 
 LESSPIPE=`which src-hilite-lesspipe.sh`
@@ -106,7 +107,7 @@ fi
 
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session
-  if [ "$TERM" != "tmux-256color" ]; then
+  if [ "$TERM" != "screen-256color" ]; then
     tmux attach -t default || tmux new-session -s default
   fi
 fi

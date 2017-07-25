@@ -1,86 +1,82 @@
 " vim:foldmethod=marker:foldlevel=0
-" NeoBundle {{{
-if has('vim_starting')
+" {{{ dein
+if &compatible
   set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+" Required:
+set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Required:
+if dein#load_state('~/.local/share/dein')
+  call dein#begin('~/.local/share/dein')
 
-let g:neobundle#install_process_timeout = 9000
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+  call dein#add('lifepillar/vim-solarized8')
+  call dein#add('gcmt/taboo.vim')
+  call dein#add('chrisbra/csv.vim')
+  call dein#add('sjl/gundo.vim')
+  call dein#add('bling/vim-airline')
+  call dein#add('bling/vim-bufferline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('vim-scripts/bufkill.vim')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('tpope/vim-unimpaired')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-abolish')
+  call dein#add('tpope/vim-commentary')
+  call dein#add('tpope/vim-obsession')
+  call dein#add('tpope/vim-dispatch')
+  call dein#add('vim-scripts/a.vim')
+  call dein#add('nelstrom/vim-visual-star-search')
+  call dein#add('kana/vim-textobj-user')
+  call dein#add('kana/vim-textobj-function')
+  call dein#add('kana/vim-textobj-entire')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('othree/javascript-libraries-syntax.vim')
+  call dein#add('burnettk/vim-angular')
+  call dein#add('vim-scripts/modelica')
+  call dein#add('vim-utils/vim-husk')
+  call dein#add('tmux-plugins/vim-tmux')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('junegunn/fzf.vim')
+  call dein#add('embear/vim-localvimrc')
+  call dein#add('pboettch/vim-cmake-syntax')
+  call dein#add('editorconfig/editorconfig-vim')
 
-NeoBundle 'gcmt/taboo.vim'
-NeoBundle 'chrisbra/csv.vim'
-NeoBundle 's-stefano/vim-colors-solarized'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'vim-scripts/bufkill.vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-obsession'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'vim-scripts/a.vim'
-NeoBundle 'nelstrom/vim-visual-star-search'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'kana/vim-textobj-entire'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'burnettk/vim-angular'
-NeoBundle 'vim-scripts/modelica'
-NeoBundle 'vim-utils/vim-husk'
-NeoBundle 'tmux-plugins/vim-tmux'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'junegunn/fzf.vim'
-NeoBundle 'embear/vim-localvimrc'
-NeoBundle 'pboettch/vim-cmake-syntax'
-NeoBundle 'Valloric/ListToggle'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'sbdchd/neoformat'
+  if has('nvim')
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('Shougo/neosnippet')
+    call dein#add('Shougo/neosnippet-snippets')
+    call dein#add('tweekmonster/deoplete-clang2')
+    call dein#add('wokalski/autocomplete-flow')
+    call dein#add('neomake/neomake')
+    call dein#add('sbdchd/neoformat')
+    call dein#add('ludovicchabant/vim-gutentags')
+    call dein#add('darth/vim-cmake')
+    call dein#add('JamshedVesuna/vim-markdown-preview')
+    call dein#add('Rykka/riv.vim')
+    call dein#add('lervag/vimtex')
+  endif
 
-if has('mac')
-NeoBundle 'oblitum/YouCompleteMe', {
-     \ 'build' : {
-     \     'mac' : './install.sh --clang-completer --gocode-completer',
-     \     'unix' : './install.sh --clang-completer --gocode-completer',
-     \     'windows' : './install.sh --clang-completer --gocode-completer',
-     \     'cygwin' : './install.sh --clang-completer --gocode-completer'
-     \    }
-     \ }
-NeoBundle 'ludovicchabant/vim-gutentags'
-NeoBundle 'darth/vim-cmake'
-NeoBundle 'flowtype/vim-flow'
-NeoBundle 'JamshedVesuna/vim-markdown-preview'
-NeoBundle 'Rykka/riv.vim'
-NeoBundle 'lervag/vimtex'
+  " Required:
+  call dein#end()
+  call dein#save_state()
 endif
 
-call neobundle#end()
-
-set rtp+=~/.fzf
-
+" Required:
 filetype plugin indent on
+syntax enable
 
-NeoBundleCheck
-"}}}
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+" }}}
 " Sessions {{{
 set sessionoptions+=tabpages,globals
 " }}}
@@ -135,8 +131,9 @@ xnoremap & :&&<CR>
 if !has("gui_running")
   set t_Co=256
 endif
-set background=dark
-colorscheme solarized
+set termguicolors
+colorscheme solarized8_dark
+let g:solarized_term_italics=1
 let g:solarized_visibility="bg-none"
 " }}}
 " Visual stuff {{{
@@ -189,14 +186,15 @@ runtime macros/matchit.vim
 set completeopt-=preview
 " }}}
 " {{{ FZF
+set rtp+=~/.fzf
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 " }}}
-" YouCompleteMe {{{
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-let g:ycm_key_invoke_completion = '<TAB>'
-let g:ycm_always_populate_location_list=1
+" {{{ deoplete
+let g:deoplete#enable_at_startup = 1
+" }}}
+" {{{ neosnippet
+let g:neosnippet#enable_completed_snippet = 1
 " }}}
 " tags {{{
 let g:gutentags_ctags_tagfile='.tags'
