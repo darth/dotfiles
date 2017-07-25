@@ -42,6 +42,6 @@ ${BINOBJS}:
 	${LN} $(subst ${HOME}/bin, ${PWD}/bin, $@) $@
 
 clean:
-	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.fzf ${HOME}/.bash-powerline.sh
+	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/bin ${HOME}/.fzf ${HOME}/.vim ${HOME}/.local/share/dein ${HOME}/.tmux ${HOME}/.fzf ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
 
 .PHONY: all clean
