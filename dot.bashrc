@@ -106,7 +106,7 @@ fi
 
 if shopt -q login_shell && which tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session
-  if [ "$TERM" != "screen-256color" ]; then
+  if [ "$TERM" != "tmux-256color" ]; then
     tmux attach -t default || tmux new-session -s default
   fi
 fi
