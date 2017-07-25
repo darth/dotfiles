@@ -89,6 +89,8 @@ if !has('nvim')
     set undofile
     set undodir=~/.vim/undo//
   endif
+else
+  set undofile
 endif
 " }}}
 " Encodings {{{
