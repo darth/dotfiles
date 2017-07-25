@@ -7,11 +7,13 @@ DOTOBJS = $(subst dot, ${HOME}/, ${DOTSRCS})
 BINSRCS = $(wildcard bin/*)
 BINOBJS = $(subst bin, ${HOME}/bin, ${BINSRCS})
 
-all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
+all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.local/share/dein ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
 
 ${HOME}/.vim:
-	mkdir ${HOME}/.vim ${HOME}/.vim/undo ${HOME}/.vim/tmp ${HOME}/.vim/bundle
-	git clone https://github.com/Shougo/neobundle.vim ${HOME}/.vim/bundle/neobundle.vim
+	mkdir ${HOME}/.vim ${HOME}/.vim/undo ${HOME}/.vim/tmp
+
+${HOME}/.local/share/dein:
+	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | sh -s $@
 
 ${HOME}/.tmux:
 	mkdir -p ${HOME}/.tmux/plugins
