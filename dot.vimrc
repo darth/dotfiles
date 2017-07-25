@@ -136,11 +136,13 @@ xnoremap & :&&<CR>
 if !has("gui_running")
   set t_Co=256
 endif
-if !has('nvim')
+if !has('nvim') && v:version >= 800
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-set termguicolors
+if has('termguicolors')
+  set termguicolors
+endif
 colorscheme solarized8_dark
 let g:solarized_term_italics=1
 " }}}
