@@ -133,7 +133,7 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 " }}}
 " Colors {{{
-if !has("gui_running")
+if !has('gui_running')
   set t_Co=256
 endif
 if !has('nvim') && v:version >= 800
@@ -224,12 +224,6 @@ let g:bufferline_echo = 0
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
-" }}}
-" syntastic {{{
-let g:syntastic_check_on_open=1
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:syntastic_tex_checkers=['']
 " }}}
 " latex {{{
 let g:tex_flavor = 'latex'
