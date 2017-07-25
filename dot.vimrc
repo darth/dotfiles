@@ -81,12 +81,14 @@ endif
 set sessionoptions+=tabpages,globals
 " }}}
 " Directories and files {{{
-set viminfo=!,'50,n~/.vim/viminfo
-set dir=~/.vim/tmp//
-set backupdir=~/.vim/tmp//
-if version >= 703
-  set undofile
-  set undodir=~/.vim/undo//
+if !has('nvim')
+  set viminfo=!,'50,n~/.vim/viminfo
+  set dir=~/.vim/tmp//
+  set backupdir=~/.vim/tmp//
+  if version >= 703
+    set undofile
+    set undodir=~/.vim/undo//
+  endif
 endif
 " }}}
 " Encodings {{{
