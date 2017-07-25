@@ -109,6 +109,9 @@ else
   nnoremap <Leader>n :set nu!<CR>
 endif
 " }}}
+" {{{ Modeline
+set modeline
+" }}}
 " Indentation {{{
 set tabstop=2
 set softtabstop=2
