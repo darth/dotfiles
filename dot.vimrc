@@ -47,16 +47,22 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('embear/vim-localvimrc')
   call dein#add('pboettch/vim-cmake-syntax')
   call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('Valloric/ListToggle')
 
   if has('nvim')
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('Shougo/neosnippet')
-    call dein#add('Shougo/neosnippet-snippets')
-    call dein#add('tweekmonster/deoplete-clang2')
-    call dein#add('zchee/deoplete-jedi')
-    call dein#add('zchee/deoplete-go')
-    call dein#add('wokalski/autocomplete-flow')
-    call dein#add('neomake/neomake')
+    call dein#add('oblitum/YouCompleteMe', {
+    \   'build': './install.sh --clang-completer --gocode-completer',
+    \   'type__depth': 1,
+    \   'timeout': 600,
+    \   'merged': 0
+    \ })
+    " call dein#add('Shougo/deoplete.nvim')
+    " call dein#add('Shougo/neosnippet')
+    " call dein#add('Shougo/neosnippet-snippets')
+    " call dein#add('tweekmonster/deoplete-clang2') call dein#add('zchee/deoplete-clang') call dein#add('zchee/deoplete-jedi')
+    " call dein#add('zchee/deoplete-go')
+    " call dein#add('wokalski/autocomplete-flow')
+    " call dein#add('neomake/neomake')
     call dein#add('sbdchd/neoformat')
     call dein#add('ludovicchabant/vim-gutentags')
     call dein#add('darth/vim-cmake')
@@ -205,7 +211,12 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 " }}}
 " {{{ deoplete
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#complete_method = 'omnifunc'
+" }}}
+" {{{ deoplete-clang
+" let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+" let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clanginclude'
 " }}}
 " {{{ neosnippet
 let g:neosnippet#enable_completed_snippet = 1
@@ -262,6 +273,12 @@ let g:jsx_ext_required = 0
 " }}}
 " {{{ neoformat
 let g:neoformat_try_formatprg = 1
+" }}}
+" YouCompleteMe {{{
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_invoke_completion = '<TAB>'
+let g:ycm_always_populate_location_list=1
 " }}}
 " {{{ vim-flow
 let g:flow#autoclose = 1
