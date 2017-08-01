@@ -48,6 +48,7 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('pboettch/vim-cmake-syntax')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('Valloric/ListToggle')
+  call dein#add('https://bitbucket.org/mclab/vim-properties-syntax')
 
   if has('nvim')
     call dein#add('oblitum/YouCompleteMe', {
