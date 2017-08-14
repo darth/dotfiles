@@ -7,10 +7,14 @@ DOTOBJS = $(subst dot, ${HOME}/, ${DOTSRCS})
 BINSRCS = $(wildcard bin/*)
 BINOBJS = $(subst bin, ${HOME}/bin, ${BINSRCS})
 
-all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.local/share/dein ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
+all: ${DOTOBJS} ${HOME}/bin ${HOME}/.fzf ${BINOBJS} ${HOME}/.vim ${HOME}/.config/nvim/init.vim ${HOME}/.local/share/dein ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
 
 ${HOME}/.vim:
 	mkdir ${HOME}/.vim ${HOME}/.vim/undo ${HOME}/.vim/tmp
+
+${HOME}/.config/nvim/init.vim:
+	mkdir -p ${HOME}/.config/nvim
+	ln -s ${PWD}/init.vim $@
 
 ${HOME}/.local/share/dein:
 	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | sh -s $@
