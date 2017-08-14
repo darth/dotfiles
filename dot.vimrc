@@ -70,6 +70,7 @@ if dein#load_state('~/.local/share/dein')
     call dein#add('JamshedVesuna/vim-markdown-preview')
     call dein#add('Rykka/riv.vim')
     call dein#add('lervag/vimtex')
+    call dein#add('dbgx/lldb.nvim')
   endif
 
   " Required:
@@ -280,6 +281,20 @@ let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 let g:ycm_key_invoke_completion = '<TAB>'
 let g:ycm_always_populate_location_list=1
+" }}}
+" {{{ lldb
+nmap <M-b> <Plug>LLBreakSwitch
+vmap <F2> <Plug>LLStdInSelected
+nnoremap <F4> :LLstdin<CR>
+nnoremap <F5> :LLmode debug<CR>
+nnoremap <S-F5> :LLmode code<CR>
+nnoremap <F8> :LL continue<CR>
+nnoremap <S-F8> :LL process interrupt<CR>
+nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
+vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
+nnoremap <F10> :LL step<CR>
+nnoremap <F11> :LL finish<CR>
+nnoremap <F12> :LL next<CR>
 " }}}
 " {{{ vim-flow
 let g:flow#autoclose = 1
