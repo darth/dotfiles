@@ -225,6 +225,7 @@ let g:neosnippet#enable_completed_snippet = 1
 " tags {{{
 let g:gutentags_ctags_tagfile='.tags'
 let g:gutentags_ctags_extra_args=['--c-kinds=+px']
+let g:gutentags_project_root=['build']
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
