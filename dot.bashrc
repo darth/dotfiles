@@ -84,6 +84,10 @@ alias r="${PAGER}"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+if [ -d ~/.password-store ]; then
+  export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+fi
+
 if [ -n "$TMUX" ]; then
   function refresh() {
     v=$(tmux showenv DISPLAY)
