@@ -15,7 +15,7 @@ if dein#load_state('~/.local/share/dein')
   " Required:
   call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
-  call dein#add('lifepillar/vim-solarized8')
+  call dein#add('lifepillar/vim-solarized8', { 'rev': 'v0.8' })
   call dein#add('gcmt/taboo.vim')
   call dein#add('chrisbra/csv.vim')
   call dein#add('sjl/gundo.vim')
