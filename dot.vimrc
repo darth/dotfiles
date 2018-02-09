@@ -296,6 +296,7 @@ au FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --pa
 au FileType cmake setlocal commentstring=#\ %s
 " Set filetype for gnuplot scripts.
 au BufNewFile,BufRead *.gnuplot setf gnuplot
+au FileType gnuplot setlocal commentstring=#\ %s
 " Set filetype for modelica files.
 au BufNewFile,BufRead *.mo setlocal ft=modelica
 " Restore cursor position.
