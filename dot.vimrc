@@ -15,7 +15,7 @@ if dein#load_state('~/.local/share/dein')
   " Required:
   call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
-  call dein#add('lifepillar/vim-solarized8', { 'rev': 'v0.8' })
+  call dein#add('icymind/NeoSolarized')
   call dein#add('gcmt/taboo.vim')
   call dein#add('chrisbra/csv.vim')
   call dein#add('sjl/gundo.vim')
@@ -156,8 +156,9 @@ endif
 if has('termguicolors')
   set termguicolors
 endif
-colorscheme solarized8_dark
-let g:solarized_term_italics=1
+let g:neosolarized_italic = 1
+set background=dark
+colorscheme NeoSolarized
 " }}}
 " Visual stuff {{{
 " Hide uganda message
