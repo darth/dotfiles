@@ -160,8 +160,6 @@ colorscheme solarized8_dark
 let g:solarized_term_italics=1
 " }}}
 " Visual stuff {{{
-" Enable syntax highlighting.
-syntax on
 " Hide uganda message
 set shortmess+=I
 " Always show statusline.
