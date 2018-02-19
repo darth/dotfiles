@@ -49,6 +49,8 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('Valloric/ListToggle')
   call dein#add('https://bitbucket.org/mclab/vim-properties-syntax')
+  call dein#add('junegunn/goyo.vim')
+  call dein#add('junegunn/limelight.vim')
 
   if has('nvim')
     call dein#add('oblitum/YouCompleteMe', {
@@ -284,6 +286,28 @@ let g:ycm_always_populate_location_list=1
 " }}}
 " {{{ vim-flow
 let g:flow#autoclose = 1
+" }}}
+" {{{ Goyo
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }}}
 " Autocommands {{{
 " Hardwrapping for tex/latex.
