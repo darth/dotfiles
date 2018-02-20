@@ -1,92 +1,66 @@
 " vim:foldmethod=marker:foldlevel=0
-" {{{ dein
+" {{{ minpac
 if &compatible
   set nocompatible
 endif
 
-" Required:
-set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
-
-" Required:
-if dein#load_state('~/.local/share/dein')
-  call dein#begin('~/.local/share/dein')
-
-  " Let dein manage dein
-  " Required:
-  call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
-
-  call dein#add('icymind/NeoSolarized')
-  call dein#add('gcmt/taboo.vim')
-  call dein#add('chrisbra/csv.vim')
-  call dein#add('sjl/gundo.vim')
-  call dein#add('bling/vim-airline')
-  call dein#add('bling/vim-bufferline')
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('vim-scripts/bufkill.vim')
-  call dein#add('tpope/vim-surround')
-  call dein#add('tpope/vim-repeat')
-  call dein#add('tpope/vim-unimpaired')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('tpope/vim-abolish')
-  call dein#add('tpope/vim-commentary')
-  call dein#add('tpope/vim-obsession')
-  call dein#add('tpope/vim-dispatch')
-  call dein#add('vim-scripts/a.vim')
-  call dein#add('nelstrom/vim-visual-star-search')
-  call dein#add('kana/vim-textobj-user')
-  call dein#add('kana/vim-textobj-function')
-  call dein#add('kana/vim-textobj-entire')
-  call dein#add('pangloss/vim-javascript')
-  call dein#add('othree/javascript-libraries-syntax.vim')
-  call dein#add('burnettk/vim-angular')
-  call dein#add('vim-scripts/modelica')
-  call dein#add('vim-utils/vim-husk')
-  call dein#add('tmux-plugins/vim-tmux')
-  call dein#add('mxw/vim-jsx')
-  call dein#add('junegunn/fzf.vim')
-  call dein#add('embear/vim-localvimrc')
-  call dein#add('pboettch/vim-cmake-syntax')
-  call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('Valloric/ListToggle')
-  call dein#add('https://bitbucket.org/mclab/vim-properties-syntax')
-  call dein#add('junegunn/goyo.vim')
-  call dein#add('junegunn/limelight.vim')
+if exists('*minpac#init')
+  " minpac is loaded.
+  call minpac#init()
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
+  " Additional plugins here.
+  call minpac#add('icymind/NeoSolarized')
+  call minpac#add('gcmt/taboo.vim')
+  call minpac#add('chrisbra/csv.vim')
+  call minpac#add('sjl/gundo.vim')
+  call minpac#add('bling/vim-airline')
+  call minpac#add('bling/vim-bufferline')
+  call minpac#add('vim-airline/vim-airline-themes')
+  call minpac#add('vim-scripts/bufkill.vim')
+  call minpac#add('tpope/vim-surround')
+  call minpac#add('tpope/vim-repeat')
+  call minpac#add('tpope/vim-unimpaired')
+  call minpac#add('tpope/vim-fugitive')
+  call minpac#add('tpope/vim-abolish')
+  call minpac#add('tpope/vim-commentary')
+  call minpac#add('tpope/vim-obsession')
+  call minpac#add('tpope/vim-dispatch')
+  call minpac#add('vim-scripts/a.vim')
+  call minpac#add('nelstrom/vim-visual-star-search')
+  call minpac#add('kana/vim-textobj-user')
+  call minpac#add('kana/vim-textobj-function')
+  call minpac#add('kana/vim-textobj-entire')
+  call minpac#add('pangloss/vim-javascript')
+  call minpac#add('othree/javascript-libraries-syntax.vim')
+  call minpac#add('burnettk/vim-angular')
+  call minpac#add('vim-scripts/modelica')
+  call minpac#add('vim-utils/vim-husk')
+  call minpac#add('tmux-plugins/vim-tmux')
+  call minpac#add('mxw/vim-jsx')
+  call minpac#add('junegunn/fzf.vim')
+  call minpac#add('embear/vim-localvimrc')
+  call minpac#add('pboettch/vim-cmake-syntax')
+  call minpac#add('editorconfig/editorconfig-vim')
+  call minpac#add('Valloric/ListToggle')
+  call minpac#add('https://bitbucket.org/mclab/vim-properties-syntax')
+  call minpac#add('junegunn/goyo.vim')
+  call minpac#add('junegunn/limelight.vim')
 
   if has('nvim')
-    call dein#add('oblitum/YouCompleteMe', {
-    \   'build': './install.sh --clang-completer --gocode-completer',
-    \   'type__depth': 1,
-    \   'timeout': 600,
-    \   'merged': 0
-    \ })
-    " call dein#add('Shougo/deoplete.nvim')
-    " call dein#add('Shougo/neosnippet')
-    " call dein#add('Shougo/neosnippet-snippets')
-    " call dein#add('tweekmonster/deoplete-clang2') call dein#add('zchee/deoplete-clang') call dein#add('zchee/deoplete-jedi')
-    " call dein#add('zchee/deoplete-go')
-    " call dein#add('wokalski/autocomplete-flow')
-    " call dein#add('neomake/neomake')
-    call dein#add('sbdchd/neoformat')
-    call dein#add('ludovicchabant/vim-gutentags')
-    call dein#add('darth/vim-cmake')
-    call dein#add('JamshedVesuna/vim-markdown-preview')
-    call dein#add('Rykka/riv.vim')
-    call dein#add('lervag/vimtex')
+    call minpac#add('sbdchd/neoformat')
+    call minpac#add('ludovicchabant/vim-gutentags')
+    call minpac#add('darth/vim-cmake')
+    call minpac#add('JamshedVesuna/vim-markdown-preview')
+    call minpac#add('Rykka/riv.vim')
+    call minpac#add('lervag/vimtex')
   endif
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
 endif
 
-" Required:
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
+command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+
 filetype plugin indent on
 syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
 " }}}
 " Sessions {{{
 set sessionoptions+=tabpages,globals
