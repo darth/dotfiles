@@ -5,18 +5,11 @@ if &compatible
 endif
 
 if exists('*minpac#init')
-  " minpac is loaded.
   call minpac#init()
   call minpac#add('k-takata/minpac', {'type': 'opt'})
-  " Additional plugins here.
+
   call minpac#add('icymind/NeoSolarized')
-  call minpac#add('gcmt/taboo.vim')
-  call minpac#add('chrisbra/csv.vim')
-  call minpac#add('sjl/gundo.vim')
-  call minpac#add('bling/vim-airline')
-  call minpac#add('bling/vim-bufferline')
-  call minpac#add('vim-airline/vim-airline-themes')
-  call minpac#add('vim-scripts/bufkill.vim')
+
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-repeat')
   call minpac#add('tpope/vim-unimpaired')
@@ -25,26 +18,38 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-commentary')
   call minpac#add('tpope/vim-obsession')
   call minpac#add('tpope/vim-dispatch')
-  call minpac#add('vim-scripts/a.vim')
-  call minpac#add('nelstrom/vim-visual-star-search')
+
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-function')
   call minpac#add('kana/vim-textobj-entire')
-  call minpac#add('pangloss/vim-javascript')
-  call minpac#add('othree/javascript-libraries-syntax.vim')
-  call minpac#add('burnettk/vim-angular')
-  call minpac#add('vim-scripts/modelica')
-  call minpac#add('vim-utils/vim-husk')
-  call minpac#add('tmux-plugins/vim-tmux')
-  call minpac#add('mxw/vim-jsx')
+
   call minpac#add('junegunn/fzf.vim')
-  call minpac#add('embear/vim-localvimrc')
-  call minpac#add('pboettch/vim-cmake-syntax')
-  call minpac#add('editorconfig/editorconfig-vim')
-  call minpac#add('Valloric/ListToggle')
-  call minpac#add('https://bitbucket.org/mclab/vim-properties-syntax')
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
+
+  call minpac#add('bling/vim-airline')
+  call minpac#add('bling/vim-bufferline')
+  call minpac#add('vim-airline/vim-airline-themes')
+
+  call minpac#add('gcmt/taboo.vim')
+  call minpac#add('sjl/gundo.vim')
+  call minpac#add('vim-scripts/bufkill.vim')
+  call minpac#add('vim-scripts/a.vim')
+  call minpac#add('nelstrom/vim-visual-star-search')
+  call minpac#add('vim-utils/vim-husk')
+  call minpac#add('embear/vim-localvimrc')
+  call minpac#add('editorconfig/editorconfig-vim')
+  call minpac#add('Valloric/ListToggle')
+
+  call minpac#add('chrisbra/csv.vim')
+  call minpac#add('vim-scripts/modelica')
+  call minpac#add('pboettch/vim-cmake-syntax')
+  call minpac#add('tmux-plugins/vim-tmux')
+  call minpac#add('https://bitbucket.org/mclab/vim-properties-syntax')
+
+  call minpac#add('pangloss/vim-javascript')
+  call minpac#add('othree/javascript-libraries-syntax.vim')
+  call minpac#add('mxw/vim-jsx')
 
   if has('nvim')
     call minpac#add('sbdchd/neoformat')
