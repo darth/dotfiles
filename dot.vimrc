@@ -57,6 +57,7 @@ if exists('*minpac#init')
   call minpac#add('mxw/vim-jsx')
 
   if has('nvim')
+    call minpac#add('radenling/vim-dispatch-neovim')
     call minpac#add('sbdchd/neoformat')
     call minpac#add('ludovicchabant/vim-gutentags')
     call minpac#add('darth/vim-cmake')
