@@ -27,6 +27,11 @@ if exists('*minpac#init')
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
 
+  call minpac#add('roxma/nvim-completion-manager')
+  call minpac#add('roxma/ncm-clang')
+  call minpac#add('sirver/ultisnips')
+  call minpac#add('w0rp/ale')
+
   call minpac#add('bling/vim-airline')
   call minpac#add('bling/vim-bufferline')
   call minpac#add('vim-airline/vim-airline-themes')
@@ -191,16 +196,21 @@ set rtp+=~/.fzf
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 " }}}
-" {{{ deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#complete_method = 'omnifunc'
+" {{{ nvim-completion-manager
+imap <c-x><c-o> <Plug>(cm_force_refresh)
+let g:cm_auto_popup = 0
+let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+" optional
+inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 " }}}
-" {{{ deoplete-clang
-" let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
-" let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clanginclude'
-" }}}
-" {{{ neosnippet
-let g:neosnippet#enable_completed_snippet = 1
+"{{{ ale
+let g:ale_linters = {
+  \ 'c': ['clang']
+  \}
+autocmd BufEnter *.c,*.h let g:ale_c_clang_options = join(ncm_clang#compilation_info()['args'], ' ') | ALELint
 " }}}
 " tags {{{
 let g:gutentags_ctags_tagfile='.tags'
@@ -248,19 +258,12 @@ let g:localvimrc_persistent=1
 " }}}
 " {{{ cmake
 let g:cmake_export_compile_commands = 1
-let g:cmake_ycm_symlinks = 1
 " }}}
 " {{{ jsx
 let g:jsx_ext_required = 0
 " }}}
 " {{{ neoformat
 let g:neoformat_try_formatprg = 1
-" }}}
-" YouCompleteMe {{{
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-let g:ycm_key_invoke_completion = '<TAB>'
-let g:ycm_always_populate_location_list=1
 " }}}
 " {{{ vim-flow
 let g:flow#autoclose = 1
@@ -305,14 +308,6 @@ au BufNewFile,BufRead *.mo setlocal ft=modelica
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Settings for quickfix.
 au Filetype qf setlocal nonumber colorcolumn=
-" Golang
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>s <Plug>(go-implements)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>e <Plug>(go-rename)
 " }}}
 " Functions {{{
 function! Preserve(command)
