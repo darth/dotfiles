@@ -198,8 +198,8 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 " }}}
 " {{{ nvim-completion-manager
-imap <c-x><c-o> <Plug>(cm_force_refresh)
-let g:cm_auto_popup = 0
+let g:cm_matcher = { 'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase' }
+let g:cm_completekeys = "\<Plug>(cm_omnifunc)"
 let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
