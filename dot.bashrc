@@ -28,11 +28,10 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   unset PATH
   eval $(/usr/libexec/path_helper -s)
   prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
-  export EDITOR='nvim'
 else
   export CLIPBOARD_PORT='52698'
-  export EDITOR='vim'
 fi
+export EDITOR='nvim'
 
 export COPY_COMMAND="${HOME}/bin/rcopy -p ${CLIPBOARD_PORT}"
 export PASTE_COMMAND="${HOME}/bin/rpaste -p ${CLIPBOARD_PORT}"

@@ -7,17 +7,13 @@ DOTOBJS = $(subst dot, ${HOME}/, ${DOTSRCS})
 BINSRCS = $(wildcard bin/*)
 BINOBJS = $(subst bin, ${HOME}/bin, ${BINSRCS})
 
-all: ${DOTOBJS} ${BINOBJS} ${HOME}/bin ${HOME}/.fzf ${HOME}/.vim ${HOME}/.vim/pack/minpac/opt/minpac ${HOME}/.config/nvim/init.vim ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
+all: ${DOTOBJS} ${BINOBJS} ${HOME}/bin ${HOME}/.fzf ${HOME}/.config/nvim/init.vim ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
 
-${HOME}/.vim:
-	mkdir $@ $@/undo $@/tmp
-
-${HOME}/.vim/pack/minpac/opt/minpac: ${HOME}/.vim
+${HOME}/.config/nvim/pack/minpac/opt/minpac:
 	git clone https://github.com/k-takata/minpac.git $@
 
-${HOME}/.config/nvim/init.vim:
-	mkdir -p ${HOME}/.config/nvim
-	ln -s ${PWD}/init.vim $@
+${HOME}/.config/nvim/init.vim: ${HOME}/.config/nvim/pack/minpac/opt/minpac
+	${LN} ${PWD}/init.vim $@
 
 ${HOME}/.tmux:
 	mkdir -p ${HOME}/.tmux/plugins
@@ -46,6 +42,6 @@ ${BINOBJS}: ${HOME}/bin
 	${LN} $(subst ${HOME}/bin, ${PWD}/bin, $@) $@
 
 clean:
-	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/bin ${HOME}/.fzf ${HOME}/.vim ${HOME}/.tmux ${HOME}/.fzf ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
+	${RM} ${DOTOBJS} ${BINOBJS} ${HOME}/bin ${HOME}/.fzf ${HOME}/.tmux ${HOME}/.fzf ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
 
 .PHONY: all clean
