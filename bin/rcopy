@@ -2,8 +2,10 @@
 
 . "${HOME}/.common.bash"
 
-if [ $(uname) == 'Linux' ] || is_remote_session; then
+if [ $(uname) == 'Linux' ]; then
   xsel -i -b
+elif is_remote_session; then
+  xclip -i -selection clipboard
 else
   pbcopy
 fi
