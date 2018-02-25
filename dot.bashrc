@@ -20,21 +20,14 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   fi
   export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
 
-  export CLIPBOARD_PORT='52699'
-
   export FZF_DEFAULT_COMMAND='rg --files --follow -g ""'
 
   # this is the hack to avoid prepending system paths in subshells
   unset PATH
   eval $(/usr/libexec/path_helper -s)
   prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
-else
-  export CLIPBOARD_PORT='52698'
 fi
 export EDITOR='nvim'
-
-export COPY_COMMAND="${HOME}/bin/rcopy -p ${CLIPBOARD_PORT}"
-export PASTE_COMMAND="${HOME}/bin/rpaste -p ${CLIPBOARD_PORT}"
 
 export GOPATH="${HOME}/go"
 
