@@ -10,6 +10,6 @@ function prepend_to_var() {
 }
 
 function is_remote_session() {
-  [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]
+  [ -n "$SSH_CONNECTION" ]
 }
 
