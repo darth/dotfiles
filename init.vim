@@ -28,17 +28,9 @@ if exists('*minpac#init')
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('junegunn/limelight.vim')
 
-  call minpac#add('roxma/nvim-completion-manager')
-  call minpac#add('roxma/ncm-clang')
-  call minpac#add('sirver/ultisnips')
-  call minpac#add('w0rp/ale')
-  call minpac#add('sbdchd/neoformat')
-  call minpac#add('darth/vim-cmake')
-
   call minpac#add('bling/vim-airline')
   call minpac#add('bling/vim-bufferline')
   call minpac#add('vim-airline/vim-airline-themes')
-  call minpac#add('ludovicchabant/vim-gutentags')
 
   call minpac#add('gcmt/taboo.vim')
   call minpac#add('sjl/gundo.vim')
@@ -60,10 +52,18 @@ if exists('*minpac#init')
   call minpac#add('othree/javascript-libraries-syntax.vim')
   call minpac#add('mxw/vim-jsx')
 
-  call minpac#add('JamshedVesuna/vim-markdown-preview')
-  call minpac#add('Rykka/riv.vim')
-
-  call minpac#add('lervag/vimtex')
+  if has('mac')
+    call minpac#add('roxma/nvim-completion-manager')
+    call minpac#add('roxma/ncm-clang')
+    call minpac#add('sirver/ultisnips')
+    call minpac#add('w0rp/ale')
+    call minpac#add('sbdchd/neoformat')
+    call minpac#add('darth/vim-cmake')
+    call minpac#add('ludovicchabant/vim-gutentags')
+    call minpac#add('JamshedVesuna/vim-markdown-preview')
+    call minpac#add('Rykka/riv.vim')
+    call minpac#add('lervag/vimtex')
+  endif
 endif
 
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
@@ -145,10 +145,6 @@ if v:version >= 703
 endif
 " Toggle invisible symbols
 nnoremap <Leader>i :set list!<CR>
-" }}}
-" Clipboard {{{
-nnoremap <Leader>y :call system("$COPY_COMMAND", @")<CR>
-nnoremap <Leader>p :let @" = system("$PASTE_COMMAND")<CR>
 " }}}
 " Misc settings {{{
 " Fast terminal connection.
