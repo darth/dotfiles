@@ -1,6 +1,8 @@
 #! /usr/bin/env bash
 
-if [ $(uname) == 'Linux' ] || [ "is_remote_session()" ]; then
+. "${HOME}/.common.bash"
+
+if [ $(uname) == 'Linux' ] || is_remote_session; then
   xsel -o -b
 else
   pbpaste
