@@ -215,6 +215,7 @@ let g:airline_exclude_preview = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 0
 " }}}
 " bufferline {{{
 let g:bufferline_echo = 0
