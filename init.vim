@@ -150,9 +150,7 @@ set showcmd
 set showmode
 " Enable soft wrapping of text.
 set wrap
-if v:version >= 703
-  set colorcolumn=81
-endif
+set colorcolumn=81
 " Toggle invisible symbols
 nnoremap <Leader>i :set list!<CR>
 " }}}
