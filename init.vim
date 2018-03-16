@@ -40,6 +40,7 @@ if exists('*minpac#init')
   call minpac#add('embear/vim-localvimrc')
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('Valloric/ListToggle')
+  call minpac#add('mhinz/vim-grepper')
 
   call minpac#add('chrisbra/csv.vim')
   call minpac#add('vim-scripts/modelica')
@@ -233,6 +234,12 @@ if has('python3')
   let g:gundo_prefer_python3=1
 endif
 nnoremap <Leader>u :GundoToggle<CR>
+" }}}
+" {{{ grepper
+let g:grepper = {}
+let g:grepper.tools = ['grep', 'git', 'rg']
+" Search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " }}}
 " {{{ markdown
 let vim_markdown_preview_browser='Safari'
