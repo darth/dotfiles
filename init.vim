@@ -31,6 +31,7 @@ if exists('*minpac#init')
 
   call minpac#add('vim-airline/vim-airline')
   call minpac#add('vim-airline/vim-airline-themes')
+  call minpac#add('bling/vim-bufferline')
 
   call minpac#add('sjl/gundo.vim')
   call minpac#add('vim-scripts/bufkill.vim')
@@ -213,7 +214,11 @@ let g:airline_exclude_preview = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 0
+" }}}
+" {{{ bufferline
+let g:bufferline_echo = 0
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
