@@ -14,7 +14,18 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   eval $(/usr/libexec/path_helper -s)
   prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
 fi
-export EDITOR='nvim'
+
+if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
+  if [ -x "$(command -v nvr)" ]; then
+    alias nvim=nvr
+  else
+    alias nvim='echo "No nesting!"'
+  fi
+fi
+
+if [ -z "${VISUAL}" ]; then
+  export VISUAL='nvim'
+fi
 
 export GOPATH="${HOME}/go"
 
@@ -53,7 +64,7 @@ alias la='ls -la'
 alias df='df -h'
 alias du='du -h'
 alias grep='grep --color'
-alias e="${EDITOR}"
+alias e="nvim"
 alias r="${PAGER}"
 
 [ -f ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
