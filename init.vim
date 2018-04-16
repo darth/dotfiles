@@ -331,8 +331,3 @@ nnoremap <Space> za
 " Select last edited text.
 nnoremap gV `[v`]
 " }}}
-" vimrc.local {{{
-if filereadable(glob("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-" }}}
