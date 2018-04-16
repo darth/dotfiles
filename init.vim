@@ -331,3 +331,6 @@ nnoremap <Space> za
 " Select last edited text.
 nnoremap gV `[v`]
 " }}}
+" {{{ VISUAL
+let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+" }}}
