@@ -65,6 +65,7 @@ if exists('*minpac#init')
     call minpac#add('JamshedVesuna/vim-markdown-preview')
     call minpac#add('Rykka/riv.vim')
     call minpac#add('lervag/vimtex')
+    call minpac#add('neovimhaskell/haskell-vim')
   endif
 endif
 
