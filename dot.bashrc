@@ -13,6 +13,7 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   unset PATH
   eval $(/usr/libexec/path_helper -s)
   prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
+  prepend_to_var PATH "${HOME}/.local/bin" # haskell stack
 fi
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
