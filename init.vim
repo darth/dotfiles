@@ -305,6 +305,7 @@ au BufNewFile,BufRead *.gnuplot setf gnuplot
 au FileType gnuplot setlocal commentstring=#\ %s
 " Set filetype for modelica files.
 au BufNewFile,BufRead *.mo setlocal ft=modelica
+au BufNewFile,BufRead *.h setlocal ft=c
 " Restore cursor position.
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Settings for quickfix.
