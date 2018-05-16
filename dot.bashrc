@@ -56,6 +56,7 @@ shopt -s histappend
 # some other opts
 shopt -s cdspell
 shopt -s autocd
+shopt -s direxpand
 
 # aliases
 alias ls='ls -F'
