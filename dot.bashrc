@@ -98,7 +98,7 @@ if [ -f ${HOME}/.bashrc.local ]; then
   source ${HOME}/.bashrc.local
 fi
 
-if shopt -q login_shell && which tmux >/dev/null 2>&1; then
+if shopt -q login_shell && hash tmux >/dev/null 2>&1; then
   #if not inside a tmux session, and if no session is started, start a new session
   if [ "$TERM" != "tmux-256color" ]; then
     tmux attach -t default || tmux new-session -s default
