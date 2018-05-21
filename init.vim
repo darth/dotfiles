@@ -55,13 +55,13 @@ if exists('*minpac#init')
   call minpac#add('mxw/vim-jsx')
 
   if has('mac')
-    call minpac#add('roxma/nvim-completion-manager')
-    call minpac#add('roxma/ncm-clang')
-    call minpac#add('sirver/ultisnips')
-    call minpac#add('w0rp/ale')
+    call minpac#add('autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': {-> system('bash install.sh')},
+    \ })
+    call minpac#add('shougo/deoplete.nvim')
     call minpac#add('sbdchd/neoformat')
     call minpac#add('darth/vim-cmake')
-    call minpac#add('ludovicchabant/vim-gutentags')
     call minpac#add('JamshedVesuna/vim-markdown-preview')
     call minpac#add('Rykka/riv.vim')
     call minpac#add('lervag/vimtex')
@@ -186,27 +186,25 @@ command! -bang -nargs=* Rg
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 " }}}
-" {{{ nvim-completion-manager
-let g:cm_matcher = { 'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase' }
-let g:cm_completekeys = "\<Plug>(cm_omnifunc)"
-let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
-" optional
-inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+" {{{ deoplete
+let g:deoplete#enable_at_startup = 1
 " }}}
-"{{{ ale
-let g:ale_linters = {
-  \ 'c': ['clang'],
-  \ 'tex': [],
-  \}
-autocmd BufEnter *.c,*.h let g:ale_c_clang_options = join(ncm_clang#compilation_info()['args'], ' ') | ALELint
-" }}}
-" tags {{{
-let g:gutentags_ctags_tagfile='.tags'
-let g:gutentags_ctags_extra_args=['--c-kinds=+px']
-let g:gutentags_project_root=['build']
+" {{{ languageclient
+let g:LanguageClient_serverCommands = {
+\ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+\ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+\ 'python': ['pyls'],
+\ 'haskell': ['hie', '--lsp']
+\ }
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_diagnosticsList = 'Location'
+let g:LanguageClient_rootMarkers = {
+\ 'c': ['build'],
+\ 'cpp': ['build'],
+\ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
@@ -265,9 +263,6 @@ let g:jsx_ext_required = 0
 " }}}
 " {{{ neoformat
 let g:neoformat_try_formatprg = 1
-" }}}
-" {{{ vim-flow
-let g:flow#autoclose = 1
 " }}}
 " {{{ Goyo
 function! s:goyo_enter()
