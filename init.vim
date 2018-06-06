@@ -92,6 +92,11 @@ set fileencodings=utf-8,cp1251,koi8-r,latin1
 " }}}
 " Numbering {{{
 set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 " }}}
 " {{{ Modeline
 set modeline
