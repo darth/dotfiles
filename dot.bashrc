@@ -17,6 +17,9 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
     prepend_to_var PATH "${HOME}/.local/bin" # haskell stack
     eval "$(stack --bash-completion-script stack)"
   fi
+  if [ -f "${HOME}/.cargo/env" ]; then
+    source ${HOME}/.cargo/env
+  fi
 fi
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
