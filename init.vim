@@ -70,6 +70,7 @@ if exists('*minpac#init')
     \ 'do': {-> system('cargo build --release')},
     \ })
     call minpac#add('Rykka/riv.vim')
+    call minpac#add('Rykka/InstantRst')
     call minpac#add('lervag/vimtex')
     call minpac#add('neovimhaskell/haskell-vim')
   endif
