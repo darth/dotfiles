@@ -63,6 +63,7 @@ if exists('*minpac#init')
     \ 'do': {-> system('bash install.sh')},
     \ })
     call minpac#add('shougo/deoplete.nvim')
+    call minpac#add('sirver/ultisnips')
     call minpac#add('sbdchd/neoformat')
     call minpac#add('darth/vim-cmake')
     call minpac#add('JamshedVesuna/vim-markdown-preview')
@@ -210,6 +211,39 @@ let g:LanguageClient_rootMarkers = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" }}}
+" {{{ ultisnips
+function! ExpandLspSnippet()
+    call UltiSnips#ExpandSnippetOrJump()
+    if !pumvisible() || empty(v:completed_item)
+        return ''
+    endif
+
+    " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
+    let l:value = v:completed_item['word']
+    let l:matched = len(l:value)
+    if l:matched <= 0
+        return ''
+    endif
+
+    " remove inserted chars before expand snippet
+    if col('.') == col('$')
+        let l:matched -= 1
+        exec 'normal! ' . l:matched . 'Xx'
+    else
+        exec 'normal! ' . l:matched . 'X'
+    endif
+
+    if col('.') == col('$') - 1
+        " move to $ if at the end of line.
+        call cursor(line('.'), col('$'))
+    endif
+
+    " expand snippet now.
+    call UltiSnips#Anon(l:value)
+    return ''
+endfunction
+imap <C-k> <C-R>=ExpandLspSnippet()<CR>
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
