@@ -221,6 +221,7 @@ let g:airline#extensions#fugitiveline#enabled = 0
 " }}}
 " {{{ bufferline
 let g:bufferline_echo = 0
+let g:bufferline_show_bufnr = 0
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
