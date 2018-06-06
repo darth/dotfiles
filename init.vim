@@ -298,8 +298,7 @@ let g:grepper.tools = ['grep', 'git', 'rg']
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " }}}
 " {{{ markdown
-let vim_markdown_preview_browser='Safari'
-let vim_markdown_preview_github=1
+let g:markdown_composer_autostart = 0
  " }}}
 " {{{ localvimrc
 let g:localvimrc_sandbox=0
