@@ -66,7 +66,9 @@ if exists('*minpac#init')
     call minpac#add('sirver/ultisnips')
     call minpac#add('sbdchd/neoformat')
     call minpac#add('darth/vim-cmake')
-    call minpac#add('JamshedVesuna/vim-markdown-preview')
+    call minpac#add('euclio/vim-markdown-composer', {
+    \ 'do': {-> system('cargo build --release')},
+    \ })
     call minpac#add('Rykka/riv.vim')
     call minpac#add('lervag/vimtex')
     call minpac#add('neovimhaskell/haskell-vim')
