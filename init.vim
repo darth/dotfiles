@@ -132,6 +132,8 @@ if has('termguicolors')
   set termguicolors
 endif
 let g:neosolarized_italic = 1
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
 set background=dark
 colorscheme NeoSolarized
 " }}}
