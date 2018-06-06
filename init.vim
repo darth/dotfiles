@@ -262,12 +262,11 @@ let g:airline_exclude_preview = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 0
-" }}}
-" {{{ bufferline
-let g:bufferline_echo = 0
-let g:bufferline_show_bufnr = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#taboo#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:taboo_tabline = 0
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
