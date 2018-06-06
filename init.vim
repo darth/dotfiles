@@ -115,14 +115,14 @@ set mouse=a
 " }}}
 " {{{ Clipboard
 let g:clipboard = {
-      \   'name': 'smartClipboard',
-      \   'copy': {
-      \      '+': 'rcopy',
-      \   },
-      \   'paste': {
-      \      '+': 'rpaste',
-      \   }
-      \}
+\ 'name': 'smartClipboard',
+\ 'copy': {
+\  '+': 'rcopy',
+\ },
+\ 'paste': {
+\  '+': 'rpaste',
+\ }
+\}
 " }}}
 " Searching/Replacing {{{
 set smartcase
