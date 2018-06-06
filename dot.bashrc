@@ -72,7 +72,8 @@ alias la='ls -la'
 alias df='df -h'
 alias du='du -h'
 alias grep='grep --color'
-alias e="nvim"
+alias e='nvim'
+alias el='NVIM_LISTEN_ADDRESS=/tmp/nvim e'
 alias r="${PAGER}"
 
 [ -f ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
