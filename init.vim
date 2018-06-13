@@ -8,7 +8,7 @@ if exists('*minpac#init')
   call minpac#init()
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-  call minpac#add('mhartington/oceanic-next')
+  call minpac#add('darth/oceanic-next')
 
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-repeat')
