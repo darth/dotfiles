@@ -35,6 +35,7 @@ if exists('*minpac#init')
   call minpac#add('vim-airline/vim-airline')
   call minpac#add('vim-airline/vim-airline-themes')
   call minpac#add('edkolev/tmuxline.vim')
+  call minpac#add('ryanoasis/vim-devicons')
 
   call minpac#add('sjl/gundo.vim')
   call minpac#add('vim-scripts/bufkill.vim')
