@@ -351,7 +351,10 @@ au FileType gnuplot setlocal commentstring=#\ %s
 au BufNewFile,BufRead *.mo setlocal ft=modelica
 au BufNewFile,BufRead *.h setlocal ft=c
 " Restore cursor position.
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost *
+\ if line("'\"") >= 1 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
 " Settings for quickfix.
 au Filetype qf setlocal nonumber colorcolumn=
 " }}}
