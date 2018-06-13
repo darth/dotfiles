@@ -8,7 +8,7 @@ if exists('*minpac#init')
   call minpac#init()
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-  call minpac#add('icymind/NeoSolarized')
+  call minpac#add('mhartington/oceanic-next')
 
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-repeat')
@@ -142,11 +142,10 @@ endif
 if has('termguicolors')
   set termguicolors
 endif
-let g:neosolarized_italic = 1
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 1
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 set background=dark
-colorscheme NeoSolarized
+colorscheme OceanicNext
 " }}}
 " Visual stuff {{{
 " Hide uganda message
@@ -257,7 +256,7 @@ imap <C-k> <C-R>=ExpandLspSnippet()<CR>
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'oceanicnext'
 let g:airline_exclude_preview = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0

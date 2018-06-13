@@ -42,19 +42,19 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Fira Code
+    family: Fira Code iScript
     # Style can be specified to pick a specific face.
-    style: Retina
+    style: Regular
 
   # The bold font face
   bold:
-    family: Fira Code
+    family: Fira Code iScript
     # Style can be specified to pick a specific face.
-    style: Retina
+    style: Bold
 
   # The italic font face
   italic:
-    family: Menlo
+    family: Fira Code iScript
     # Style can be specified to pick a specific face.
     style: Italic
 
@@ -86,34 +86,39 @@ render_timer: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
 
-# Colors (Solarized Dark)
+# Colors (Oceanic Next)
 colors:
   # Default colors
   primary:
-    background: '0x002b36'
-    foreground: '0x839496'
+    background: '0x1b2b34'
+    foreground: '0xD8DEE9'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0xec5f67'
+    cursor: '0xec5f67'
 
   # Normal colors
   normal:
-    black:   '0x073642'
-    red:     '0xdc322f'
-    green:   '0x859900'
-    yellow:  '0xb58900'
-    blue:    '0x268bd2'
-    magenta: '0xd33682'
-    cyan:    '0x2aa198'
-    white:   '0xeee8d5'
+    black:   '0x343d46'
+    red:     '0xEC5f67'
+    green:   '0x99C794'
+    yellow:  '0xFAC863'
+    blue:    '0x6699cc'
+    magenta: '0xc594c5'
+    cyan:    '0x5fb3b3'
+    white:   '0xd8dee9'
 
   # Bright colors
   bright:
-    black:   '0x002b36'
-    red:     '0xcb4b16'
-    green:   '0x586e75'
-    yellow:  '0x657b83'
-    blue:    '0x839496'
-    magenta: '0x6c71c4'
-    cyan:    '0x93a1a1'
-    white:   '0xfdf6e3'
+    black:   '0x343d46'
+    red:     '0xEC5f67'
+    green:   '0x99C794'
+    yellow:  '0xFAC863'
+    blue:    '0x6699cc'
+    magenta: '0xc594c5'
+    cyan:    '0x5fb3b3'
+    white:   '0xd8dee9'
 
 # Visual Bell
 #
