@@ -49,6 +49,7 @@ if exists('*minpac#init')
   call minpac#add('Valloric/ListToggle')
   call minpac#add('mhinz/vim-grepper')
 
+  call minpac#add('elzr/vim-json')
   call minpac#add('chrisbra/csv.vim')
   call minpac#add('vim-scripts/modelica')
   call minpac#add('pboettch/vim-cmake-syntax')
@@ -314,6 +315,9 @@ let g:cmake_export_compile_commands = 1
 " }}}
 " {{{ jsx
 let g:jsx_ext_required = 0
+" }}}
+" {{{ json
+let g:vim_json_syntax_conceal = 0
 " }}}
 " {{{ neoformat
 let g:neoformat_try_formatprg = 1
