@@ -36,6 +36,7 @@ if exists('*minpac#init')
   call minpac#add('vim-airline/vim-airline-themes')
   call minpac#add('edkolev/tmuxline.vim')
   call minpac#add('ryanoasis/vim-devicons')
+  call minpac#add('yggdroot/indentline')
 
   call minpac#add('sjl/gundo.vim')
   call minpac#add('vim-scripts/bufkill.vim')
@@ -268,6 +269,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#taboo#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:taboo_tabline = 0
+" }}}
+" {{{ indentline
+let g:indentLine_bufTypeExclude = ['help', 'terminal']
+" let g:indentLine_setColors = 0
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
