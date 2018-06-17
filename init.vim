@@ -297,8 +297,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:taboo_tabline = 0
 " }}}
 " {{{ indentline
-let g:indentLine_bufTypeExclude = ['help', 'terminal']
-" let g:indentLine_setColors = 0
+let g:indentLine_bufTypeExclude = ['help', 'terminal', 'quickfix']
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
