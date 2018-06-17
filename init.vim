@@ -171,7 +171,6 @@ set showmode
 " Enable soft wrapping of text.
 set wrap
 set colorcolumn=81
-set signcolumn=yes
 " Toggle invisible symbols
 nnoremap <Leader>i :set list!<CR>
 " }}}
