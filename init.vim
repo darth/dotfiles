@@ -212,7 +212,8 @@ let g:LanguageClient_serverCommands = {
 \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
 \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
 \ 'python': ['pyls'],
-\ 'haskell': ['hie', '--lsp']
+\ 'haskell': ['hie', '--lsp'],
+\ 'rust': ['rustup', 'run', 'stable', 'rls'],
 \ }
 let g:LanguageClient_autoStart = 0
 let g:LanguageClient_loadSettings = 1
