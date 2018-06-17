@@ -171,8 +171,6 @@ set showmode
 " Enable soft wrapping of text.
 set wrap
 set colorcolumn=81
-" Toggle invisible symbols
-nnoremap <Leader>i :set list!<CR>
 " }}}
 " Misc settings {{{
 " Fast terminal connection.
@@ -392,7 +390,10 @@ autocmd BufReadPost *
 \   exe "normal! g`\"" |
 \ endif
 " Settings for quickfix.
-au Filetype qf setlocal nonumber colorcolumn=
+augroup qf
+    autocmd!
+    autocmd FileType qf setlocal nobuflisted nonumber colorcolumn= nolist nowrap
+augroup END
 " }}}
 " Functions {{{
 function! Preserve(command)
@@ -416,6 +417,8 @@ nnoremap <Leader>h :vert help
 nnoremap <Space> za
 " Select last edited text.
 nnoremap gV `[v`]
+" Toggle invisible symbols
+nnoremap <Leader>i :set list!<CR>
 " }}}
 " {{{ VISUAL
 let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
