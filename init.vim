@@ -221,9 +221,35 @@ let g:LanguageClient_rootMarkers = {
 \ 'c': ['build'],
 \ 'cpp': ['build'],
 \ }
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+function! LanguageClientInit()
+  set signcolumn=yes
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+  let g:LanguageClient_started = 1
+endfunction
+function! LanguageClientDeinit()
+  set signcolumn=auto
+  unmap K
+  unmap gd
+  unmap <F2>
+  set formatexpr=''
+  let g:LanguageClient_started = 0
+endfunction
+augroup LanguageClient_config
+  autocmd!
+  autocmd User LanguageClientStarted call LanguageClientInit()
+  autocmd User LanguageClientStopped call LanguageClientDeinit()
+augroup END
+function! LanguageClientToggle()
+  if get(g:, 'LanguageClient_started', 0) == 0
+    LanguageClientStart
+  else
+    LanguageClientStop
+  endif
+endfunction
+autocmd FileType c,cpp,python,haskell,rust nnoremap <buffer> <Leader>ll :call LanguageClientToggle()<CR>
 " }}}
 " {{{ ultisnips
 function! ExpandLspSnippet()
