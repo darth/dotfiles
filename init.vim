@@ -61,9 +61,9 @@ if exists('*minpac#init')
   call minpac#add('mxw/vim-jsx')
 
   if has('mac')
-    call minpac#add('autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': {-> system('bash install.sh')},
+    call minpac#add('darth/LanguageClient-neovim', {
+    \ 'branch': 'darth',
+    \ 'do': {-> system('make release')},
     \ })
     call minpac#add('shougo/deoplete.nvim')
     call minpac#add('sirver/ultisnips')
