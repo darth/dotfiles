@@ -415,8 +415,9 @@ autocmd BufReadPost *
 \ endif
 " Settings for quickfix.
 augroup qf
-    autocmd!
-    autocmd FileType qf setlocal nobuflisted nonumber colorcolumn= nolist nowrap
+  autocmd!
+  autocmd FileType qf setlocal nobuflisted nonumber colorcolumn= nolist nowrap
+  autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&bt") == "quickfix"|bd|endif
 augroup END
 " }}}
 " Functions {{{
