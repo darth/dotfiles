@@ -191,13 +191,38 @@ set completeopt-=preview
 set updatetime=100
 " }}}
 " {{{ FZF
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+function! FZF_Files()
+  let options = '--preview "cat {2..-1} | head -'.&lines.'"'
+
+  function! s:files()
+    let files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let result = []
+    for candidate in a:candidates
+      let filename = fnamemodify(candidate, ':p:t')
+      let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
+      call add(result, printf("%s %s", icon, candidate))
+    endfor
+
+    return result
+  endfunction
+
+  function! s:edit_file(item)
+    let parts = split(a:item, ' ')
+    let file_path = get(parts, 1, '')
+    execute 'silent e' file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m '. options,
+        \ 'down':    '40%' })
+endfunction
+command! Files call FZF_Files()
 nnoremap <Leader>f :Files<CR>
 " }}}
 " {{{ deoplete
