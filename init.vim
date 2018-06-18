@@ -323,6 +323,7 @@ let g:taboo_tabline = 0
 " }}}
 " {{{ indentline
 let g:indentLine_bufTypeExclude = ['help', 'terminal', 'quickfix']
+let g:indentLine_char = ''
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
