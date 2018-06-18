@@ -199,7 +199,6 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>t :Tags<CR>
 " }}}
 " {{{ deoplete
 let g:deoplete#enable_at_startup = 1
