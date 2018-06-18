@@ -243,6 +243,10 @@ let g:LanguageClient_rootMarkers = {
 \ 'c': ['build'],
 \ 'cpp': ['build'],
 \ }
+let g:LanguageClient_diagnosticsDisplay = {
+\ 1: { 'name': 'Error', 'texthl': 'ALEError', 'signText': '✘', 'signTexthl': 'ALEErrorSign' },
+\ 2: { 'name': 'Warning', 'texthl': 'ALEWarning', 'signText': '!', 'signTexthl': 'ALEWarningSign' }
+\ }
 function! LanguageClientInit()
   set signcolumn=yes
   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
