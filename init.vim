@@ -263,6 +263,9 @@ augroup LanguageClient_config
   autocmd!
   autocmd User LanguageClientStarted call LanguageClientInit()
   autocmd User LanguageClientStopped call LanguageClientDeinit()
+  autocmd FileType * if has_key(g:LanguageClient_serverCommands, &ft) | nnoremap <buffer> <Leader>ll :call LanguageClientToggle()<CR> | endif
+  " signcolumn is local to window!
+  autocmd BufWinEnter,WinEnter * if has_key(g:LanguageClient_serverCommands, &ft) && get(g:, 'LanguageClient_started', 0) == 1 | set signcolumn=yes | else | set signcolumn=auto | endif
 augroup END
 function! LanguageClientToggle()
   if get(g:, 'LanguageClient_started', 0) == 0
@@ -271,7 +274,6 @@ function! LanguageClientToggle()
     LanguageClientStop
   endif
 endfunction
-autocmd FileType c,cpp,python,haskell,rust nnoremap <buffer> <Leader>ll :call LanguageClientToggle()<CR>
 " }}}
 " {{{ ultisnips
 function! ExpandLspSnippet()
