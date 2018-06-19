@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.h setfiletype c
+autocmd BufNewFile,BufRead *.h set ft=c

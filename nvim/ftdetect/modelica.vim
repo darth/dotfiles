@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.mo setfiletype modelica
+autocmd BufNewFile,BufRead *.mo set ft=modelica
