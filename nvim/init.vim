@@ -1,5 +1,5 @@
 " vim:foldmethod=marker:foldlevel=0
-" {{{ minpac
+" minpac {{{
 if &compatible
   set nocompatible
 endif
@@ -106,7 +106,7 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 " }}}
-" {{{ Modeline
+" Modeline {{{
 set modeline
 " }}}
 " Indentation {{{
@@ -189,7 +189,7 @@ set completeopt-=preview
 " Speed up update time.
 set updatetime=100
 " }}}
-" {{{ FZF
+" FZF {{{
 function! FZF_Files()
   let options = '--preview "cat {2..-1} | head -'.&lines.'"'
 
@@ -224,10 +224,10 @@ endfunction
 command! Files call FZF_Files()
 nnoremap <Leader>f :Files<CR>
 " }}}
-" {{{ deoplete
+" deoplete {{{
 let g:deoplete#enable_at_startup = 1
 " }}}
-" {{{ languageclient
+" languageclient {{{
 let g:LanguageClient_serverCommands = {
 \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
 \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
