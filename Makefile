@@ -7,13 +7,16 @@ DOTOBJS = $(subst dot, ${HOME}/, ${DOTSRCS})
 BINSRCS = $(wildcard bin/*)
 BINOBJS = $(subst bin, ${HOME}/bin, ${BINSRCS})
 
-all: ${DOTOBJS} ${BINOBJS} ${HOME}/bin ${HOME}/.fzf ${HOME}/.config/nvim/init.vim ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
+NVIMSRCS = $(wildcard nvim/*)
+NVIMOBJS = $(subst nvim, ${HOME}/.config/nvim, ${NVIMSRCS})
+
+all: ${DOTOBJS} ${BINOBJS} ${NVIMOBJS} ${HOME}/bin ${HOME}/.fzf ${HOME}/.tmux ${HOME}/.bash-powerline.sh ${HOME}/.bash-preexec.sh ${HOME}/.terminfo
 
 ${HOME}/.config/nvim/pack/minpac/opt/minpac:
 	git clone https://github.com/k-takata/minpac.git $@
 
-${HOME}/.config/nvim/init.vim: ${HOME}/.config/nvim/pack/minpac/opt/minpac
-	${LN} ${PWD}/init.vim $@
+${NVIMOBJS}: ${HOME}/.config/nvim/pack/minpac/opt/minpac
+	${LN} $(subst ${HOME}/.config/nvim, ${PWD}/nvim, $@) $@
 
 ${HOME}/.tmux:
 	mkdir -p ${HOME}/.tmux/plugins

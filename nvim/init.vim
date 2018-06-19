@@ -9,17 +9,19 @@ if exists('*minpac#init')
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   call minpac#add('darth/oceanic-next')
+  call minpac#add('icymind/NeoSolarized')
 
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-repeat')
   call minpac#add('tpope/vim-unimpaired')
   call minpac#add('tpope/vim-fugitive')
-  call minpac#add('jreybert/vimagit')
   call minpac#add('tpope/vim-abolish')
   call minpac#add('tpope/vim-commentary')
   call minpac#add('tpope/vim-obsession')
   call minpac#add('tpope/vim-dispatch')
   call minpac#add('radenling/vim-dispatch-neovim')
+
+  call minpac#add('jreybert/vimagit')
 
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-function')
@@ -37,24 +39,24 @@ if exists('*minpac#init')
   call minpac#add('ryanoasis/vim-devicons')
   call minpac#add('yggdroot/indentline')
 
-  call minpac#add('sjl/gundo.vim')
+  call minpac#add('sjl/gundo.vim') " candidate for removal
   call minpac#add('vim-scripts/bufkill.vim')
   call minpac#add('schickling/vim-bufonly')
   call minpac#add('vim-scripts/a.vim')
   call minpac#add('nelstrom/vim-visual-star-search')
   call minpac#add('vim-utils/vim-husk')
-  call minpac#add('embear/vim-localvimrc')
+  call minpac#add('embear/vim-localvimrc') " candidate for removal
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('Valloric/ListToggle')
   call minpac#add('mhinz/vim-grepper')
 
+  " Syntax plugins.
   call minpac#add('elzr/vim-json')
-  call minpac#add('chrisbra/csv.vim')
+  call minpac#add('chrisbra/csv.vim') " this one is not syntax only
   call minpac#add('vim-scripts/modelica')
   call minpac#add('pboettch/vim-cmake-syntax')
   call minpac#add('tmux-plugins/vim-tmux')
   call minpac#add('https://bitbucket.org/mclab/vim-properties-syntax')
-
   call minpac#add('pangloss/vim-javascript')
   call minpac#add('othree/javascript-libraries-syntax.vim')
   call minpac#add('mxw/vim-jsx')
@@ -66,7 +68,7 @@ if exists('*minpac#init')
     \ })
     call minpac#add('shougo/deoplete.nvim')
     call minpac#add('sirver/ultisnips')
-    call minpac#add('sbdchd/neoformat')
+    call minpac#add('sbdchd/neoformat') " candidate for removal
     call minpac#add('darth/vim-cmake')
     call minpac#add('euclio/vim-markdown-composer', {
     \ 'do': {-> system('cargo build --release')},
@@ -267,9 +269,17 @@ augroup LanguageClient_config
   autocmd!
   autocmd User LanguageClientStarted call LanguageClientInit()
   autocmd User LanguageClientStopped call LanguageClientDeinit()
-  autocmd FileType * if has_key(g:LanguageClient_serverCommands, &ft) | nnoremap <buffer> <Leader>ll :call LanguageClientToggle()<CR> | endif
+  autocmd FileType *
+  \ if has_key(g:LanguageClient_serverCommands, &ft) |
+  \   nnoremap <buffer> <Leader>ll :call LanguageClientToggle()<CR> |
+  \ endif
   " signcolumn is local to window!
-  autocmd BufWinEnter,WinEnter * if has_key(g:LanguageClient_serverCommands, &ft) && get(g:, 'LanguageClient_started', 0) == 1 | set signcolumn=yes | else | set signcolumn=auto | endif
+  autocmd BufWinEnter,WinEnter *
+  \ if has_key(g:LanguageClient_serverCommands, &ft) && get(g:, 'LanguageClient_started', 0) == 1 |
+  \   set signcolumn=yes |
+  \ else |
+  \   set signcolumn=auto |
+  \ endif
 augroup END
 function! LanguageClientToggle()
   if get(g:, 'LanguageClient_started', 0) == 0
@@ -399,30 +409,20 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }}}
 " Autocommands {{{
-" Hardwrapping for tex/latex.
-au FileType tex setlocal textwidth=80 spell spelllang=en_gb
-" PEP8
-au FileType python setlocal ts=4 sts=4 sw=4
-" Use prettier for js formatting
-au FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ all
-" Comments for cmake files
-au FileType cmake setlocal commentstring=#\ %s
-" Set filetype for gnuplot scripts.
-au BufNewFile,BufRead *.gnuplot setf gnuplot
-au FileType gnuplot setlocal commentstring=#\ %s
-" Set filetype for modelica files.
-au BufNewFile,BufRead *.mo setlocal ft=modelica
-au BufNewFile,BufRead *.h setlocal ft=c
-" Restore cursor position.
-autocmd BufReadPost *
-\ if line("'\"") >= 1 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
-" Settings for quickfix.
-augroup qf
+augroup restore " Restore cursor position.
+  autocmd!
+  autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+augroup END
+augroup qf " Settings for quickfix.
   autocmd!
   autocmd FileType qf setlocal nobuflisted nonumber colorcolumn= nolist nowrap
-  autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&bt") == "quickfix"|bd|endif
+  autocmd WinEnter *
+  \ if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&bt") == "quickfix" |
+  \   bd |
+  \ endif
 augroup END
 " }}}
 " Functions {{{
