@@ -155,8 +155,6 @@ colorscheme OceanicNext
 " Visual stuff {{{
 " Hide uganda message
 set shortmess+=I
-" Always show statusline.
-set laststatus=2
 " Show at least 5 lines below and above cursor.
 set scrolloff=5
 " Show invisible chars.
@@ -175,8 +173,6 @@ set wrap
 set colorcolumn=81
 " }}}
 " Misc settings {{{
-" Fast terminal connection.
-set ttyfast
 " Make buffer hidden when abandoned.
 set hidden
 " Improve command line completion.
