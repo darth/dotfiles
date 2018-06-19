@@ -60,6 +60,7 @@ if exists('*minpac#init')
   call minpac#add('pangloss/vim-javascript')
   call minpac#add('othree/javascript-libraries-syntax.vim')
   call minpac#add('mxw/vim-jsx')
+  call minpac#add('justinmk/vim-syntax-extra')
 
   if has('mac')
     call minpac#add('darth/LanguageClient-neovim', {
