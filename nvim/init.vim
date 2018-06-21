@@ -232,6 +232,8 @@ let g:LanguageClient_serverCommands = {
 \ 'python': ['pyls'],
 \ 'haskell': ['hie', '--lsp'],
 \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+\ 'javascript': ['flow-language-server', '--stdio'],
+\ 'javascript.jsx': ['flow-language-server', '--stdio'],
 \ }
 let g:LanguageClient_autoStart = 0
 let g:LanguageClient_loadSettings = 1
