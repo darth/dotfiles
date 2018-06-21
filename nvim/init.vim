@@ -411,13 +411,12 @@ augroup restore " Restore cursor position.
   \   exe "normal! g`\"" |
   \ endif
 augroup END
-augroup qf " Settings for quickfix.
+" }}}
+" quickfix {{{
+augroup qf
   autocmd!
   autocmd FileType qf setlocal nobuflisted nonumber colorcolumn= nolist nowrap
-  autocmd WinEnter *
-  \ if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&bt") == "quickfix" |
-  \   bd |
-  \ endif
+  autocmd WinEnter * if winnr('$') == 1 && !buflisted(bufnr('')) | q | endif
 augroup END
 function! WToggle(type, focus) abort
   function! s:numbufqf() abort
