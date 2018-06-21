@@ -86,7 +86,7 @@ filetype plugin indent on
 syntax enable
 " }}}
 " Sessions {{{
-set sessionoptions+=tabpages,globals
+set sessionoptions+=tabpages
 " }}}
 " Directories and files {{{
 set undofile
