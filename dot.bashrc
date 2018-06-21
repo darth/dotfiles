@@ -75,6 +75,7 @@ alias grep='grep --color'
 alias e='nvim'
 alias el='NVIM_LISTEN_ADDRESS=/tmp/nvim e'
 alias es='[ -f .vim/Session.vim ] && e -S .vim/Session.vim'
+alias eg='[ -d .git ] && e +MagitOnly'
 alias r="${PAGER}"
 
 [ -f ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
