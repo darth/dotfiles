@@ -246,45 +246,41 @@ let g:LanguageClient_diagnosticsDisplay = {
 \ 1: { 'name': 'Error', 'texthl': 'ALEError', 'signText': '✘', 'signTexthl': 'ALEErrorSign' },
 \ 2: { 'name': 'Warning', 'texthl': 'ALEWarning', 'signText': '!', 'signTexthl': 'ALEWarningSign' }
 \ }
-function! LanguageClientInit()
-  set signcolumn=yes
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-  let g:LanguageClient_started = 1
+function! s:languageClientInit()
+  if !get(b:, 'languageclient_initialized', 0)
+    let b:languageclient_initialized = 1
+    setlocal signcolumn=yes
+    setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+    nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
+  endif
 endfunction
-function! LanguageClientDeinit()
-  set signcolumn=auto
-  unmap K
-  unmap gd
-  unmap <F2>
-  set formatexpr=''
-  let g:LanguageClient_started = 0
+function! s:languageClientDeinit()
+  if get(b:, 'languageclient_initialized', 0)
+    let b:languageclient_initialized = 0
+    setlocal signcolumn=auto
+    setlocal formatexpr=''
+    nnoremap <buffer> K K
+    nnoremap <buffer> gd gd
+    nnoremap <buffer> <F2> <F2>
+  endif
 endfunction
 augroup LanguageClient_config
   autocmd!
-  autocmd User LanguageClientStarted call LanguageClientInit()
-  autocmd User LanguageClientStopped call LanguageClientDeinit()
-  autocmd FileType *
-  \ if has_key(g:LanguageClient_serverCommands, &ft) |
-  \   nnoremap <buffer> <Leader>ll :call LanguageClientToggle()<CR> |
-  \ endif
-  " signcolumn is local to window!
+  autocmd User LanguageClientStarted call s:languageClientInit()
+  autocmd User LanguageClientStopped call s:languageClientDeinit()
   autocmd BufWinEnter,WinEnter *
-  \ if has_key(g:LanguageClient_serverCommands, &ft) && get(g:, 'LanguageClient_started', 0) == 1 |
-  \   set signcolumn=yes |
+  \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
+  \   call s:languageClientInit() |
   \ else |
-  \   set signcolumn=auto |
+  \   call s:languageClientDeinit() |
+  \ endif
+  autocmd FileType * 
+  \ if has_key(g:LanguageClient_serverCommands, &ft) |
+  \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR> |
   \ endif
 augroup END
-function! LanguageClientToggle()
-  if get(g:, 'LanguageClient_started', 0) == 0
-    LanguageClientStart
-  else
-    LanguageClientStop
-  endif
-endfunction
 " }}}
 " {{{ ultisnips
 function! ExpandLspSnippet()
