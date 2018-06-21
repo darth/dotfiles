@@ -46,7 +46,6 @@ if exists('*minpac#init')
   call minpac#add('vim-utils/vim-husk')
   call minpac#add('embear/vim-localvimrc') " candidate for removal
   call minpac#add('editorconfig/editorconfig-vim')
-  call minpac#add('Valloric/ListToggle')
   call minpac#add('mhinz/vim-grepper')
 
   " Syntax plugins.
@@ -420,6 +419,25 @@ augroup qf " Settings for quickfix.
   \   bd |
   \ endif
 augroup END
+function! WToggle(type, focus) abort
+  function! s:numbufqf() abort
+    let all = range(1, bufnr('$'))
+    return len(filter(all, 'bufexists(v:val) && getbufvar(v:val, "&bt") == "quickfix"'))
+  endfunction
+  let nbefore = s:numbufqf()
+  if a:type ==# 'quickfix' | silent! cclose | elseif a:type ==# 'location' | silent! lclose | endif
+  let nafter = s:numbufqf()
+  if nafter == nbefore
+    if a:type ==# 'quickfix' | silent! botright copen | elseif a:type ==# 'location' | silent! lopen | endif
+    if a:focus
+      wincmd p
+    endif
+  endif
+endfunction
+nnoremap <silent> <leader>q :call WToggle('quickfix', 0)<CR>
+nnoremap <silent> <leader>Q :call WToggle('quickfix', 1)<CR>
+nnoremap <silent> <leader>l :call WToggle('location', 0)<CR>
+nnoremap <silent> <leader>L :call WToggle('location', 1)<CR>
 " }}}
 " Functions {{{
 function! Preserve(command)
