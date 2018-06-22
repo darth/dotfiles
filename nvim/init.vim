@@ -17,6 +17,7 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-abolish')
   call minpac#add('tpope/vim-commentary')
   call minpac#add('tpope/vim-obsession')
+  call minpac#add('tpope/vim-projectionist')
   call minpac#add('tpope/vim-dispatch')
   call minpac#add('radenling/vim-dispatch-neovim')
 
@@ -44,7 +45,6 @@ if exists('*minpac#init')
   call minpac#add('vim-scripts/a.vim')
   call minpac#add('nelstrom/vim-visual-star-search')
   call minpac#add('vim-utils/vim-husk')
-  call minpac#add('embear/vim-localvimrc') " candidate for removal
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('mhinz/vim-grepper')
 
@@ -363,10 +363,6 @@ nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " {{{ markdown
 let g:markdown_composer_autostart = 0
  " }}}
-" {{{ localvimrc
-let g:localvimrc_sandbox=0
-let g:localvimrc_persistent=1
-" }}}
 " {{{ cmake
 let g:cmake_export_compile_commands = 1
 " }}}
