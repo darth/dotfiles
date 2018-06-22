@@ -323,11 +323,11 @@ let g:airline_exclude_preview = 0
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#taboo#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tmuxline#enabled = 0
 let g:taboo_tabline = 0
 " }}}
 " {{{ indentline
