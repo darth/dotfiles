@@ -234,6 +234,7 @@ let g:LanguageClient_serverCommands = {
 \ 'rust': ['rustup', 'run', 'stable', 'rls'],
 \ 'javascript': ['flow-language-server', '--stdio'],
 \ 'javascript.jsx': ['flow-language-server', '--stdio'],
+\ 'sh': ['bash-language-server', 'start'],
 \ }
 let g:LanguageClient_autoStart = 0
 let g:LanguageClient_loadSettings = 1
