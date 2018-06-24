@@ -121,9 +121,11 @@ let g:clipboard = {
 \ 'name': 'smartClipboard',
 \ 'copy': {
 \  '+': 'rcopy',
+\  '*': 'rcopy',
 \ },
 \ 'paste': {
 \  '+': 'rpaste',
+\  '*': 'rpaste',
 \ }
 \}
 " }}}
