@@ -186,8 +186,6 @@ runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " Completion.
 set completeopt-=preview
-" Speed up update time.
-set updatetime=100
 " }}}
 " FZF {{{
 function! FZF_Files()
