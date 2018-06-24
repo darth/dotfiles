@@ -18,6 +18,7 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-commentary')
   call minpac#add('tpope/vim-obsession')
   call minpac#add('tpope/vim-projectionist')
+  call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
   call minpac#add('tpope/vim-dispatch')
   call minpac#add('radenling/vim-dispatch-neovim')
 
