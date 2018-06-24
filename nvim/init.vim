@@ -289,7 +289,7 @@ augroup LanguageClient_config
   \ endif
 augroup END
 " }}}
-" {{{ ultisnips
+" ultisnips {{{
 function! ExpandLspSnippet()
     call UltiSnips#ExpandSnippetOrJump()
     if !pumvisible() || empty(v:completed_item)
@@ -336,7 +336,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tmuxline#enabled = 0
 let g:taboo_tabline = 0
 " }}}
-" {{{ indentline
+" indentline {{{
 let g:indentLine_bufTypeExclude = ['help', 'terminal', 'quickfix', 'nofile']
 let g:indentLine_char = ''
 " }}}
@@ -356,34 +356,34 @@ endif
 let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
 let g:vimtex_compiler_progname = 'nvr'
 " }}}
-" {{{ gundo
+" gundo {{{
 if has('python3')
   let g:gundo_prefer_python3=1
 endif
 nnoremap <Leader>u :GundoToggle<CR>
 " }}}
-" {{{ grepper
+" grepper {{{
 let g:grepper = {}
 let g:grepper.tools = ['grep', 'git', 'rg']
 " Search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " }}}
-" {{{ markdown
+" markdown {{{
 let g:markdown_composer_autostart = 0
  " }}}
-" {{{ cmake
+" cmake {{{
 let g:cmake_export_compile_commands = 1
 " }}}
-" {{{ jsx
+" jsx {{{
 let g:jsx_ext_required = 0
 " }}}
-" {{{ json
+" json {{{
 let g:vim_json_syntax_conceal = 0
 " }}}
-" {{{ neoformat
+" neoformat {{{
 let g:neoformat_try_formatprg = 1
 " }}}
-" {{{ Goyo
+" Goyo {{{
 function! s:goyo_enter()
   let g:GoyoActive = 1
   silent !tmux set status off
