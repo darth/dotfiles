@@ -100,8 +100,14 @@ set fileencodings=utf-8,cp1251,koi8-r,latin1
 set number relativenumber
 augroup numbertoggle
   autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave *
+  \ if !get(g:, 'GoyoActive', 0) |
+  \   set relativenumber |
+  \ endif
+  autocmd BufLeave,FocusLost,InsertEnter *
+  \ if !get(g:, 'GoyoActive', 0) |
+  \   set norelativenumber |
+  \ endif
 augroup END
 " }}}
 " Modeline {{{
@@ -379,20 +385,24 @@ let g:neoformat_try_formatprg = 1
 " }}}
 " {{{ Goyo
 function! s:goyo_enter()
+  let g:GoyoActive = 1
   silent !tmux set status off
   silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   set noshowmode
   set noshowcmd
   set scrolloff=999
+  set nonumber norelativenumber nolist
   Limelight
 endfunction
 
 function! s:goyo_leave()
+  let g:GoyoActive = 0
   silent !tmux set status on
   silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
   set showmode
   set showcmd
   set scrolloff=5
+  set number relativenumber list
   Limelight!
 endfunction
 
