@@ -196,8 +196,6 @@ set completeopt-=preview
 " }}}
 " FZF {{{
 function! FZF_Files()
-  let options = '--preview "cat {2..-1} | head -'.&lines.'"'
-
   function! s:files()
     let files = split(system($FZF_DEFAULT_COMMAND), '\n')
     return s:prepend_icon(files)
@@ -210,21 +208,21 @@ function! FZF_Files()
       let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
       call add(result, printf("%s %s", icon, candidate))
     endfor
-
     return result
   endfunction
 
-  function! s:edit_file(item)
-    let parts = split(a:item, ' ')
-    let file_path = get(parts, 1, '')
-    execute 'silent e' file_path
+  let wrapped = fzf#wrap('files-devicons', {
+  \ 'source': s:files(),
+  \ 'options': '-m --preview "cat {2..-1} | head -'.&lines.'"',
+  \ 'down':    '40%' })
+  " stolen from fzf.vim
+  let wrapped.common_sink = remove(wrapped, 'sink*')
+  function! wrapped.newsink(lines)
+    let lines = extend(a:lines[0:0], map(a:lines[1:], 'get(split(v:val, " "), 1, "")'))
+    return self.common_sink(lines)
   endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m '. options,
-        \ 'down':    '40%' })
+  let wrapped['sink*'] = remove(wrapped, 'newsink')
+  call fzf#run(wrapped)
 endfunction
 command! Files call FZF_Files()
 nnoremap <Leader>f :Files<CR>
