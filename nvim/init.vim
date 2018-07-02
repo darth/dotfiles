@@ -419,7 +419,7 @@ augroup END
 " quickfix {{{
 augroup qf
   autocmd!
-  autocmd FileType qf setlocal nobuflisted nonumber colorcolumn= nolist nowrap
+  autocmd FileType qf setlocal nobuflisted nonumber norelativenumber colorcolumn= nolist nowrap
   autocmd WinEnter * if winnr('$') == 1 && !buflisted(bufnr('')) | q | endif
 augroup END
 function! WToggle(type, focus) abort
