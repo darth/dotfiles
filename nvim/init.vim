@@ -58,6 +58,7 @@ if exists('*minpac#init')
   call minpac#add('othree/javascript-libraries-syntax.vim')
   call minpac#add('mxw/vim-jsx')
   call minpac#add('justinmk/vim-syntax-extra')
+  call minpac#add('neovimhaskell/haskell-vim')
 
   if has('mac')
     call minpac#add('darth/LanguageClient-neovim', {
@@ -74,7 +75,6 @@ if exists('*minpac#init')
     call minpac#add('Rykka/riv.vim')
     call minpac#add('Rykka/InstantRst')
     call minpac#add('lervag/vimtex')
-    call minpac#add('neovimhaskell/haskell-vim')
   endif
 endif
 
