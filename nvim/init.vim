@@ -42,7 +42,6 @@ if exists('*minpac#init')
 
   call minpac#add('sjl/gundo.vim') " candidate for removal
   call minpac#add('schickling/vim-bufonly')
-  call minpac#add('vim-scripts/a.vim')
   call minpac#add('nelstrom/vim-visual-star-search')
   call minpac#add('vim-utils/vim-husk')
   call minpac#add('editorconfig/editorconfig-vim')
