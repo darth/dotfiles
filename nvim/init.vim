@@ -101,11 +101,11 @@ set number relativenumber
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave *
-  \ if !get(g:, 'GoyoActive', 0) |
+  \ if !(get(g:, 'GoyoActive', 0) || !buflisted(bufnr(''))) |
   \   set relativenumber |
   \ endif
   autocmd BufLeave,FocusLost,InsertEnter *
-  \ if !get(g:, 'GoyoActive', 0) |
+  \ if !(get(g:, 'GoyoActive', 0) || !buflisted(bufnr(''))) |
   \   set norelativenumber |
   \ endif
 augroup END
