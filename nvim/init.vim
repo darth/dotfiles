@@ -225,6 +225,7 @@ function! FZF_Files()
 endfunction
 command! Files call FZF_Files()
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>bl :Buffers<CR>
 " }}}
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
