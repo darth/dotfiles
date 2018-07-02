@@ -466,6 +466,8 @@ nnoremap <Space> za
 nnoremap gV `[v`]
 " Toggle invisible symbols
 nnoremap <Leader>i :set list!<CR>
+" Delete buffer
+nnoremap <Leader>bd :bd<CR>
 " }}}
 " {{{ VISUAL
 let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
