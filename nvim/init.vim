@@ -41,7 +41,6 @@ if exists('*minpac#init')
   call minpac#add('yggdroot/indentline')
 
   call minpac#add('sjl/gundo.vim') " candidate for removal
-  call minpac#add('vim-scripts/bufkill.vim')
   call minpac#add('schickling/vim-bufonly')
   call minpac#add('vim-scripts/a.vim')
   call minpac#add('nelstrom/vim-visual-star-search')
