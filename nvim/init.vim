@@ -230,62 +230,64 @@ nnoremap <Leader>bl :Buffers<CR>
 let g:deoplete#enable_at_startup = 1
 " }}}
 " languageclient {{{
-let g:LanguageClient_serverCommands = {
-\ 'c': ['cquery', '--log-file=/tmp/cq.log'],
-\ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
-\ 'python': ['pyls'],
-\ 'haskell': ['hie', '--lsp'],
-\ 'rust': ['rustup', 'run', 'stable', 'rls'],
-\ 'javascript': ['flow-language-server', '--stdio'],
-\ 'javascript.jsx': ['flow-language-server', '--stdio'],
-\ 'sh': ['bash-language-server', 'start'],
-\ }
-let g:LanguageClient_autoStart = 0
-let g:LanguageClient_loadSettings = 1
-let g:LanguageClient_diagnosticsList = 'Location'
-let g:LanguageClient_rootMarkers = {
-\ 'c': ['build'],
-\ 'cpp': ['build'],
-\ }
-let g:LanguageClient_diagnosticsDisplay = {
-\ 1: { 'name': 'Error', 'texthl': 'ALEError', 'signText': '✘', 'signTexthl': 'ALEErrorSign' },
-\ 2: { 'name': 'Warning', 'texthl': 'ALEWarning', 'signText': '!', 'signTexthl': 'ALEWarningSign' }
-\ }
-function! s:languageClientInit()
-  if !get(b:, 'languageclient_initialized', 0)
-    let b:languageclient_initialized = 1
-    setlocal signcolumn=yes
-    setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-    nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
-    nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
-  endif
-endfunction
-function! s:languageClientDeinit()
-  if get(b:, 'languageclient_initialized', 0)
-    let b:languageclient_initialized = 0
-    setlocal signcolumn=auto
-    setlocal formatexpr=''
-    nnoremap <buffer> K K
-    nnoremap <buffer> gd gd
-    nnoremap <buffer> <F2> <F2>
-  endif
-endfunction
-augroup LanguageClient_config
-  autocmd!
-  autocmd User LanguageClientStarted call s:languageClientInit()
-  autocmd User LanguageClientStopped call s:languageClientDeinit()
-  autocmd BufWinEnter,WinEnter *
-  \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
-  \   call s:languageClientInit() |
-  \ else |
-  \   call s:languageClientDeinit() |
-  \ endif
-  autocmd FileType * 
-  \ if has_key(g:LanguageClient_serverCommands, &ft) |
-  \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR> |
-  \ endif
-augroup END
+if exists('g:LanguageClient_running')
+  let g:LanguageClient_serverCommands = {
+  \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+  \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+  \ 'python': ['pyls'],
+  \ 'haskell': ['hie', '--lsp'],
+  \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+  \ 'javascript': ['flow-language-server', '--stdio'],
+  \ 'javascript.jsx': ['flow-language-server', '--stdio'],
+  \ 'sh': ['bash-language-server', 'start'],
+  \ }
+  let g:LanguageClient_autoStart = 0
+  let g:LanguageClient_loadSettings = 1
+  let g:LanguageClient_diagnosticsList = 'Location'
+  let g:LanguageClient_rootMarkers = {
+  \ 'c': ['build'],
+  \ 'cpp': ['build'],
+  \ }
+  let g:LanguageClient_diagnosticsDisplay = {
+  \ 1: { 'name': 'Error', 'texthl': 'ALEError', 'signText': '✘', 'signTexthl': 'ALEErrorSign' },
+  \ 2: { 'name': 'Warning', 'texthl': 'ALEWarning', 'signText': '!', 'signTexthl': 'ALEWarningSign' }
+  \ }
+  function! s:languageClientInit()
+    if !get(b:, 'languageclient_initialized', 0)
+      let b:languageclient_initialized = 1
+      setlocal signcolumn=yes
+      setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+      nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
+      nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
+      nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
+    endif
+  endfunction
+  function! s:languageClientDeinit()
+    if get(b:, 'languageclient_initialized', 0)
+      let b:languageclient_initialized = 0
+      setlocal signcolumn=auto
+      setlocal formatexpr=''
+      nnoremap <buffer> K K
+      nnoremap <buffer> gd gd
+      nnoremap <buffer> <F2> <F2>
+    endif
+  endfunction
+  augroup LanguageClient_config
+    autocmd!
+    autocmd User LanguageClientStarted call s:languageClientInit()
+    autocmd User LanguageClientStopped call s:languageClientDeinit()
+    autocmd BufWinEnter,WinEnter *
+    \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
+    \   call s:languageClientInit() |
+    \ else |
+    \   call s:languageClientDeinit() |
+    \ endif
+    autocmd FileType * 
+    \ if has_key(g:LanguageClient_serverCommands, &ft) |
+    \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR> |
+    \ endif
+  augroup END
+endif
 " }}}
 " ultisnips {{{
 function! ExpandLspSnippet()
