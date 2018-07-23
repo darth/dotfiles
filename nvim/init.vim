@@ -60,7 +60,7 @@ if exists('*minpac#init')
   call minpac#add('justinmk/vim-syntax-extra')
   call minpac#add('neovimhaskell/haskell-vim')
 
-  if has('mac')
+  if $DEVMODE
     call minpac#add('darth/LanguageClient-neovim', {
     \ 'branch': 'darth',
     \ 'do': {-> system('make release')},
@@ -227,10 +227,12 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>bl :Buffers<CR>
 " }}}
 " deoplete {{{
-let g:deoplete#enable_at_startup = 1
+if $DEVMODE
+  let g:deoplete#enable_at_startup = 1
+endif
 " }}}
 " languageclient {{{
-if exists('g:LanguageClient_running')
+if $DEVMODE
   let g:LanguageClient_serverCommands = {
   \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
   \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
@@ -290,37 +292,39 @@ if exists('g:LanguageClient_running')
 endif
 " }}}
 " ultisnips {{{
-function! ExpandLspSnippet()
-    call UltiSnips#ExpandSnippetOrJump()
-    if !pumvisible() || empty(v:completed_item)
-        return ''
-    endif
+if $DEVMODE
+  function! ExpandLspSnippet()
+      call UltiSnips#ExpandSnippetOrJump()
+      if !pumvisible() || empty(v:completed_item)
+          return ''
+      endif
 
-    " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
-    let l:value = v:completed_item['word']
-    let l:matched = len(l:value)
-    if l:matched <= 0
-        return ''
-    endif
+      " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
+      let l:value = v:completed_item['word']
+      let l:matched = len(l:value)
+      if l:matched <= 0
+          return ''
+      endif
 
-    " remove inserted chars before expand snippet
-    if col('.') == col('$')
-        let l:matched -= 1
-        exec 'normal! ' . l:matched . 'Xx'
-    else
-        exec 'normal! ' . l:matched . 'X'
-    endif
+      " remove inserted chars before expand snippet
+      if col('.') == col('$')
+          let l:matched -= 1
+          exec 'normal! ' . l:matched . 'Xx'
+      else
+          exec 'normal! ' . l:matched . 'X'
+      endif
 
-    if col('.') == col('$') - 1
-        " move to $ if at the end of line.
-        call cursor(line('.'), col('$'))
-    endif
+      if col('.') == col('$') - 1
+          " move to $ if at the end of line.
+          call cursor(line('.'), col('$'))
+      endif
 
-    " expand snippet now.
-    call UltiSnips#Anon(l:value)
-    return ''
-endfunction
-imap <C-k> <C-R>=ExpandLspSnippet()<CR>
+      " expand snippet now.
+      call UltiSnips#Anon(l:value)
+      return ''
+  endfunction
+  imap <C-k> <C-R>=ExpandLspSnippet()<CR>
+endif
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
@@ -349,12 +353,14 @@ nnoremap <silent> <Leader>gd :Gdiff<CR>
 let g:tex_flavor = 'latex'
 let g:tex_comment_nospell= 1
 let g:latex_fold_enabled = 1
-if has('mac')
-  let g:vimtex_view_general_viewer = 'displayline'
-  let g:vimtex_view_general_options = '-g -r @line @pdf @tex'
+if $DEVMODE
+  if has('mac')
+    let g:vimtex_view_general_viewer = 'displayline'
+    let g:vimtex_view_general_options = '-g -r @line @pdf @tex'
+  endif
+  let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
+  let g:vimtex_compiler_progname = 'nvr'
 endif
-let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
-let g:vimtex_compiler_progname = 'nvr'
 " }}}
 " gundo {{{
 if has('python3')
@@ -369,7 +375,9 @@ let g:grepper.tools = ['grep', 'git', 'rg']
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " }}}
 " markdown {{{
-let g:markdown_composer_autostart = 0
+if $DEVMODE
+  let g:markdown_composer_autostart = 0
+endif
  " }}}
 " cmake {{{
 let g:cmake_export_compile_commands = 1
