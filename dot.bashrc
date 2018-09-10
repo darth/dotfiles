@@ -20,6 +20,8 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   if [ -f "${HOME}/.cargo/env" ]; then
     source ${HOME}/.cargo/env
   fi
+
+  alias sudoedit='sudo -e'
 fi
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
