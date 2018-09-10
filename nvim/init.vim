@@ -234,8 +234,8 @@ endif
 " languageclient {{{
 if $DEVMODE
   let g:LanguageClient_serverCommands = {
-  \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
-  \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+  \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+  \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
   \ 'python': ['pyls'],
   \ 'haskell': ['hie', '--lsp'],
   \ 'go': ['go-langserver'],
