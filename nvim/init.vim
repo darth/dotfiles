@@ -284,7 +284,7 @@ if $DEVMODE
     \ endif
     autocmd FileType * 
     \ if has_key(g:LanguageClient_serverCommands, &ft) |
-    \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR> |
+    \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR>|
     \ endif
     autocmd BufEnter *
     \ if has_key(g:LanguageClient_serverCommands, &ft) |
