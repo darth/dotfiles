@@ -278,9 +278,9 @@ if $DEVMODE
     autocmd User LanguageClientStopped call s:languageClientDeinit()
     autocmd BufWinEnter,WinEnter *
     \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
-    \   call s:languageClientInit() |
+    \   silent call s:languageClientInit() |
     \ else |
-    \   call s:languageClientDeinit() |
+    \   silent call s:languageClientDeinit() |
     \ endif
     autocmd FileType * 
     \ if has_key(g:LanguageClient_serverCommands, &ft) |
