@@ -65,7 +65,9 @@ if exists('*minpac#init')
     \ 'branch': 'darth',
     \ 'do': {-> system('make release')},
     \ })
-    call minpac#add('shougo/deoplete.nvim')
+    call minpac#add('roxma/nvim-yarp')
+    call minpac#add('ncm2/ncm2')
+    call minpac#add('ncm2/ncm2-ultisnips')
     call minpac#add('sirver/ultisnips')
     call minpac#add('sbdchd/neoformat') " candidate for removal
     call minpac#add('darth/vim-cmake')
@@ -190,7 +192,7 @@ runtime ftplugin/man.vim
 " Enable jumps to matching objects (tags, parentheses, etc).
 runtime macros/matchit.vim
 " Completion.
-set completeopt-=preview
+set completeopt=noinsert,menuone,noselect
 " }}}
 " FZF {{{
 function! FZF_Files()
@@ -225,11 +227,6 @@ endfunction
 command! Files call FZF_Files()
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>bl :Buffers<CR>
-" }}}
-" deoplete {{{
-if $DEVMODE
-  let g:deoplete#enable_at_startup = 1
-endif
 " }}}
 " languageclient {{{
 if $DEVMODE
@@ -289,42 +286,19 @@ if $DEVMODE
     \ if has_key(g:LanguageClient_serverCommands, &ft) |
     \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR> |
     \ endif
+    autocmd BufEnter *
+    \ if has_key(g:LanguageClient_serverCommands, &ft) |
+    \   call ncm2#enable_for_buffer() |
+    \ endif
   augroup END
 endif
 " }}}
 " ultisnips {{{
 if $DEVMODE
-  function! ExpandLspSnippet()
-      call UltiSnips#ExpandSnippetOrJump()
-      if !pumvisible() || empty(v:completed_item)
-          return ''
-      endif
-
-      " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
-      let l:value = v:completed_item['word']
-      let l:matched = len(l:value)
-      if l:matched <= 0
-          return ''
-      endif
-
-      " remove inserted chars before expand snippet
-      if col('.') == col('$')
-          let l:matched -= 1
-          exec 'normal! ' . l:matched . 'Xx'
-      else
-          exec 'normal! ' . l:matched . 'X'
-      endif
-
-      if col('.') == col('$') - 1
-          " move to $ if at the end of line.
-          call cursor(line('.'), col('$'))
-      endif
-
-      " expand snippet now.
-      call UltiSnips#Anon(l:value)
-      return ''
-  endfunction
-  imap <C-k> <C-R>=ExpandLspSnippet()<CR>
+  inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+  let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+  let g:UltiSnipsRemoveSelectModeMappings = 0
 endif
 " }}}
 " airline {{{
@@ -365,7 +339,7 @@ endif
 " }}}
 " gundo {{{
 if has('python3')
-  let g:gundo_prefer_python3=1
+  let g:gundo_prefer_python3 = 1
 endif
 nnoremap <Leader>u :GundoToggle<CR>
 " }}}
