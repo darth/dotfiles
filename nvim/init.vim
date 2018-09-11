@@ -260,6 +260,7 @@ if $DEVMODE
       nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
       nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
       nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
+      nnoremap <buffer> <Leader>r :call LanguageClient#textDocument_references()<CR>
     endif
   endfunction
   function! s:languageClientDeinit()
@@ -270,6 +271,7 @@ if $DEVMODE
       nnoremap <buffer> K K
       nnoremap <buffer> gd gd
       nnoremap <buffer> <F2> <F2>
+      nnoremap <buffer> <Leader>r <Nop>
     endif
   endfunction
   augroup LanguageClient_config
