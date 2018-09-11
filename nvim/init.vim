@@ -290,6 +290,10 @@ if $DEVMODE
     \ if has_key(g:LanguageClient_serverCommands, &ft) |
     \   call ncm2#enable_for_buffer() |
     \ endif
+    autocmd CursorMoved *
+    \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
+    \   silent call LanguageClient#textDocument_documentHighlight() |
+    \ endif
   augroup END
 endif
 " }}}
