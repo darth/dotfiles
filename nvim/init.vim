@@ -330,6 +330,9 @@ nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 " }}}
+" {{{ projectionist
+let g:projectionist_ignore_man = 1
+" }}}
 " latex {{{
 let g:tex_flavor = 'latex'
 let g:tex_comment_nospell= 1
