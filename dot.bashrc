@@ -88,12 +88,12 @@ if [ -d ~/.password-store ]; then
   export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 fi
 
+# refresh environmental variables affected by SSH connection in tmux sessions
 if [ -n "$TMUX" ]; then
   function refresh() {
-    v=$(tmux showenv DISPLAY)
-    [[ ${v:0:1} != '-' ]] && eval ${v}
-    v=$(tmux showenv SSH_AUTH_SOCK)
-    [[ ${v:0:1} != '-' ]] && eval ${v}
+    for var_name in DISPLAY SSH_AUTH_SOCK SSH_CONNECTION; do
+      eval $(tmux showenv -s ${var_name})
+    done
   }
 else
   function refresh() {
