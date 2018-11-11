@@ -105,6 +105,18 @@ preexec() {
   refresh
 }
 
+# kill X11 clipboard server when SSH connection is closed
+if is_remote_session && [ "$SHLVL" -eq 1 ]; then
+  function onexit {
+    if [ $(uname) == 'Darwin' ]; then
+      pkill -f xclip
+    else
+      pkill -f xsel
+    fi
+  }
+  trap onexit EXIT
+fi
+
 if [ -f ${HOME}/.bashrc.local ]; then
   source ${HOME}/.bashrc.local
 fi
