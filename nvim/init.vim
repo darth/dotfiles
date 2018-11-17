@@ -27,6 +27,7 @@ if exists('*minpac#init')
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-function')
   call minpac#add('kana/vim-textobj-entire')
+  call minpac#add('tweekmonster/braceless.vim')
 
   call minpac#add('junegunn/fzf')
   call minpac#add('junegunn/fzf.vim')
