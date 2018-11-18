@@ -410,6 +410,7 @@ augroup restore " Restore cursor position.
   \   exe "normal! g`\"" |
   \ endif
 augroup END
+autocmd FileType python BracelessEnable +indent +fold +highlight
 " }}}
 " quickfix {{{
 augroup qf
