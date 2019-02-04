@@ -63,9 +63,9 @@ if exists('*minpac#init')
   call minpac#add('bohlender/vim-smt2')
 
   if $DEVMODE
-    call minpac#add('darth/LanguageClient-neovim', {
-    \ 'branch': 'darth',
-    \ 'do': {-> system('make release')},
+    call minpac#add('autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': {-> system('bash install.sh')},
     \ })
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
@@ -232,73 +232,7 @@ nnoremap <Leader>bl :Buffers<CR>
 " }}}
 " languageclient {{{
 if $DEVMODE
-  let g:LanguageClient_serverCommands = {
-  \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-  \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-  \ 'python': ['pyls'],
-  \ 'haskell': ['hie', '--lsp'],
-  \ 'go': ['go-langserver'],
-  \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-  \ 'javascript': ['flow-language-server', '--stdio'],
-  \ 'javascript.jsx': ['flow-language-server', '--stdio'],
-  \ 'sh': ['bash-language-server', 'start'],
-  \ }
-  let g:LanguageClient_autoStart = 0
-  let g:LanguageClient_loadSettings = 1
-  let g:LanguageClient_diagnosticsList = 'Location'
-  let g:LanguageClient_rootMarkers = {
-  \ 'c': ['build'],
-  \ 'cpp': ['build'],
-  \ }
-  let g:LanguageClient_diagnosticsDisplay = {
-  \ 1: { 'name': 'Error', 'texthl': 'ALEError', 'signText': '✘', 'signTexthl': 'ALEErrorSign' },
-  \ 2: { 'name': 'Warning', 'texthl': 'ALEWarning', 'signText': '!', 'signTexthl': 'ALEWarningSign' }
-  \ }
-  function! s:languageClientInit()
-    if !get(b:, 'languageclient_initialized', 0)
-      let b:languageclient_initialized = 1
-      setlocal signcolumn=yes
-      setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-      nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
-      nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
-      nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
-      nnoremap <buffer> <Leader>r :call LanguageClient#textDocument_references()<CR>
-    endif
-  endfunction
-  function! s:languageClientDeinit()
-    if get(b:, 'languageclient_initialized', 0)
-      let b:languageclient_initialized = 0
-      setlocal signcolumn=auto
-      setlocal formatexpr=''
-      nnoremap <buffer> K K
-      nnoremap <buffer> gd gd
-      nnoremap <buffer> <F2> <F2>
-      nnoremap <buffer> <Leader>r <Nop>
-    endif
-  endfunction
-  augroup LanguageClient_config
-    autocmd!
-    autocmd User LanguageClientStarted call s:languageClientInit()
-    autocmd User LanguageClientStopped call s:languageClientDeinit()
-    autocmd BufWinEnter,WinEnter *
-    \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
-    \   silent call s:languageClientInit() |
-    \ else |
-    \   silent call s:languageClientDeinit() |
-    \ endif
-    autocmd FileType * 
-    \ if has_key(g:LanguageClient_serverCommands, &ft) |
-    \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR>|
-    \ endif
-    autocmd BufEnter *
-    \ if has_key(g:LanguageClient_serverCommands, &ft) |
-    \   call ncm2#enable_for_buffer() |
-    \ endif
-    autocmd CursorMoved *
-    \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
-    \   silent call LanguageClient#textDocument_documentHighlight() |
-    \ endif
-  augroup END
+  source $HOME/.config/nvim/lc.vim
 endif
 " }}}
 " ultisnips {{{
