@@ -47,6 +47,7 @@ if exists('*minpac#init')
   call minpac#add('vim-utils/vim-husk')
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('mhinz/vim-grepper')
+  call minpac#add('andymass/vim-matchup')
 
   " Syntax plugins.
   call minpac#add('elzr/vim-json')
@@ -282,6 +283,10 @@ if $DEVMODE
   let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
   let g:vimtex_compiler_progname = 'nvr'
 endif
+" }}}
+" {{{ matchup
+let g:matchup_override_vimtex = 1
+let g:matchup_surround_enabled = 1
 " }}}
 " gundo {{{
 if has('python3')
