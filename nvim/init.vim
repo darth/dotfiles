@@ -35,7 +35,7 @@ if exists('*minpac#init')
   call minpac#add('junegunn/limelight.vim')
 
   call minpac#add('gcmt/taboo.vim')
-  call minpac#add('vim-airline/vim-airline')
+  call minpac#add('darth/vim-airline')
   call minpac#add('vim-airline/vim-airline-themes')
   call minpac#add('edkolev/tmuxline.vim')
   call minpac#add('ryanoasis/vim-devicons')
@@ -271,6 +271,7 @@ let g:projectionist_ignore_man = 1
 " }}}
 " latex {{{
 let g:tex_flavor = 'latex'
+let g:tex_conceal = ''
 let g:tex_comment_nospell= 1
 let g:latex_fold_enabled = 1
 if $DEVMODE
