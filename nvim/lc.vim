@@ -80,8 +80,10 @@ function! s:init()
     setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
     nnoremap <buffer> K :call LanguageClient#textDocument_hover()<CR>
     nnoremap <buffer> gd :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> gr :call LanguageClient#textDocument_references()<CR>
+    nnoremap <buffer> gh :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <buffer> gs :call LanguageClient#textDocument_documentSymbol()<CR>
     nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
-    nnoremap <buffer> <Leader>r :call LanguageClient#textDocument_references()<CR>
   endif
   if get(s:, 'forceupdatediag', 0)
     call setloclist(0, get(b:, 'lc_diagnostics', []), 'r', 'LanguageClient')
@@ -95,8 +97,10 @@ function! s:deinit()
     setlocal formatexpr=''
     nnoremap <buffer> K K
     nnoremap <buffer> gd gd
+    nnoremap <buffer> gr <Nop>
+    nnoremap <buffer> gh <Nop>
+    nnoremap <buffer> gs <Nop>
     nnoremap <buffer> <F2> <F2>
-    nnoremap <buffer> <Leader>r <Nop>
     unlet b:lc_diagnostics
     lclose
   endif
