@@ -1,0 +1,1 @@
+BracelessEnable +indent +fold +highlight

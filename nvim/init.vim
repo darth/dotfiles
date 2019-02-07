@@ -346,7 +346,14 @@ augroup restore " Restore cursor position.
   \   exe "normal! g`\"" |
   \ endif
 augroup END
-autocmd FileType python BracelessEnable +indent +fold +highlight
+let g:textobj_entire_no_default_key_mappings=1
+autocmd BufEnter *
+\ call textobj#user#map('entire', {
+\   '-': {
+\     'select-a': 'aE',
+\     'select-i': 'iE',
+\   }
+\ })
 " }}}
 " quickfix {{{
 augroup qf
