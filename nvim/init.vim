@@ -338,6 +338,19 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }}}
+" textobj-entire {{{
+let g:textobj_entire_no_default_key_mappings=1
+augroup textobj-entire
+  autocmd!
+  autocmd BufEnter *
+  \ call textobj#user#map('entire', {
+  \   '-': {
+  \     'select-a': 'aE',
+  \     'select-i': 'iE',
+  \   }
+  \ })
+augroup END
+" }}}
 " Autocommands {{{
 augroup restore " Restore cursor position.
   autocmd!
@@ -346,14 +359,6 @@ augroup restore " Restore cursor position.
   \   exe "normal! g`\"" |
   \ endif
 augroup END
-let g:textobj_entire_no_default_key_mappings=1
-autocmd BufEnter *
-\ call textobj#user#map('entire', {
-\   '-': {
-\     'select-a': 'aE',
-\     'select-i': 'iE',
-\   }
-\ })
 " }}}
 " quickfix {{{
 augroup qf
