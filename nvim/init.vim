@@ -282,6 +282,13 @@ if $DEVMODE
   endif
   let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
   let g:vimtex_compiler_progname = 'nvr'
+  let g:vimtex_quickfix_latexlog = {
+  \ 'overfull' : 0,
+  \ 'underfull' : 0,
+  \ 'packages': {
+  \   'hyperref': 0,
+  \ },
+  \}
 endif
 " }}}
 " {{{ matchup
