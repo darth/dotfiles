@@ -421,3 +421,38 @@ nnoremap <Leader>bd :bd<CR>
 " {{{ VISUAL
 let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
 " }}}
+" terminal {{{
+function! TToggle(focus) abort
+  let perc = 0.3
+  let bl = filter(range(1, bufnr('$')), 'bufexists(v:val) && getbufvar(v:val, "&bt") == "terminal" && getbufvar(v:val, "tterm") == 1')
+  if len(bl) > 0 " buffer exists
+    let wn = bufwinnr(bl[0])
+    if wn == -1 " there is no window displaying buffer
+      silent! exe string(&lines * perc) . 'split' | exe 'buffer' . bl[0]
+      if a:focus " keep focus on the previous window
+        wincmd p
+      endif
+    else
+      exe wn . 'wincmd c' 
+    endif
+  else " buffer does not exist
+    silent! exe string(&lines * perc) . 'split' | te
+    call setbufvar('', 'tterm', 1)
+    set nobuflisted
+    nnoremap <buffer> [b <Nop>
+    nnoremap <buffer> ]b <Nop>
+    if a:focus
+      wincmd p
+    endif
+  endif
+endfunction
+nnoremap <silent> <leader>t :call TToggle(0)<CR>
+nnoremap <silent> <leader>T :call TToggle(1)<CR>
+function! TClose() abort
+  let bl = filter(range(1, bufnr('$')), 'bufexists(v:val) && getbufvar(v:val, "&bt") == "terminal" && getbufvar(v:val, "tterm") == 1')
+  if len(bl) > 0 " buffer exists
+    exe 'bdelete! ' . bl[0]
+  endif
+endfunction
+autocmd QuitPre * call TClose()
+" }}}
