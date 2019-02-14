@@ -12,6 +12,7 @@
 - link:
     ~/.config/nvim: files/nvim
     ~/.fzf: files/external/fzf
+    ~/.config/phoenix: files/phoenix
     ~/.bashrc: files/bash/bashrc
     ~/.bash_profile: files/bash/bash_profile
     ~/.common.bash: files/bash/common.bash
