@@ -41,4 +41,4 @@
     description: Installing tmux plugin manager
   -
     command: tic -x files/misc/terminfo
-    description: Creating terminfo file
+    description: Creating terminfo db
