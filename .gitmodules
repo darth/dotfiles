@@ -1,0 +1,12 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "files/external/bash-powerline"]
+	path = files/external/bash-powerline
+	url = https://github.com/riobard/bash-powerline
+[submodule "files/external/bash-preexec"]
+	path = files/external/bash-preexec
+	url = https://github.com/rcaloras/bash-preexec
+[submodule "files/external/fzf"]
+	path = files/external/fzf
+	url = https://github.com/junegunn/fzf

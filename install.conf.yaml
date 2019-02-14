@@ -1,0 +1,37 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/nvim: files/nvim
+    ~/.fzf: files/external/fzf
+    ~/.bashrc: files/bash/bashrc
+    ~/.bash_profile: files/bash/bash_profile
+    ~/.common.bash: files/bash/common.bash
+    ~/.bash-powerline.sh: files/external/bash-powerline/bash-powerline.sh
+    ~/.bash-preexec.sh: files/external/bash-preexec/bash-preexec.sh
+    ~/.inputrc: files/misc/inputrc
+    ~/.latexmkrc: files/misc/latexmkrc
+    ~/.gdbinit: files/misc/gdbinit
+    ~/.psqlrc: files/misc/psqlrc
+    ~/bin/rcopy: files/bin/rcopy
+    ~/bin/rpaste: files/bin/rpaste
+
+- shell:
+  -
+    command: ~/.fzf/install --key-bindings --completion --no-update-rc
+    description: Installing FZF
+  -
+    command: test -d ~/.config/nvim/pack/minpac/opt/minpac || git clone --depth 1 https://github.com/k-takata/minpac.git ~/.config/nvim/pack/minpac/opt/minpac
+    description: Installing Neovim package manager
+  -
+    command: command -v nvim && nvim +PackUpdate +qa
+    description: Installing Neovim packages
+  -
+    command: test -d ~/.tmux/plugins/tpm || git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    description: Installing tmux plugin manager
+  -
+    command: tic -x files/misc/terminfo
+    description: Creating terminfo file
