@@ -4,6 +4,11 @@
 
 - clean: ['~']
 
+- shell:
+  -
+    command: git submodule update --init --recursive
+    description: Updating submodules
+
 - link:
     ~/.config/nvim: files/nvim
     ~/.fzf: files/external/fzf
