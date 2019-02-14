@@ -18,6 +18,7 @@
     ~/.bash-powerline.sh: files/external/bash-powerline/bash-powerline.sh
     ~/.bash-preexec.sh: files/external/bash-preexec/bash-preexec.sh
     ~/.inputrc: files/misc/inputrc
+    ~/.tmux.conf: files/misc/tmux.conf
     ~/.latexmkrc: files/misc/latexmkrc
     ~/.gdbinit: files/misc/gdbinit
     ~/.psqlrc: files/misc/psqlrc
