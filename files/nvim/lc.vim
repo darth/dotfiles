@@ -84,6 +84,8 @@ function! s:init()
     nnoremap <buffer> gh :call LanguageClient#textDocument_hover()<CR>
     nnoremap <buffer> gs :call LanguageClient#textDocument_documentSymbol()<CR>
     nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
+    inoremap <buffer> <c-x><c-o> <c-r>=ncm2#manual_trigger()<cr>
+    inoremap <buffer> <silent> <expr> <c-y> ncm2_ultisnips#expand_or("\<c-y>", 'n')
   endif
   if get(s:, 'forceupdatediag', 0)
     call setloclist(0, get(b:, 'lc_diagnostics', []), 'r', 'LanguageClient')
@@ -101,6 +103,8 @@ function! s:deinit()
     nnoremap <buffer> gh <Nop>
     nnoremap <buffer> gs <Nop>
     nnoremap <buffer> <F2> <F2>
+    inoremap <buffer> <c-x><c-o> <c-x><c-o>
+    inoremap <buffer> <c-y> <c-y>
     unlet b:lc_diagnostics
     lclose
   endif
@@ -157,3 +161,5 @@ augroup LanguageClient_config
   autocmd User UltiSnipsEnterFirstSnippet let s:snip_active = v:true
   autocmd User UltiSnipsExitLastSnippet let s:snip_active = v:false
 augroup END
+
+let g:ncm2#auto_popup = 0
