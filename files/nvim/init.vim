@@ -64,9 +64,9 @@ if exists('*minpac#init')
   call minpac#add('bohlender/vim-smt2')
 
   if $DEVMODE
-    call minpac#add('autozimu/LanguageClient-neovim', {
+    call minpac#add('darth/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'do': {-> system('./install.sh')},
+    \ 'do': {-> system('make release')},
     \ })
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
