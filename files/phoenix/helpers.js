@@ -1,17 +1,17 @@
-const calcSize = (n, i, padding) => {
-  return (1 - (n + 1) * padding) / n;
+const calcSize = (n, k, padding) => {
+  return k * (1 - (n + 1) * padding) / n + (k - 1) * padding;
 }
 
 const calcOffset = (n, i, padding) => {
-  return (i + 1) * padding + i * calcSize(n, i, padding);
+  return (i + 1) * padding + i * calcSize(n, 1, padding);
 };
 
 const calcFrame = (confX, confY) => {
   return {
     x: calcOffset(confX.n, confX.i, confX.padding),
     y: calcOffset(confY.n, confY.i, confY.padding),
-    width: calcSize(confX.n, confX.i, confX.padding),
-    height: calcSize(confY.n, confY.i, confY.padding)
+    width: calcSize(confX.n, confX.k, confX.padding),
+    height: calcSize(confY.n, confY.k, confY.padding)
   };
 };
 
