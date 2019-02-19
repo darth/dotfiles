@@ -45,3 +45,19 @@ const centerFrame = calcFrame(
 const centerKey = new Key('x', MOD, () => {
   setFrame(centerFrame);
 });
+
+const leftTermFrame = calcFrame(
+  {n: 9, k: 5, i: 0, padding: PADDING},
+  {n: 1, k: 1, i: 0, padding: PADDING}
+);
+const leftTermKey = new Key('[', MOD, () => {
+  setFrame(leftTermFrame);
+});
+
+const rightTermFrame = calcFrame(
+  {n: 9, k: 4, i: 5, padding: PADDING},
+  {n: 1, k: 1, i: 0, padding: PADDING}
+);
+const rightTermKey = new Key(']', MOD, () => {
+  setFrame(rightTermFrame);
+});
