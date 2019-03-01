@@ -48,6 +48,7 @@ if exists('*minpac#init')
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('mhinz/vim-grepper')
   call minpac#add('andymass/vim-matchup')
+  call minpac#add('machakann/vim-highlightedyank')
 
   " Syntax plugins.
   call minpac#add('elzr/vim-json')
