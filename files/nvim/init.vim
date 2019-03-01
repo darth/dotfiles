@@ -433,6 +433,8 @@ nnoremap gV `[v`]
 nnoremap <Leader>i :set list!<CR>
 " Delete buffer
 nnoremap <Leader>bd :bd<CR>
+" Paste from register in terminal
+tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " }}}
 " {{{ VISUAL
 let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
