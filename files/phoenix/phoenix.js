@@ -4,7 +4,7 @@ require('./frames.js');
 require('./apps.js');
 require('./focus.js');
 
-Phoenix.set ({
+Phoenix.set({
   daemon: true,
   openAtLogin: true
 });
