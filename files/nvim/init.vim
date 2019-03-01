@@ -283,12 +283,11 @@ let g:projectionist_ignore_man = 1
 " latex {{{
 let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
-let g:tex_comment_nospell= 1
+let g:tex_comment_nospell = 1
 let g:latex_fold_enabled = 1
 if $DEVMODE
   if has('mac')
-    let g:vimtex_view_general_viewer = 'displayline'
-    let g:vimtex_view_general_options = '-g -r @line @pdf @tex'
+    let g:vimtex_view_method = 'skim'
   endif
   let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
   let g:vimtex_compiler_progname = 'nvr'
