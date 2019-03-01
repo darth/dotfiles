@@ -144,6 +144,7 @@ let g:clipboard = {
 set smartcase
 set ignorecase
 set incsearch
+set inccommand=nosplit
 set showmatch
 set hlsearch
 set gdefault
