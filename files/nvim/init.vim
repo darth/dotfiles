@@ -73,7 +73,6 @@ if exists('*minpac#init')
     call minpac#add('ncm2/ncm2')
     call minpac#add('ncm2/ncm2-ultisnips')
     call minpac#add('sirver/ultisnips')
-    call minpac#add('sbdchd/neoformat') " candidate for removal
     call minpac#add('darth/vim-cmake')
     call minpac#add('euclio/vim-markdown-composer', {
     \ 'do': {-> system('cargo build --release')},
@@ -331,9 +330,6 @@ let g:jsx_ext_required = 0
 " }}}
 " json {{{
 let g:vim_json_syntax_conceal = 0
-" }}}
-" neoformat {{{
-let g:neoformat_try_formatprg = 1
 " }}}
 " Goyo {{{
 function! s:goyo_enter()
