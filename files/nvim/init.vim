@@ -122,6 +122,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set cinoptions=g0:0
 " }}}
 " Mouse {{{
 set mouse=a
