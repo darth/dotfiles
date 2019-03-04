@@ -69,6 +69,10 @@ if exists('*minpac#init')
     \ 'branch': 'next',
     \ 'do': {-> system('make release')},
     \ })
+    call minpac#add('libclang-vim/libclang-vim', {
+    \ 'do': {-> system('make')},
+    \ })
+    call minpac#add('rhysd/vim-textobj-clang')
     call minpac#add('arakashic/chromatica.nvim')
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
@@ -371,6 +375,11 @@ augroup textobj-entire
   \   }
   \ })
 augroup END
+" }}}
+" textobj-clang {{{
+if $DEVMODE
+  let g:textobj_clang_more_mappings = 1
+endif
 " }}}
 " chromatica {{{
 if $DEVMODE
