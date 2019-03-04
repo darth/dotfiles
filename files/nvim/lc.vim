@@ -141,9 +141,15 @@ function! s:toggle()
   if g:LanguageClient_running[&ft] is v:true
     call LanguageClient#exit()
     let g:LanguageClient_running[&ft] = v:false
+    if &ft ==# 'c' || &ft ==# 'cpp'
+      ChromaticaStop
+    endif
   else
     call LanguageClient#startServer()
     let g:LanguageClient_running[&ft] = v:true
+    if &ft ==# 'c' || &ft ==# 'cpp'
+      ChromaticaStart
+    endif
   endif
 endfunction
 

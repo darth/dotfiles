@@ -69,6 +69,7 @@ if exists('*minpac#init')
     \ 'branch': 'next',
     \ 'do': {-> system('make release')},
     \ })
+    call minpac#add('arakashic/chromatica.nvim')
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
     call minpac#add('ncm2/ncm2-ultisnips')
@@ -370,6 +371,14 @@ augroup textobj-entire
   \   }
   \ })
 augroup END
+" }}}
+" chromatica {{{
+if $DEVMODE
+  if has('macunix')
+    let g:chromatica#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+  endif
+  let g:chromatica#responsive_mode = 1
+endif
 " }}}
 " Autocommands {{{
 augroup restore " Restore cursor position.
