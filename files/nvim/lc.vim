@@ -86,6 +86,24 @@ function! s:init()
     nnoremap <buffer> <F2> :call LanguageClient#textDocument_rename()<CR>
     inoremap <buffer> <c-x><c-o> <c-r>=ncm2#manual_trigger()<cr>
     inoremap <buffer> <silent> <expr> <c-y> ncm2_ultisnips#expand_or("\<c-y>", 'n')
+    if &ft ==# 'c' || &ft ==# 'cpp'
+      nnoremap <buffer><silent> <c-h>
+      \ :call LanguageClient#findLocations({
+      \   'method': '$ccls/navigate','direction':'L'
+      \ })<CR>
+      nnoremap <buffer><silent> <c-j>
+      \ :call LanguageClient#findLocations({
+      \   'method': '$ccls/navigate','direction':'D'
+      \ })<CR>
+      nnoremap <buffer><silent> <c-k>
+      \ :call LanguageClient#findLocations({
+      \   'method': '$ccls/navigate','direction':'U'
+      \ })<CR>
+      nnoremap <buffer><silent> <c-l>
+      \ :call LanguageClient#findLocations({
+      \   'method': '$ccls/navigate','direction':'R'
+      \ })<CR>
+    endif
   endif
   if get(s:, 'forceupdatediag', 0)
     call setloclist(0, get(b:, 'lc_diagnostics', []), 'r', 'LanguageClient')
@@ -105,6 +123,12 @@ function! s:deinit()
     nnoremap <buffer> <F2> <F2>
     inoremap <buffer> <c-x><c-o> <c-x><c-o>
     inoremap <buffer> <c-y> <c-y>
+    if &ft ==# 'c' || &ft ==# 'cpp'
+      nnoremap <buffer><silent> <c-h> <Nop>
+      nnoremap <buffer><silent> <c-j> <Nop>
+      nnoremap <buffer><silent> <c-k> <Nop>
+      nnoremap <buffer><silent> <c-l> <Nop>
+    endif
     unlet b:lc_diagnostics
     lclose
   endif
