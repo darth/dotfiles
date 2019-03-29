@@ -204,6 +204,7 @@ runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " Completion.
 set completeopt=noinsert,menuone,noselect
+set pumheight=15
 " }}}
 " FZF {{{
 function! FZF_Files()
