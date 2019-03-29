@@ -247,6 +247,7 @@ endif
 " ncm2 {{{
 if $DEVMODE
   let g:ncm2#auto_popup = 0
+  let g:ncm2#filter = [{'name': 'abbr_ellipsis', 'ellipsis': '..', 'limit': 30}]
 endif
 " }}}
 " floatpreview {{{
