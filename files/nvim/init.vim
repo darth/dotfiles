@@ -76,6 +76,7 @@ if exists('*minpac#init')
     call minpac#add('arakashic/chromatica.nvim')
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
+    call minpac#add('ncm2/float-preview.nvim')
     call minpac#add('ncm2/ncm2-ultisnips')
     call minpac#add('sirver/ultisnips')
     call minpac#add('darth/vim-cmake')
@@ -241,6 +242,11 @@ nnoremap <Leader>bl :Buffers<CR>
 " languageclient {{{
 if $DEVMODE
   source $HOME/.config/nvim/lc.vim
+endif
+" }}}
+" floatpreview {{{
+if $DEVMODE
+  let g:float_preview#docked = 0
 endif
 " }}}
 " ultisnips {{{
