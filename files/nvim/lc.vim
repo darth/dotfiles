@@ -191,5 +191,3 @@ augroup LanguageClient_config
   autocmd User UltiSnipsEnterFirstSnippet let s:snip_active = v:true
   autocmd User UltiSnipsExitLastSnippet let s:snip_active = v:false
 augroup END
-
-let g:ncm2#auto_popup = 0

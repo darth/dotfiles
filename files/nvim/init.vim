@@ -244,6 +244,11 @@ if $DEVMODE
   source $HOME/.config/nvim/lc.vim
 endif
 " }}}
+" ncm2 {{{
+if $DEVMODE
+  let g:ncm2#auto_popup = 0
+endif
+" }}}
 " floatpreview {{{
 if $DEVMODE
   let g:float_preview#docked = 0
