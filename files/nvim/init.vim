@@ -240,29 +240,6 @@ command! Files call FZF_Files()
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>bl :Buffers<CR>
 " }}}
-" languageclient {{{
-if $DEVMODE
-  source $HOME/.config/nvim/lc.vim
-endif
-" }}}
-" ncm2 {{{
-if $DEVMODE
-  let g:ncm2#auto_popup = 0
-  let g:ncm2#filter = [{'name': 'abbr_ellipsis', 'ellipsis': '..', 'limit': 30}]
-endif
-" }}}
-" floatpreview {{{
-if $DEVMODE
-  let g:float_preview#docked = 0
-endif
-" }}}
-" ultisnips {{{
-if $DEVMODE
-  let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-  let g:UltiSnipsRemoveSelectModeMappings = 0
-endif
-" }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'oceanicnext'
@@ -305,20 +282,6 @@ let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
 let g:tex_comment_nospell = 1
 let g:latex_fold_enabled = 1
-if $DEVMODE
-  if has('mac')
-    let g:vimtex_view_method = 'skim'
-  endif
-  let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
-  let g:vimtex_compiler_progname = 'nvr'
-  let g:vimtex_quickfix_latexlog = {
-  \ 'overfull' : 0,
-  \ 'underfull' : 0,
-  \ 'packages': {
-  \   'hyperref': 0,
-  \ },
-  \}
-endif
 " }}}
 " {{{ matchup
 let g:matchup_override_vimtex = 1
@@ -335,14 +298,6 @@ let g:grepper = {}
 let g:grepper.tools = ['grep', 'git', 'rg']
 " Search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
-" }}}
-" markdown {{{
-if $DEVMODE
-  let g:markdown_composer_autostart = 0
-endif
- " }}}
-" cmake {{{
-let g:cmake_export_compile_commands = 1
 " }}}
 " jsx {{{
 let g:jsx_ext_required = 0
@@ -388,19 +343,6 @@ augroup textobj-entire
   \   }
   \ })
 augroup END
-" }}}
-" textobj-clang {{{
-if $DEVMODE
-  let g:textobj_clang_more_mappings = 1
-endif
-" }}}
-" chromatica {{{
-if $DEVMODE
-  if has('macunix')
-    let g:chromatica#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
-  endif
-  let g:chromatica#responsive_mode = 1
-endif
 " }}}
 " Autocommands {{{
 augroup restore " Restore cursor position.
@@ -503,4 +445,50 @@ function! TClose() abort
   endif
 endfunction
 autocmd QuitPre * call TClose()
+" }}}
+" dev {{{
+if $DEVMODE
+  source $HOME/.config/nvim/lc.vim
+  " cmake {{{
+  let g:cmake_export_compile_commands = 1
+  " }}}
+  " textobj-clang {{{
+  let g:textobj_clang_more_mappings = 1
+  " }}}
+  " chromatica {{{
+  if has('macunix')
+    let g:chromatica#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+  endif
+  let g:chromatica#responsive_mode = 1
+  " }}}
+  " ncm2 {{{
+  let g:ncm2#auto_popup = 0
+  let g:ncm2#filter = [{'name': 'abbr_ellipsis', 'ellipsis': '..', 'limit': 30}]
+  " }}}
+  " ultisnips {{{
+  let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+  let g:UltiSnipsRemoveSelectModeMappings = 0
+  " }}}
+  " vimtex {{{
+  if has('mac')
+    let g:vimtex_view_method = 'skim'
+  endif
+  let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
+  let g:vimtex_compiler_progname = 'nvr'
+  let g:vimtex_quickfix_latexlog = {
+  \ 'overfull' : 0,
+  \ 'underfull' : 0,
+  \ 'packages': {
+  \   'hyperref': 0,
+  \ },
+  \}
+  " }}}
+  " markdown {{{
+  let g:markdown_composer_autostart = 0
+   " }}}
+  " floatpreview {{{
+  let g:float_preview#docked = 0
+  " }}}
+endif
 " }}}
