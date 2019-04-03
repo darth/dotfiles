@@ -91,9 +91,6 @@ endif
 
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
-
-filetype plugin indent on
-syntax enable
 " }}}
 " Sessions {{{
 set sessionoptions+=tabpages
@@ -102,8 +99,6 @@ set sessionoptions+=tabpages
 set undofile
 " }}}
 " Encodings {{{
-let &termencoding=&encoding
-set encoding=utf-8
 set fileencodings=utf-8,cp1251,koi8-r,latin1
 " }}}
 " Numbering {{{
@@ -159,12 +154,7 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 " }}}
 " Colors {{{
-if !has('gui_running')
-  set t_Co=256
-endif
-if has('termguicolors')
-  set termguicolors
-endif
+set termguicolors
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 set background=dark
