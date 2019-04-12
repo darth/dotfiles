@@ -7,7 +7,7 @@ $pvc_view_file_via_temporary = 0;
 push @generated_exts, 'glo', 'gls', 'glg';
 push @generated_exts, 'acn', 'acr', 'alg';
 push @generated_exts, 'lot', 'lof', 'loa';
-$clean_ext .= 'synctex.gz tdo xdy';
+$clean_ext .= 'synctex.gz tdo xdy bbl nav out snm vrb';
 
 $bibtex_use = 2;
 
