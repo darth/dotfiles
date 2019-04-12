@@ -41,6 +41,7 @@ export GOPATH="${HOME}/go"
 
 prepend_to_var PATH '/sbin'
 prepend_to_var PATH '/usr/sbin'
+prepend_to_var PATH '/usr/local/sbin'
 prepend_to_var PATH "${HOME}/bin"
 prepend_to_var PATH "${GOPATH}/bin"
 prepend_to_var PATH 'node_modules/.bin'
