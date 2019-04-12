@@ -63,6 +63,7 @@ if exists('*minpac#init')
   call minpac#add('justinmk/vim-syntax-extra')
   call minpac#add('neovimhaskell/haskell-vim')
   call minpac#add('bohlender/vim-smt2')
+  call minpac#add('wannesm/wmnusmv.vim')
 
   if $DEVMODE
     call minpac#add('darth/LanguageClient-neovim', {
