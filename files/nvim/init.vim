@@ -8,7 +8,7 @@ if exists('*minpac#init')
   call minpac#init()
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-  call minpac#add('darth/oceanic-next')
+  call minpac#add('mhartington/oceanic-next')
 
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-repeat')
@@ -158,8 +158,7 @@ xnoremap & :&&<CR>
 set termguicolors
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-set background=dark
-colorscheme OceanicNext
+colorscheme OceanicNextPatched
 " }}}
 " Visual stuff {{{
 " Hide uganda message
