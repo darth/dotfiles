@@ -7,8 +7,6 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   fi
   export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
 
-  export FZF_DEFAULT_COMMAND='rg --files --follow -g ""'
-
   # this is the hack to avoid prepending system paths in subshells
   unset PATH
   eval $(/usr/libexec/path_helper -s)
@@ -51,7 +49,10 @@ export LC_ALL=en_US.UTF-8
 
 export PAGER='less'
 
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if hash rg >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='rg --files --follow -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
