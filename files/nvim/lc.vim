@@ -182,8 +182,10 @@ augroup LanguageClient_config
   autocmd User LanguageClientDiagnosticsChanged call LanguageClient#getState(function('s:updatediag'))
   autocmd CursorMoved *
   \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
-  \   if bufwinnr(bufnr('%')) == winnr() | " hack to filter out events because of moving to another window
-  \     silent call LanguageClient#textDocument_documentHighlight() |
+  \   let w1 = bufwinnr(bufnr('%')) |
+  \   let w2 = winnr() |
+  \   if w1 ==# w2 |
+  \     call LanguageClient#textDocument_documentHighlight() |
   \   endif |
   \ endif
   autocmd FileType *
