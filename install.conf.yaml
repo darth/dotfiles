@@ -23,6 +23,7 @@
     ~/.latexmkrc: files/misc/latexmkrc
     ~/.gdbinit: files/misc/gdbinit
     ~/.psqlrc: files/misc/psqlrc
+    ~/.config/alacritty/alacritty.yml: files/misc/alacritty.yml
     ~/bin/rcopy: files/bin/rcopy
     ~/bin/rpaste: files/bin/rpaste
 
