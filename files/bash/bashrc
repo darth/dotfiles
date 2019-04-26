@@ -10,7 +10,6 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   # this is the hack to avoid prepending system paths in subshells
   unset PATH
   eval $(/usr/libexec/path_helper -s)
-  prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
   if hash stack >/dev/null 2>&1; then
     prepend_to_var PATH "${HOME}/.local/bin" # haskell stack
     eval "$(stack --bash-completion-script stack)"
@@ -41,6 +40,7 @@ prepend_to_var PATH '/sbin'
 prepend_to_var PATH '/usr/sbin'
 prepend_to_var PATH '/usr/local/sbin'
 prepend_to_var PATH "${HOME}/bin"
+prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
 prepend_to_var PATH "${GOPATH}/bin"
 prepend_to_var PATH 'node_modules/.bin'
 
