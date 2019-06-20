@@ -421,6 +421,7 @@ function! TToggle(focus) abort
     set nobuflisted
     nnoremap <buffer> [b <Nop>
     nnoremap <buffer> ]b <Nop>
+    tnoremap <buffer> <silent> <leader>t <C-\><C-n>:call TToggle(0)<CR>
     if a:focus
       wincmd p
     endif
