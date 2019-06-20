@@ -411,6 +411,8 @@ function! TToggle(focus) abort
       silent! exe string(&lines * perc) . 'split' | exe 'buffer' . bl[0]
       if a:focus " keep focus on the previous window
         wincmd p
+      else
+        startinsert
       endif
     else
       exe wn . 'wincmd c' 
@@ -424,6 +426,8 @@ function! TToggle(focus) abort
     tnoremap <buffer> <silent> <leader>t <C-\><C-n>:call TToggle(0)<CR>
     if a:focus
       wincmd p
+    else
+      startinsert
     endif
   endif
 endfunction
