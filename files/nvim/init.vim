@@ -74,7 +74,6 @@ if exists('*minpac#init')
     \ 'do': {-> system('make')},
     \ })
     call minpac#add('rhysd/vim-textobj-clang')
-    call minpac#add('darth/chromatica.nvim')
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
     call minpac#add('ncm2/float-preview.nvim')
@@ -449,12 +448,6 @@ if $DEVMODE
   " }}}
   " textobj-clang {{{
   let g:textobj_clang_more_mappings = 1
-  " }}}
-  " chromatica {{{
-  if has('macunix')
-    let g:chromatica#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
-  endif
-  let g:chromatica#responsive_mode = 1
   " }}}
   " ncm2 {{{
   let g:ncm2#auto_popup = 0
