@@ -9,6 +9,7 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
 
   # this is the hack to avoid prepending system paths in subshells
   unset PATH
+  unset MANPATH
   eval $(/usr/libexec/path_helper -s)
   if hash stack >/dev/null 2>&1; then
     prepend_to_var PATH "${HOME}/.local/bin" # haskell stack
