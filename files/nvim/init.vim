@@ -74,6 +74,7 @@ if exists('*minpac#init')
     \ 'do': {-> system('make')},
     \ })
     call minpac#add('rhysd/vim-textobj-clang')
+    call minpac#add('jackguo380/vim-lsp-cxx-highlight')
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
     call minpac#add('ncm2/float-preview.nvim')
