@@ -174,14 +174,6 @@ augroup LanguageClient_config
   \   let s:forceupdatediag = 1 |
   \ endif
   autocmd User LanguageClientDiagnosticsChanged call LanguageClient#getState(function('s:updatediag'))
-  autocmd CursorMoved *
-  \ if has_key(g:LanguageClient_serverCommands, &ft) && g:LanguageClient_running[&ft] |
-  \   let w1 = bufwinnr(bufnr('%')) |
-  \   let w2 = winnr() |
-  \   if w1 ==# w2 |
-  \     call LanguageClient#textDocument_documentHighlight() |
-  \   endif |
-  \ endif
   autocmd FileType *
   \ if has_key(g:LanguageClient_serverCommands, &ft) |
   \   nnoremap <buffer> <leader>p :LanguageClientToggle<CR>|
