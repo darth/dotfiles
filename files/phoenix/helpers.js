@@ -66,3 +66,16 @@ const appKey = (key, mod, name, script, frame, exceptions) => {
 
   return [keyHandler, evHandler];
 };
+
+const showCenteredModal = (text) => {
+  const m = new Modal();
+  m.text = text;
+  const frame = m.frame();
+  const screenFrame = Screen.main().frame();
+  m.origin = {
+    x: (screenFrame.width - frame.width) / 2,
+    y: (screenFrame.height - frame.height) / 2
+  };
+  m.duration = 1;
+  m.show();
+};
