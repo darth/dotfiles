@@ -25,8 +25,8 @@ const setFrame = (frame, window = Window.focused()) => {
   });
 };
 
-const osascript = (script) => {
-  Task.run('/usr/bin/osascript', ['-e', script], _.noop)
+const osascript = (script, cb = _.noop) => {
+  Task.run('/usr/bin/osascript', ['-e', script], cb)
 }
 
 const appKey = (key, mod, name, script, frame, exceptions) => {
