@@ -8,7 +8,7 @@ if exists('*minpac#init')
   call minpac#init()
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-  call minpac#add('mhartington/oceanic-next')
+  call minpac#add('arcticicestudio/nord-vim')
 
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-repeat')
@@ -156,9 +156,17 @@ xnoremap & :&&<CR>
 " }}}
 " Colors {{{
 set termguicolors
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNextPatched
+let g:nord_bold = 1
+let g:nord_italic = 1
+let g:nord_underline = 1
+augroup nord-overrides
+  autocmd!
+  autocmd ColorScheme nord highlight Comment guifg=#7B88A1 gui=bold
+  autocmd ColorScheme nord highlight Folded guifg=#7B88A1
+  autocmd ColorScheme nord highlight FoldColumn guifg=#7B88A1
+  autocmd ColorScheme nord highlight pythonSelf guifg=#81A1C1 gui=italic " nord9
+augroup END
+colorscheme nord
 " }}}
 " Visual stuff {{{
 " Hide uganda message
@@ -232,7 +240,7 @@ nnoremap <Leader>bl :Buffers<CR>
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'oceanicnext'
+let g:airline_theme = 'nord'
 let g:airline_exclude_preview = 0
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#branch#enabled = 1
