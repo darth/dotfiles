@@ -1,1 +1,1 @@
-syn match pythonSelf "\<self\ze\."
+syn match pythonSelf "\<self\>"
