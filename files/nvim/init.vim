@@ -37,7 +37,6 @@ if exists('*minpac#init')
   call minpac#add('gcmt/taboo.vim')
   call minpac#add('darth/vim-airline')
   call minpac#add('vim-airline/vim-airline-themes')
-  call minpac#add('edkolev/tmuxline.vim')
   call minpac#add('ryanoasis/vim-devicons')
   call minpac#add('yggdroot/indentline')
 
@@ -249,7 +248,6 @@ let g:airline#extensions#fugitiveline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#taboo#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tmuxline#enabled = 0
 let g:taboo_tabline = 0
 " }}}
 " tmuxline {{{
