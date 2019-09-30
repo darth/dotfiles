@@ -23,6 +23,7 @@ if exists('*minpac#init')
   call minpac#add('radenling/vim-dispatch-neovim')
 
   call minpac#add('jreybert/vimagit')
+  call minpac#add('airblade/vim-gitgutter')
 
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-function')
@@ -202,6 +203,8 @@ runtime macros/matchit.vim
 " Completion.
 set completeopt=noinsert,menuone,noselect
 set pumheight=15
+" Reduce update time for e.g. gitgutter
+set updatetime=100
 " }}}
 " FZF {{{
 function! FZF_Files()
