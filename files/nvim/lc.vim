@@ -1,8 +1,14 @@
 let s:snip_active = v:false
 
+let s:ccls_settings = {
+\ 'compilationDatabaseDirectory': 'build',
+\ 'cache': { 'directory': '/tmp/ccls-cache' },
+\ 'highlight': { 'lsRanges' : v:true },
+\ }
+
 let g:LanguageClient_serverCommands = {
-\ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-\ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+\ 'c': ['ccls', '-init=' . json_encode(s:ccls_settings), '--log-file=/tmp/cc.log'],
+\ 'cpp': ['ccls', '-init=' . json_encode(s:ccls_settings), '--log-file=/tmp/cc.log'],
 \ 'python': ['pyls'],
 \ 'haskell': ['hie', '--lsp'],
 \ 'go': ['go-langserver'],
