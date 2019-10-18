@@ -43,5 +43,8 @@
     command: test -d ~/.tmux/plugins/tpm || git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     description: Installing tmux plugin manager
   -
+    command: ~/.tmux/plugins/tpm/bin/install_plugins
+    description: Installing tmux plugins
+  -
     command: tic -x files/misc/terminfo
     description: Creating terminfo db
