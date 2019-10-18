@@ -1,6 +1,8 @@
 - defaults:
     link:
       relink: true
+      create: true
+      force: true
 
 - clean: ['~']
 
@@ -23,9 +25,7 @@
     ~/.latexmkrc: files/misc/latexmkrc
     ~/.gdbinit: files/misc/gdbinit
     ~/.psqlrc: files/misc/psqlrc
-    ~/.config/alacritty/alacritty.yml:
-      create: true
-      path: files/misc/alacritty.yml
+    ~/.config/alacritty/alacritty.yml: files/misc/alacritty.yml
     ~/.config/gnuplot: files/gnuplot
     ~/.gnuplot: files/gnuplotrc
     ~/bin/rcopy: files/bin/rcopy
