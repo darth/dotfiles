@@ -10,3 +10,6 @@
 [submodule "files/external/fzf"]
 	path = files/external/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "files/external/nord-dircolors"]
+	path = files/external/nord-dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors

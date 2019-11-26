@@ -21,6 +21,7 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
 
   alias sudoedit='sudo -e'
   alias ls='gls'
+  alias dircolors='gdircolors'
 fi
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
@@ -90,6 +91,8 @@ alias r="${PAGER}"
 if [ -d ~/.password-store ]; then
   export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 fi
+
+[ -f ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 
 # refresh environmental variables affected by SSH connection in tmux sessions
 if [ -n "$TMUX" ]; then
