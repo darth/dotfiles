@@ -2,9 +2,9 @@
 
 if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   BREW_PREFIX=$(brew --prefix)
-  export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-  if [ -f ${BREW_PREFIX}/etc/profile.d/bash_completion.sh ]; then
-    . ${BREW_PREFIX}/etc/profile.d/bash_completion.sh
+  export BASH_COMPLETION_COMPAT_DIR="${BREW_PREFIX}/etc/bash_completion.d"
+  if [ -r "${BREW_PREFIX}/etc/profile.d/bash_completion.sh" ]; then
+    . "${BREW_PREFIX}/etc/profile.d/bash_completion.sh"
   fi
   export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
 
