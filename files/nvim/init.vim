@@ -79,7 +79,7 @@ if exists('*minpac#init')
     call minpac#add('ncm2/float-preview.nvim')
     call minpac#add('ncm2/ncm2-ultisnips')
     call minpac#add('sirver/ultisnips')
-    call minpac#add('darth/vim-cmake')
+    call minpac#add('Squareys/vim-cmake')
     call minpac#add('euclio/vim-markdown-composer', {
     \ 'do': {-> system('cargo build --release')},
     \ })
