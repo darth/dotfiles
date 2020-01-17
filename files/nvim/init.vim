@@ -116,7 +116,9 @@ augroup numbertoggle
 augroup END
 " }}}
 " Modeline {{{
-set modeline
+if !has('nvim-0.3.6')
+  set nomodeline
+endif
 " }}}
 " Indentation {{{
 set tabstop=2
