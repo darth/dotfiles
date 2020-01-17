@@ -76,7 +76,9 @@ if exists('*minpac#init')
     call minpac#add('jackguo380/vim-lsp-cxx-highlight')
     call minpac#add('roxma/nvim-yarp')
     call minpac#add('ncm2/ncm2')
-    call minpac#add('ncm2/float-preview.nvim')
+    if has ('nvim-0.4.0')
+      call minpac#add('ncm2/float-preview.nvim')
+    endif
     call minpac#add('ncm2/ncm2-ultisnips')
     call minpac#add('sirver/ultisnips')
     call minpac#add('Squareys/vim-cmake')
@@ -485,7 +487,9 @@ if $DEVMODE
   let g:markdown_composer_autostart = 0
    " }}}
   " floatpreview {{{
-  let g:float_preview#docked = 0
+  if has_key(g:, 'float_preview#docked')
+    let g:float_preview#docked = 0
+  endif
   " }}}
 endif
 " }}}
