@@ -31,7 +31,11 @@ const osascript = (script, cb = _.noop) => {
 
 const appKey = (key, mod, name, script, frame, exceptions) => {
   const keyHandler = new Key(key, mod, () => {
-    Phoenix.log(name);
+    var app = App.get(name);
+    if (!app) {
+      app = App.launch(name, {'focus': true});
+      return;
+    }
     const r = new RegExp(name);
     const win = Space.active().windows().find(w => r.test(w.app().name()));
     if (!win) {
