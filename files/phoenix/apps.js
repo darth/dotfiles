@@ -3,7 +3,9 @@ terminal = appKey('t', MOD, 'iTerm', `
 `, maxFrame, []);
 
 browser = appKey('b', MOD, 'Safari', `
-  make new document
+  if it is running
+    make new document
+  end if
   activate
 `, maxFrame, [
   'General',
