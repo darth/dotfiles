@@ -255,17 +255,6 @@ let g:airline#extensions#taboo#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:taboo_tabline = 0
 " }}}
-" tmuxline {{{
-let g:tmuxline_preset = {
-\   'a': '#S',
-\   'win': '#I #W',
-\   'cwin': '#I #W',
-\   'z': '#h',
-\   'options': {
-\     'status-justify': 'left'
-\   }
-\ }
-" }}}
 " indentline {{{
 let g:indentLine_bufTypeExclude = ['help', 'terminal', 'quickfix', 'nofile']
 let g:indentLine_char = ''
