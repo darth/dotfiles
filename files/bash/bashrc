@@ -4,7 +4,39 @@ if [ $(uname) = 'Darwin' ]; then
   export IS_MACOS=1
 fi
 
-if tty -s && [ "${IS_MACOS}" ]; then # OS X specific stuff
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+if [ "${IS_MACOS}" ]; then
+  unset PATH
+  unset MANPATH
+  eval $(/usr/libexec/path_helper -s)
+fi
+
+export GOPATH="${HOME}/go"
+
+prepend_to_var PATH '/sbin'
+prepend_to_var PATH '/usr/sbin'
+prepend_to_var PATH '/usr/local/sbin'
+prepend_to_var PATH "${HOME}/bin"
+
+prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
+prepend_to_var PATH "${GOPATH}/bin"
+prepend_to_var PATH 'node_modules/.bin'
+
+if [ -f "${HOME}/.cargo/env" ]; then
+  source ${HOME}/.cargo/env
+fi
+
+if is_exec stack; then
+  prepend_to_var PATH "${HOME}/.local/bin"
+fi
+
+if [ -z "${PS1}" ]; then
+  return
+fi
+
+if [ "${IS_MACOS}" ]; then
   BREW_PREFIX=$(brew --prefix)
   export BASH_COMPLETION_COMPAT_DIR="${BREW_PREFIX}/etc/bash_completion.d"
   if [ -r "${BREW_PREFIX}/etc/profile.d/bash_completion.sh" ]; then
@@ -12,16 +44,8 @@ if tty -s && [ "${IS_MACOS}" ]; then # OS X specific stuff
   fi
   export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
 
-  # this is the hack to avoid prepending system paths in subshells
-  unset PATH
-  unset MANPATH
-  eval $(/usr/libexec/path_helper -s)
   if is_exec stack; then
-    prepend_to_var PATH "${HOME}/.local/bin" # haskell stack
     eval "$(stack --bash-completion-script stack)"
-  fi
-  if [ -f "${HOME}/.cargo/env" ]; then
-    source ${HOME}/.cargo/env
   fi
 
   alias sudoedit='sudo -e'
@@ -41,19 +65,6 @@ if [ -z "${VISUAL}" ]; then
   export VISUAL='nvim'
 fi
 
-export GOPATH="${HOME}/go"
-
-prepend_to_var PATH '/sbin'
-prepend_to_var PATH '/usr/sbin'
-prepend_to_var PATH '/usr/local/sbin'
-prepend_to_var PATH "${HOME}/bin"
-prepend_to_var PATH "${HOME}/.config/yarn/global/node_modules/.bin"
-prepend_to_var PATH "${GOPATH}/bin"
-prepend_to_var PATH 'node_modules/.bin'
-
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
 export PAGER='less'
 
 if is_exec rg; then
@@ -64,7 +75,7 @@ export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -C {}) 2> /dev/null | head -2
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
-tty -s && [ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
+[ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
 
 # history stuff
 export HISTCONTROL=ignoreboth
