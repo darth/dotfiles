@@ -12,7 +12,7 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
   unset PATH
   unset MANPATH
   eval $(/usr/libexec/path_helper -s)
-  if hash stack >/dev/null 2>&1; then
+  if is_exec stack; then
     prepend_to_var PATH "${HOME}/.local/bin" # haskell stack
     eval "$(stack --bash-completion-script stack)"
   fi
@@ -26,7 +26,7 @@ if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
 fi
 
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
-  if [ -x "$(command -v nvr)" ]; then
+  if is_exec nvr; then
     alias nvim=nvr
   else
     alias nvim='echo "No nesting!"'
@@ -52,7 +52,7 @@ export LC_ALL=en_US.UTF-8
 
 export PAGER='less'
 
-if hash rg >/dev/null 2>&1; then
+if is_exec rg; then
   export FZF_DEFAULT_COMMAND='rg --files --follow -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
@@ -128,7 +128,7 @@ if [ -f ${HOME}/.bashrc.local ]; then
   source ${HOME}/.bashrc.local
 fi
 
-if shopt -q login_shell && hash tmux >/dev/null 2>&1; then
+if shopt -q login_shell && is_exec tmux; then
   #if not inside a tmux session, and if no session is started, start a new session
   if [ "$TERM" != "tmux-256color" ]; then
     tmux attach -t default || tmux new-session -s default
