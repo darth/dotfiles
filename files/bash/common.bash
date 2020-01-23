@@ -13,3 +13,6 @@ function is_remote_session() {
   [ -n "$SSH_CONNECTION" ]
 }
 
+function is_exec() {
+  [ -x "$(command -v $1)" ]
+}
