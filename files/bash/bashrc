@@ -1,6 +1,10 @@
 . "${HOME}/.common.bash"
 
-if tty -s && [ $(uname) = 'Darwin' ]; then # OS X specific stuff
+if [ $(uname) = 'Darwin' ]; then
+  export IS_MACOS=1
+fi
+
+if tty -s && [ "${IS_MACOS}" ]; then # OS X specific stuff
   BREW_PREFIX=$(brew --prefix)
   export BASH_COMPLETION_COMPAT_DIR="${BREW_PREFIX}/etc/bash_completion.d"
   if [ -r "${BREW_PREFIX}/etc/profile.d/bash_completion.sh" ]; then
