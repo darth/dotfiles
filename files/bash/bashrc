@@ -1,18 +1,21 @@
+#{{{ COMMON
 . "${HOME}/.common.bash"
-
+#{{{ check macOS
 if [ $(uname) = 'Darwin' ]; then
   export IS_MACOS=1
 fi
-
+#}}}
+#{{{ setup locale
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
+#}}}
+#{{{ macOS specific PATH setup
 if [ "${IS_MACOS}" ]; then
   unset PATH
   unset MANPATH
   eval $(/usr/libexec/path_helper -s)
 fi
-
+#}}}
 #{{{ setup common elements of PATH
 prepend_to_var PATH '/sbin'
 prepend_to_var PATH '/usr/sbin'
@@ -41,11 +44,11 @@ if is_exec yarn; then
   prepend_to_var PATH 'node_modules/.bin'
 fi
 #}}}
-
+#}}}
 if [ -z "${PS1}" ]; then
   return
 fi
-
+#{{{ INTERACTIVE
 if [ "${IS_MACOS}" ]; then
   BREW_PREFIX=$(brew --prefix)
   export BASH_COMPLETION_COMPAT_DIR="${BREW_PREFIX}/etc/bash_completion.d"
@@ -159,3 +162,4 @@ if shopt -q login_shell && is_exec tmux; then
     tmux attach -t default || tmux new-session -s default
   fi
 fi
+#}}}
