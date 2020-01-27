@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 
-. "${HOME}/.common.bash"
-
 if [ $(uname) == 'Linux' ]; then
   xsel -o
 elif is_remote_session; then
