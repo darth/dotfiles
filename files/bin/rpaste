@@ -1,9 +1,11 @@
 #! /usr/bin/env bash
 
-if [ $(uname) == 'Linux' ]; then
-  xsel -o
-elif is_remote_session; then
-  xclip -o
+if [ "${IS_MACOS}" ]; then
+  if is_remote_session; then
+    xclip -o
+  else
+    pbpaste
+  fi
 else
-  pbpaste
+  xsel -o
 fi
