@@ -91,6 +91,7 @@ if [ "${IS_MACOS}" ]; then
   alias sudoedit='sudo -e'
 fi
 #}}}
+#{{{ editor
 if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
   if is_exec nvr; then
     alias nvim=nvr
@@ -98,13 +99,40 @@ if [ -n "${NVIM_LISTEN_ADDRESS}" ]; then
     alias nvim='echo "No nesting!"'
   fi
 fi
-
 if [ -z "${VISUAL}" ]; then
   export VISUAL='nvim'
 fi
-
+alias e='nvim'
+alias el='NVIM_LISTEN_ADDRESS=/tmp/nvim e'
+alias es='[ -r .vim/Session.vim ] && e -S .vim/Session.vim'
+alias eg='[ -d .git ] && e +MagitOnly'
+#}}}
+#{{{ pager
 export PAGER='less'
-
+#}}}
+#{{{ powerline
+[ -r ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
+#}}}
+#{{{ history
+export HISTCONTROL=ignoreboth
+export HISTSIZE=10000
+shopt -s histappend
+#}}}
+#{{{ other shell options
+shopt -s cdspell
+shopt -s autocd
+shopt -s direxpand
+#}}}
+#{{{ aliases
+alias l='ls -F --color=auto --group-directories'
+alias ll='l -l'
+alias la='ll -a'
+alias df='df -h'
+alias du='du -h'
+alias grep='grep --color'
+alias r="${PAGER}"
+#}}}
+#{{{ fzf
 if is_exec rg; then
   export FZF_DEFAULT_COMMAND='rg --files --follow -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -112,43 +140,18 @@ fi
 export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-
-[ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
-
-# history stuff
-export HISTCONTROL=ignoreboth
-export HISTSIZE=10000
-shopt -s histappend
-
-# some other opts
-shopt -s cdspell
-shopt -s autocd
-shopt -s direxpand
-
-# aliases
-alias l='ls -F --color=auto --group-directories'
-alias ll='l -l'
-alias la='ll -a'
-alias df='df -h'
-alias du='du -h'
-alias grep='grep --color'
-alias e='nvim'
-alias el='NVIM_LISTEN_ADDRESS=/tmp/nvim e'
-alias es='[ -f .vim/Session.vim ] && e -S .vim/Session.vim'
-alias eg='[ -d .git ] && e +MagitOnly'
-alias r="${PAGER}"
-
-[ -f ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
+[ -r ~/.fzf.bash ] && source ~/.fzf.bash
+#}}}
+#{{{ pass
 if [ -d ~/.password-store ]; then
   export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 fi
-
-[ -f ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
-
-# refresh environmental variables affected by SSH connection in tmux sessions
+#}}}
+#{{{ dircolors
+is_exec dircolors && [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
+#}}}
+#{{{ refresh environment in tmux sessions
+[ -r ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
 if [ -n "$TMUX" ]; then
   function refresh() {
     for var_name in DISPLAY SSH_AUTH_SOCK SSH_CONNECTION; do
@@ -160,12 +163,11 @@ else
     return
   }
 fi
-
 preexec() {
   refresh
 }
-
-# kill X11 clipboard server when SSH connection is closed
+#}}}
+#{{{ kill X11 clipboard server when SSH connection is closed
 if is_remote_session && [ "$SHLVL" -eq 1 ]; then
   function onexit {
     if [ $(uname) == 'Darwin' ]; then
@@ -176,15 +178,18 @@ if is_remote_session && [ "$SHLVL" -eq 1 ]; then
   }
   trap onexit EXIT
 fi
-
-if [ -f ${HOME}/.bashrc.local ]; then
-  source ${HOME}/.bashrc.local
+#}}}
+#{{{ local
+if [ -r ${HOME}/.bashrc.local ]; then
+  . ${HOME}/.bashrc.local
 fi
-
+#}}}
+#{{{ tmux autostart
 if shopt -q login_shell && is_exec tmux; then
   #if not inside a tmux session, and if no session is started, start a new session
   if [ "$TERM" != "tmux-256color" ]; then
     tmux attach -t default || tmux new-session -s default
   fi
 fi
+#}}}
 #}}}
