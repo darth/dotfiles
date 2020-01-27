@@ -53,7 +53,7 @@ fi
 #}}}
 #{{{ setup rust environment
 if [ -r "${HOME}/.cargo/env" ]; then
-  . ${HOME}/.cargo/env
+  prepend_to_var PATH "${HOME}/.cargo/bin"
 fi
 #}}}
 #{{{ setup haskell environment
