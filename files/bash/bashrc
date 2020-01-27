@@ -21,23 +21,28 @@ is_exec() {
 #{{{ check macOS
 if [ $(uname) = 'Darwin' ]; then
   export IS_MACOS=1
+  if is_exec brew; then
+    BREW_PREFIX=$(brew --prefix)
+  fi
 fi
 #}}}
 #{{{ setup locale
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 #}}}
-#{{{ macOS specific PATH setup
-if [ "${IS_MACOS}" ]; then
-  unset PATH
-  unset MANPATH
-  eval $(/usr/libexec/path_helper -s)
-fi
-#}}}
 #{{{ setup common elements of PATH
 prepend_to_var PATH '/sbin'
 prepend_to_var PATH '/usr/sbin'
 prepend_to_var PATH '/usr/local/sbin'
+#}}}
+#{{{ macOS specific PATH setup
+if [ "${IS_MACOS}" ]; then
+  if [ -n "${BREW_PREFIX}" ] && [ -d "${BREW_PREFIX}/opt/coreutils" ]; then
+    prepend_to_var PATH "${BREW_PREFIX}/opt/coreutils/libexec/gnubin"
+  fi
+fi
+#}}}
+#{{{ add home bin to PATH
 prepend_to_var PATH "${HOME}/bin"
 #}}}
 #{{{ setup golang environment
