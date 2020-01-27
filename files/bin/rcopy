@@ -1,4 +1,6 @@
-#! /usr/bin/env bash
+#! /usr/bin/env sh
+
+. "${HOME}/.functions.sh"
 
 if [ "${IS_MACOS}" ]; then
   if is_remote_session; then
