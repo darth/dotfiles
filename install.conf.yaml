@@ -15,6 +15,7 @@
     ~/.config/nvim: files/nvim
     ~/.fzf: files/external/fzf
     ~/.config/phoenix: files/phoenix
+    ~/.config/bat: files/bat
     ~/.bashrc: files/bash/bashrc
     ~/.bash_profile: files/bash/bash_profile
     ~/.functions.sh: files/bash/functions.sh
@@ -51,3 +52,6 @@
   -
     command: tic -x files/misc/terminfo
     description: Creating terminfo db
+  -
+    command: bat cache --build
+    description: Building bat cache
