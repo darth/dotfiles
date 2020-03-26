@@ -116,8 +116,8 @@ alias grep='grep --color'
 alias r="${PAGER}"
 #}}}
 #{{{ fzf
-if is_exec rg; then
-  export FZF_DEFAULT_COMMAND='rg --files --follow -g ""'
+if is_exec fd; then
+  export FZF_DEFAULT_COMMAND='fd --type f'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -C {}) 2> /dev/null | head -200'"
