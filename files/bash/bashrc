@@ -20,13 +20,8 @@ prepend_to_var PATH '/usr/local/sbin'
 #}}}
 #{{{ macOS specific PATH setup
 if [ "${IS_MACOS}" ]; then
-  if [ -n "${BREW_PREFIX}" ]; then
-    if [ -d "${BREW_PREFIX}/opt/coreutils" ]; then
-      prepend_to_var PATH "${BREW_PREFIX}/opt/coreutils/libexec/gnubin"
-    fi
-    if [ -d "${BREW_PREFIX}/opt/binutils" ]; then
-      prepend_to_var PATH "${BREW_PREFIX}/opt/binutils/bin"
-    fi
+  if [ -n "${BREW_PREFIX}" ] && [ -d "${BREW_PREFIX}/opt/coreutils" ]; then
+    prepend_to_var PATH "${BREW_PREFIX}/opt/coreutils/libexec/gnubin"
   fi
 fi
 #}}}
