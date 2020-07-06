@@ -23,7 +23,7 @@ let g:LanguageClient_running = map(copy(g:LanguageClient_serverCommands), {key -
 let g:LanguageClient_autoStart = 0
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_hasSnippetSupport = 1
-let g:LanguageClient_useVirtualText = 1
+let g:LanguageClient_useVirtualText = 'All'
 let g:LanguageClient_diagnosticsList = 'Disabled'
 let g:LanguageClient_diagnosticsDisplay = {
 \ 1: { 'name': 'Error', 'texthl': 'ALEError', 'signText': '✘', 'signTexthl': 'ALEErrorSign' },
