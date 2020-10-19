@@ -215,6 +215,12 @@ set completeopt=noinsert,menuone,noselect
 set pumheight=15
 " }}}
 " FZF {{{
+let g:fzf_action = {
+\ 'ctrl-r': 'read',
+\ 'ctrl-t': 'tab split',
+\ 'ctrl-x': 'split',
+\ 'ctrl-v': 'vsplit'
+\ }
 function! FZF_Files()
   function! s:files()
     let files = split(system($FZF_DEFAULT_COMMAND), '\n')
@@ -233,8 +239,7 @@ function! FZF_Files()
 
   let wrapped = fzf#wrap('files-devicons', {
   \ 'source': s:files(),
-  \ 'options': '-m --preview "cat {2..-1} | head -'.&lines.'"',
-  \ 'down':    '40%' })
+  \ 'options': '-m --preview "cat {2..-1} | head -'.&lines.'"' })
   " stolen from fzf.vim
   let wrapped.common_sink = remove(wrapped, 'sink*')
   function! wrapped.newsink(lines)
