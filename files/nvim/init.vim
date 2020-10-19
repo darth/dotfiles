@@ -93,6 +93,7 @@ function! PackInit() abort
     call minpac#add('Rykka/InstantRst')
     call minpac#add('lervag/vimtex')
     call minpac#add('prettier/vim-prettier')
+    call minpac#add('a-vrma/black-nvim')
   endif
 endfunction
 
@@ -487,6 +488,9 @@ if $DEVMODE
   if has_key(g:, 'float_preview#docked')
     let g:float_preview#docked = 0
   endif
+  " }}}
+  " black {{{
+  command! Black call Black()
   " }}}
 endif
 " }}}
