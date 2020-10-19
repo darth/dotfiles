@@ -92,6 +92,7 @@ function! PackInit() abort
     call minpac#add('Rykka/riv.vim')
     call minpac#add('Rykka/InstantRst')
     call minpac#add('lervag/vimtex')
+    call minpac#add('lifepillar/pgsql.vim')
     call minpac#add('prettier/vim-prettier')
     call minpac#add('a-vrma/black-nvim')
   endif
