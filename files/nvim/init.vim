@@ -42,6 +42,7 @@ if exists('*minpac#init')
 
   call minpac#add('sjl/gundo.vim') " candidate for removal
   call minpac#add('schickling/vim-bufonly')
+  call minpac#add('qpkorr/vim-bufkill')
   call minpac#add('nelstrom/vim-visual-star-search')
   call minpac#add('vim-utils/vim-husk')
   call minpac#add('editorconfig/editorconfig-vim')
@@ -395,7 +396,7 @@ nnoremap gV `[v`]
 " Toggle invisible symbols
 nnoremap <Leader>i :set list!<CR>
 " Delete buffer
-nnoremap <Leader>bd :bd<CR>
+nnoremap <Leader>bd :BD<CR>
 " Paste from register in terminal
 tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " }}}
