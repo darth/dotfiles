@@ -13,8 +13,7 @@ let g:LanguageClient_serverCommands = {
 \ 'haskell': ['hie', '--lsp'],
 \ 'go': ['go-langserver'],
 \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-\ 'javascript': ['flow-language-server', '--stdio'],
-\ 'javascript.jsx': ['flow-language-server', '--stdio'],
+\ 'javascript': ['javascript-typescript-stdio'],
 \ 'sh': ['bash-language-server', 'start'],
 \}
 
