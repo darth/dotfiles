@@ -489,6 +489,7 @@ if $DEVMODE
   " }}}
   " markdown {{{
   let g:markdown_composer_autostart = 0
+  let g:markdown_composer_external_renderer = 'multimarkdown'
    " }}}
   " floatpreview {{{
   if has_key(g:, 'float_preview#docked')
