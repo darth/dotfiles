@@ -4,7 +4,9 @@ if &compatible
   set nocompatible
 endif
 
-if exists('*minpac#init')
+function! PackInit() abort
+  packadd minpac
+
   call minpac#init()
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
@@ -90,11 +92,11 @@ if exists('*minpac#init')
     call minpac#add('Rykka/InstantRst')
     call minpac#add('lervag/vimtex')
   endif
-endif
+endfunction
 
-command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
-command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
-command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
+command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
+command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
+command! PackStatus packadd minpac | call PackInit() | call minpac#status()
 " }}}
 " Sessions {{{
 set sessionoptions+=tabpages
