@@ -59,9 +59,10 @@ function! PackInit() abort
   call minpac#add('pboettch/vim-cmake-syntax')
   call minpac#add('tmux-plugins/vim-tmux')
   call minpac#add('https://bitbucket.org/mclab/vim-properties-syntax')
-  call minpac#add('pangloss/vim-javascript')
   call minpac#add('othree/javascript-libraries-syntax.vim')
-  call minpac#add('mxw/vim-jsx')
+  call minpac#add('yuezk/vim-js')
+  call minpac#add('maxmellon/vim-jsx-pretty')
+  call minpac#add('alvan/vim-closetag')
   call minpac#add('justinmk/vim-syntax-extra')
   call minpac#add('neovimhaskell/haskell-vim')
   call minpac#add('bohlender/vim-smt2')
@@ -293,8 +294,9 @@ let g:grepper.tools = ['grep', 'git', 'rg']
 " Search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " }}}
-" jsx {{{
-let g:jsx_ext_required = 0
+" {{{ auto-close
+let g:closetag_filenames = '*.js'
+let g:closetag_xtml_filenames = '*.js'
 " }}}
 " json {{{
 let g:vim_json_syntax_conceal = 0
