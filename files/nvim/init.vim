@@ -140,7 +140,7 @@ set cinoptions=g0:0
 " Mouse {{{
 set mouse=a
 " }}}
-" {{{ Clipboard
+" Clipboard {{{
 let g:clipboard = {
 \ 'name': 'smartClipboard',
 \ 'copy': {
@@ -277,7 +277,7 @@ nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 " }}}
-" {{{ projectionist
+" projectionist {{{
 let g:projectionist_ignore_man = 1
 " }}}
 " latex {{{
@@ -286,7 +286,7 @@ let g:tex_conceal = ''
 let g:tex_comment_nospell = 1
 let g:latex_fold_enabled = 1
 " }}}
-" {{{ matchup
+" matchup {{{
 let g:matchup_override_vimtex = 1
 let g:matchup_surround_enabled = 1
 " }}}
@@ -302,7 +302,7 @@ let g:grepper.tools = ['grep', 'git', 'rg']
 " Search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " }}}
-" {{{ auto-close
+" auto-close {{{
 let g:closetag_filenames = '*.js'
 let g:closetag_xtml_filenames = '*.js'
 " }}}
@@ -412,7 +412,7 @@ nnoremap <Leader>bd :BD<CR>
 " Paste from register in terminal
 tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " }}}
-" {{{ VISUAL
+" VISUAL {{{
 let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
 " }}}
 " terminal {{{
@@ -501,4 +501,7 @@ if $DEVMODE
   command! Black call Black()
   " }}}
 endif
+" }}}
+" gui {{{
+set guifont=FuraCodeiScriptNerdFontAAE\ Nerd\ Font:h14
 " }}}
