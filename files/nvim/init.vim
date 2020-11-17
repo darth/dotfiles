@@ -86,8 +86,8 @@ function! PackInit() abort
     call minpac#add('ncm2/ncm2-ultisnips')
     call minpac#add('sirver/ultisnips')
     call minpac#add('Squareys/vim-cmake')
-    call minpac#add('euclio/vim-markdown-composer', {
-    \ 'do': {-> system('cargo build --release')},
+    call minpac#add('iamcco/markdown-preview.nvim', {
+    \ 'do': 'packloadall! | call mkdp#util#install()'
     \ })
     call minpac#add('Rykka/riv.vim')
     call minpac#add('Rykka/InstantRst')
@@ -488,10 +488,6 @@ if $DEVMODE
   \ 'underfull',
   \]
   " }}}
-  " markdown {{{
-  let g:markdown_composer_autostart = 0
-  let g:markdown_composer_external_renderer = 'multimarkdown'
-   " }}}
   " floatpreview {{{
   if has_key(g:, 'float_preview#docked')
     let g:float_preview#docked = 0
