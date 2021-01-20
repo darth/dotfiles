@@ -480,13 +480,12 @@ if $DEVMODE
   endif
   let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
   let g:vimtex_compiler_progname = 'nvr'
-  let g:vimtex_quickfix_latexlog = {
-  \}
   let g:vimtex_quickfix_ignore_filters = [
   \ 'Package etex Warning',
+  \ 'Package hyperref Warning',
   \ 'You have requested package `MCLabPaper',
-  \ 'overfull',
-  \ 'underfull',
+  \ 'Overfull',
+  \ 'Underfull',
   \]
   " }}}
   " floatpreview {{{
