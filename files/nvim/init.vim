@@ -496,6 +496,9 @@ if $DEVMODE
   " black {{{
   command! Black call Black()
   " }}}
+  " prettier {{{
+  autocmd BufWritePre *.js,*.jsx PrettierAsync
+  " }}}
 endif
 " }}}
 " gui {{{
