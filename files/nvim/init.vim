@@ -305,6 +305,7 @@ nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " auto-close {{{
 let g:closetag_filenames = '*.js'
 let g:closetag_xtml_filenames = '*.js'
+let g:closetag_close_shortcut = '<leader>>'
 " }}}
 " json {{{
 let g:vim_json_syntax_conceal = 0
