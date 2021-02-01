@@ -298,7 +298,7 @@ nnoremap <Leader>u :GundoToggle<CR>
 " }}}
 " grepper {{{
 let g:grepper = {}
-let g:grepper.tools = ['grep', 'git', 'rg']
+let g:grepper.tools = ['rg', 'grep']
 " Search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 " }}}
