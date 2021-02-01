@@ -40,7 +40,7 @@ function! PackInit() abort
   call minpac#add('darth/vim-airline')
   call minpac#add('vim-airline/vim-airline-themes')
   call minpac#add('ryanoasis/vim-devicons')
-  call minpac#add('yggdroot/indentline')
+  call minpac#add('nathanaelkane/vim-indent-guides')
 
   call minpac#add('sjl/gundo.vim') " candidate for removal
   call minpac#add('schickling/vim-bufonly')
@@ -267,10 +267,6 @@ let g:airline#extensions#tabline#ignore_bufadd_pat = '!'
 let g:airline#extensions#taboo#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:taboo_tabline = 0
-" }}}
-" indentline {{{
-let g:indentLine_bufTypeExclude = ['help', 'terminal', 'quickfix', 'nofile']
-let g:indentLine_char = ''
 " }}}
 " fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
