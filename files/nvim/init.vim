@@ -69,22 +69,10 @@ function! PackInit() abort
   call minpac#add('wannesm/wmnusmv.vim')
 
   if $DEVMODE
-    call minpac#add('darth/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': {-> system('make release')},
-    \ })
-    call minpac#add('libclang-vim/libclang-vim', {
-    \ 'do': {-> system('make')},
-    \ })
-    call minpac#add('rhysd/vim-textobj-clang')
-    call minpac#add('jackguo380/vim-lsp-cxx-highlight')
-    call minpac#add('roxma/nvim-yarp')
-    call minpac#add('ncm2/ncm2')
-    if has ('nvim-0.4.0')
-      call minpac#add('ncm2/float-preview.nvim')
-    endif
-    call minpac#add('ncm2/ncm2-ultisnips')
-    call minpac#add('sirver/ultisnips')
+    call minpac#add('neovim/nvim-lspconfig')
+    call minpac#add('nvim-lua/completion-nvim')
+    call minpac#add('hrsh7th/vim-vsnip')
+    call minpac#add('hrsh7th/vim-vsnip-integ')
     call minpac#add('Squareys/vim-cmake')
     call minpac#add('iamcco/markdown-preview.nvim', {
     \ 'do': 'packloadall! | call mkdp#util#install()'
@@ -272,6 +260,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#ignore_bufadd_pat = '!'
 let g:airline#extensions#taboo#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#nvimlsp#enabled = 1
 let g:taboo_tabline = 0
 " }}}
 " fugitive {{{
@@ -460,21 +449,24 @@ autocmd QuitPre * call TClose()
 " }}}
 " dev {{{
 if $DEVMODE
-  source $HOME/.config/nvim/lc.vim
+  lua require('lsp')
+  " completion.nvim {{{
+  let g:completion_enable_snippet = 'vim-vsnip'
+  let g:completion_enable_auto_popup = 0
+  let g:completion_enable_auto_hover = 0
+  let g:completion_confirm_key = "\<C-y>"
+  let g:completion_matching_strategy_list = ['fuzzy']
+  let g:completion_trigger_on_delete = 1
+  imap <C-x><C-o> <cmd>lua require'completion'.triggerCompletion()<CR>
+  " }}}
+  " vim-vsnip {{{
+  imap <expr> <C-j> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+  smap <expr> <C-j> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+  imap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+  smap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+  " }}}
   " cmake {{{
   let g:cmake_export_compile_commands = 1
-  " }}}
-  " textobj-clang {{{
-  let g:textobj_clang_more_mappings = 1
-  " }}}
-  " ncm2 {{{
-  let g:ncm2#auto_popup = 0
-  let g:ncm2#filter = [{'name': 'abbr_ellipsis', 'ellipsis': '..', 'limit': 30}]
-  " }}}
-  " ultisnips {{{
-  let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-  let g:UltiSnipsRemoveSelectModeMappings = 0
   " }}}
   " vimtex {{{
   if has('mac')
@@ -489,11 +481,6 @@ if $DEVMODE
   \ 'Overfull',
   \ 'Underfull',
   \]
-  " }}}
-  " floatpreview {{{
-  if has_key(g:, 'float_preview#docked')
-    let g:float_preview#docked = 0
-  endif
   " }}}
   " black {{{
   command! Black call Black()
