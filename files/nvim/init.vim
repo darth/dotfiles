@@ -199,6 +199,10 @@ set showmode
 set wrap
 set colorcolumn=81
 " }}}
+" python {{{
+let g:loaded_python_provider = 0
+let g:python3_host_prog = 'python3'
+" }}}
 " Misc settings {{{
 " Make buffer hidden when abandoned.
 set hidden
