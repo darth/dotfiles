@@ -209,6 +209,8 @@ set hidden
 " Improve command line completion.
 set wildmenu
 set wildmode=list:longest
+cnoremap <expr> <C-P> wildmenumode() ? "\<C-P>" : "\<Up>"
+cnoremap <expr> <C-N> wildmenumode() ? "\<C-N>" : "\<Down>"
 " Specify what backspace can erase.
 set backspace=indent,eol,start
 " Enable reading man pages.
