@@ -73,6 +73,7 @@ function! PackInit() abort
     call minpac#add('nvim-lua/completion-nvim')
     call minpac#add('hrsh7th/vim-vsnip')
     call minpac#add('hrsh7th/vim-vsnip-integ')
+    call minpac#add('nvim-treesitter/nvim-treesitter')
     call minpac#add('Squareys/vim-cmake')
     call minpac#add('iamcco/markdown-preview.nvim', {
     \ 'do': 'packloadall! | call mkdp#util#install()'
@@ -450,6 +451,7 @@ autocmd QuitPre * call TClose()
 " dev {{{
 if $DEVMODE
   lua require('lsp')
+  lua require('ts')
   " completion.nvim {{{
   let g:completion_enable_snippet = 'vim-vsnip'
   let g:completion_enable_auto_popup = 0
