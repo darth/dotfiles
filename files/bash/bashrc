@@ -94,6 +94,7 @@ alias eg='[ -d .git ] && e +MagitOnly'
 export PAGER='less'
 #}}}
 #{{{ powerline
+PS_SYMBOL=''
 [ -r ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
 #}}}
 #{{{ history
@@ -134,22 +135,22 @@ fi
 is_exec dircolors && [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 #}}}
 #{{{ refresh environment in tmux sessions
-[ -r ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
-if [ -n "$TMUX" ]; then
-  function refresh() {
-    for var_name in DISPLAY SSH_AUTH_SOCK SSH_CONNECTION; do
-      eval $(tmux showenv -s ${var_name})
-    done
-  }
-else
-  function refresh() {
-    return
-  }
-fi
-preexec() {
-  refresh
-}
-#}}}
+ [ -r ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
+ if [ -n "$TMUX" ]; then
+   function refresh() {
+     for var_name in DISPLAY SSH_AUTH_SOCK SSH_CONNECTION; do
+       eval $(tmux showenv -s ${var_name})
+     done
+   }
+ else
+   function refresh() {
+     return
+   }
+ fi
+ preexec() {
+   refresh
+ }
+# }}}
 #{{{ kill X11 clipboard server when SSH connection is closed
 if is_remote_session && [ "$SHLVL" -eq 1 ]; then
   function onexit {
