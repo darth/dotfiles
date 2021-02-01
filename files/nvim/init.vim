@@ -493,5 +493,6 @@ if $DEVMODE
 endif
 " }}}
 " gui {{{
-set guifont=FuraCodeiScriptNerdFontAAE\ Nerd\ Font:h14
+set guifont=FiraCode\ Nerd\ Font\ Mono:h14
+let g:neovide_cursor_vfx_mode = 'railgun'
 " }}}
