@@ -109,7 +109,9 @@ alias es='[ -r .vim/Session.vim ] && e -S .vim/Session.vim'
 alias eg='[ -d .git ] && e +MagitOnly'
 #}}}
 #{{{ pager
-export PAGER='less'
+export PAGER='less -RF --mouse'
+export BAT_PAGER="${PAGER}"
+export DELTA_PAGER="${PAGER}"
 #}}}
 #{{{ powerline
 PS_SYMBOL=''
@@ -132,7 +134,7 @@ alias la='ll -a'
 alias df='df -h'
 alias du='du -h'
 alias grep='grep --color'
-alias r="${PAGER}"
+alias r="bat"
 #}}}
 #{{{ pass
 if [ -d ~/.password-store ]; then
