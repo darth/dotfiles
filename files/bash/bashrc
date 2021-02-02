@@ -136,7 +136,11 @@ shopt -s autocd
 shopt -s direxpand
 #}}}
 #{{{ aliases
-alias l='ls -F --color=auto --group-directories'
+if is_exec lsd; then
+  alias l='lsd --group-dirs first'
+else
+  alias l='ls -F --color=auto --group-directories'
+fi
 alias ll='l -l'
 alias la='ll -a'
 alias df='df -h'
