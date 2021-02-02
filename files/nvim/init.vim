@@ -92,7 +92,7 @@ command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call PackInit() | call minpac#status()
 " }}}
 " Sessions {{{
-set sessionoptions+=tabpages
+set sessionoptions+=tabpages,globals
 " }}}
 " Directories and files {{{
 set undofile
