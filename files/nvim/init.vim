@@ -218,35 +218,20 @@ let g:fzf_action = {
 \ 'ctrl-x': 'split',
 \ 'ctrl-v': 'vsplit'
 \ }
-function! FZF_Files()
-  function! s:files()
-    let files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(files)
+function! Files()
+  function! s:prepend_icon(idx, fpath)
+    let fname = fnamemodify(a:fpath, ':p:t')
+    let icon = WebDevIconsGetFileTypeSymbol(fname, isdirectory(fname))
+    return printf("%s %s", icon, a:fpath)
   endfunction
-
-  function! s:prepend_icon(candidates)
-    let result = []
-    for candidate in a:candidates
-      let filename = fnamemodify(candidate, ':p:t')
-      let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
-      call add(result, printf("%s %s", icon, candidate))
-    endfor
-    return result
-  endfunction
-
-  let wrapped = fzf#wrap('files-devicons', {
-  \ 'source': s:files(),
-  \ 'options': '-m --preview "cat {2..-1} | head -'.&lines.'"' })
-  " stolen from fzf.vim
-  let wrapped.common_sink = remove(wrapped, 'sink*')
-  function! wrapped.newsink(lines)
-    let lines = extend(a:lines[0:0], map(a:lines[1:], 'get(split(v:val, " "), 1, "")'))
-    return self.common_sink(lines)
-  endfunction
-  let wrapped['sink*'] = remove(wrapped, 'newsink')
-  call fzf#run(wrapped)
+  let files = split(system($FZF_DEFAULT_COMMAND), '\n')
+  call map(files, function('s:prepend_icon'))
+  let wrapped = fzf#wrap({'source': files, 'placeholder': '{2..}', 'options': ['-m']})
+  let s:sink = wrapped['sink*']
+  let wrapped['sink*'] = {lines -> s:sink(extend(lines[0:0], map(lines[1:], 'get(split(v:val, " "), 1, "")')))}
+  call fzf#run(fzf#vim#with_preview(wrapped))
 endfunction
-command! Files call FZF_Files()
+command! Files call Files()
 nnoremap <Leader>f :Files<CR>
 " }}}
 " airline {{{
