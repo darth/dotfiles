@@ -35,7 +35,7 @@
 
 - shell:
   -
-    command: ~/.fzf/install --key-bindings --completion --no-update-rc --no-zsh --no-fish
+    command: ~/.fzf/install --bin
     description: Installing FZF
   -
     command: test -d ~/.config/nvim/pack/minpac/opt/minpac || git clone --depth 1 https://github.com/k-takata/minpac.git ~/.config/nvim/pack/minpac/opt/minpac
