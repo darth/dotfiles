@@ -1,0 +1,14 @@
+[user]
+	email = alimguzhin@di.uniroma1.it
+	name = Vadim Alimguzhin
+[core]
+	excludesfile = ~/.gitignore
+[pull]
+	ff = only
+[core]
+	pager = delta
+[delta]
+  theme = Nord
+  side-by-side = true
+[init]
+	defaultBranch = master

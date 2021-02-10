@@ -14,7 +14,6 @@
 - link:
     ~/.config/nvim: files/nvim
     ~/.fzf: files/external/fzf
-    ~/.config/phoenix: files/phoenix
     ~/.config/bat: files/bat
     ~/.bashrc: files/bash/bashrc
     ~/.bash_profile: files/bash/bash_profile
@@ -22,6 +21,7 @@
     ~/.bash-powerline.sh: files/external/bash-powerline/bash-powerline.sh
     ~/.bash-preexec.sh: files/external/bash-preexec/bash-preexec.sh
     ~/.inputrc: files/misc/inputrc
+    ~/.gitconfig: files/misc/gitconfig
     ~/.tmux.conf: files/misc/tmux.conf
     ~/.latexmkrc: files/misc/latexmkrc
     ~/.gdbinit: files/misc/gdbinit
