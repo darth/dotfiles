@@ -247,7 +247,6 @@ function! FZF_Files()
 endfunction
 command! Files call FZF_Files()
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>bl :Buffers<CR>
 " }}}
 " airline {{{
 let g:airline_powerline_fonts = 1
