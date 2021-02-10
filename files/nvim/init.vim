@@ -211,6 +211,7 @@ set completeopt=noinsert,menuone,noselect
 set pumheight=15
 " }}}
 " FZF {{{
+let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 let g:fzf_action = {
 \ 'ctrl-r': 'read',
 \ 'ctrl-t': 'tab split',
