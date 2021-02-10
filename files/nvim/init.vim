@@ -37,7 +37,7 @@ function! PackInit() abort
   call minpac#add('junegunn/limelight.vim')
 
   call minpac#add('gcmt/taboo.vim')
-  call minpac#add('darth/vim-airline')
+  call minpac#add('vim-airline/vim-airline')
   call minpac#add('vim-airline/vim-airline-themes')
   call minpac#add('ryanoasis/vim-devicons')
   call minpac#add('nathanaelkane/vim-indent-guides')
