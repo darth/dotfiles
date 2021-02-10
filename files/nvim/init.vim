@@ -488,6 +488,7 @@ if $DEVMODE
   command! Black call Black()
   " }}}
   " prettier {{{
+  let g:prettier#quickfix_enabled = 0
   autocmd BufWritePre *.js,*.jsx PrettierAsync
   " }}}
 endif
