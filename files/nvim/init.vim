@@ -361,6 +361,9 @@ nnoremap <silent> <leader>Q :call WToggle('quickfix', 1)<CR>
 nnoremap <silent> <leader>l :call WToggle('location', 0)<CR>
 nnoremap <silent> <leader>L :call WToggle('location', 1)<CR>
 " }}}
+" spell {{{
+lua require('spell')
+" }}}
 " Functions {{{
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
