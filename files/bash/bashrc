@@ -130,8 +130,10 @@ export BAT_PAGER="${PAGER}"
 export DELTA_PAGER="${PAGER}"
 #}}}
 #{{{ powerline
-PS_SYMBOL=''
-[ -r ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
+if [ -r ~/.bash-powerline.sh ]; then
+  [ "${IS_MACOS}" ] && PS_SYMBOL='' || PS_SYMBOL=''
+  source ~/.bash-powerline.sh
+fi
 #}}}
 #{{{ history
 export HISTCONTROL=ignoreboth
