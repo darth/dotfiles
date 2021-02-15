@@ -29,6 +29,7 @@
     ~/.config/alacritty/alacritty.yml: files/misc/alacritty.yml
     ~/.config/gnuplot: files/gnuplot
     ~/.gnuplot: files/gnuplotrc
+    ~/.config/luaformatter: files/luaformatter
     ~/.dir_colors: files/external/nord-dircolors/src/dir_colors
     ~/bin/rcopy: files/bin/rcopy
     ~/bin/rpaste: files/bin/rpaste
