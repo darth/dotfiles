@@ -53,12 +53,11 @@ local function open(perc, keymap)
     if (not bufexists) then
       vim.fn.termopen('TT=1 ' .. vim.o.shell)
       if (keymap) then
-        vim.api.nvim_buf_set_keymap(state.buf, 'n', keymap,
-                                    '<cmd>lua require("terminal").close()<CR>',
-                                    {noremap = true, silent = true})
-        vim.api.nvim_buf_set_keymap(state.buf, 't', keymap,
-                                    '<cmd>lua require("terminal").close()<CR>',
-                                    {noremap = true, silent = true})
+        for _, mode in ipairs({'n', 't'}) do
+          vim.api.nvim_buf_set_keymap(state.buf, mode, keymap,
+                                      '<cmd>lua require("terminal").close()<CR>',
+                                      {noremap = true, silent = true})
+        end
       end
     end
     vim.cmd('autocmd! BufLeave <buffer=' .. state.buf ..
