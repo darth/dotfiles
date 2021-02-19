@@ -14,14 +14,13 @@ g.loaded_compe_tags = true
 g.loaded_compe_calc = true
 g.loaded_compe_ultisnips = true
 g.loaded_compe_path = true
--- g.loaded_compe_nvim_lua = true
 g.loaded_compe_omni = true
 
 require'compe'.setup {
   max_abbr_width = 50,
   max_kind_width = 50,
   max_menu_width = 50,
-  source = {buffer = true, vsnip = true, nvim_lua = true}
+  source = {buffer = true, vsnip = true, nvim_lsp = true, nvim_lua = true}
 }
 
 return {
