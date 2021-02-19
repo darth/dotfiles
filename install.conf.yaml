@@ -39,11 +39,8 @@
     command: ~/.fzf/install --bin
     description: Installing FZF
   -
-    command: test -d ~/.config/nvim/pack/minpac/opt/minpac || git clone --depth 1 https://github.com/k-takata/minpac.git ~/.config/nvim/pack/minpac/opt/minpac
+    command: d="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/paqs/opt/paq-nvim"; test -d "${d}" || git clone https://github.com/savq/paq-nvim.git "${d}"
     description: Installing Neovim package manager
-  -
-    command: command -v nvim && nvim +PackUpdate +qa
-    description: Installing Neovim packages
   -
     command: test -d ~/.tmux/plugins/tpm || git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     description: Installing tmux plugin manager

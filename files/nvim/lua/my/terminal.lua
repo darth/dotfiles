@@ -1,5 +1,10 @@
+local utils = require 'my.utils'
+local map = utils.map
+local fn = vim.fn
+local cmd = vim.cmd
+
 local function border(x, y, w, h)
-  local b = vim.api.nvim_create_buf(false, true)
+  local b = fn.nvim_create_buf(false, true)
   local top = '╭' .. string.rep('─', w) .. '╮'
   local mid = "│" .. string.rep(' ', w) .. '│'
   local bot = '╰' .. string.rep('─', w) .. '╯'
@@ -7,8 +12,8 @@ local function border(x, y, w, h)
   table.insert(lines, top)
   for _ = 1, h do table.insert(lines, mid) end
   table.insert(lines, bot)
-  vim.api.nvim_buf_set_lines(b, 0, -1, false, lines)
-  return vim.api.nvim_open_win(b, false, {
+  fn.nvim_buf_set_lines(b, 0, -1, false, lines)
+  return fn.nvim_open_win(b, false, {
     relative = 'editor',
     col = x - 1,
     row = y - 1,
@@ -23,8 +28,8 @@ local state = {buf = nil, win = {border = nil, term = nil}}
 
 local function close()
   for _, w in ipairs({state.win.term, state.win.border}) do
-    vim.api.nvim_set_current_win(w)
-    vim.cmd('noautocmd q')
+    fn.nvim_set_current_win(w)
+    cmd 'noautocmd q'
   end
 end
 
@@ -34,7 +39,7 @@ local function open(perc, keymap)
   if (bufexists) then
     win = vim.fn.bufwinnr(state.buf)
   else
-    state.buf = vim.api.nvim_create_buf(false, false)
+    state.buf = fn.nvim_create_buf(false, false)
   end
   if (win == -1) then
     local width = math.floor(vim.o.columns * perc)
@@ -42,7 +47,7 @@ local function open(perc, keymap)
     local height = math.floor(vim.o.lines * perc)
     local row = (vim.o.lines - height) / 2
     state.win.border = border(col, row, width, height)
-    state.win.term = vim.api.nvim_open_win(state.buf, true, {
+    state.win.term = fn.nvim_open_win(state.buf, true, {
       relative = 'editor',
       width = width,
       height = height,
@@ -52,20 +57,23 @@ local function open(perc, keymap)
     })
     if (not bufexists) then
       vim.fn.termopen('TT=1 ' .. vim.o.shell)
-      if (keymap) then
-        for _, mode in ipairs({'n', 't'}) do
-          vim.api.nvim_buf_set_keymap(state.buf, mode, keymap,
-                                      '<cmd>lua require("terminal").close()<CR>',
-                                      {noremap = true, silent = true})
-        end
-      end
+      map('nt', keymap, '<cmd>lua require("my.terminal").close()<CR>',
+          {buffer = state.buf, silent = true})
     end
-    vim.cmd('autocmd! BufLeave <buffer=' .. state.buf ..
-                '> :lua require("terminal").close()')
-    vim.cmd('startinsert')
+    cmd('autocmd! BufLeave <buffer=' .. state.buf ..
+            '> :lua require("my.terminal").close()')
+    cmd 'startinsert'
   else
     close()
   end
 end
 
-return {open = open, close = close}
+return {
+  setup = function(args)
+    map('n', args.keymap,
+        '<cmd>lua require("my.terminal").open(' .. args.perc .. ', "\\' ..
+            args.keymap .. '")<CR>', {silent = true})
+  end,
+  open = open,
+  close = close
+}

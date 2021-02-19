@@ -1,1 +1,2 @@
-BracelessEnable +indent +fold +highlight
+BracelessEnable +highlight
+setlocal formatprg=black\ --stdin-filename\ %\ \--quiet\ -
