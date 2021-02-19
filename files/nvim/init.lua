@@ -25,8 +25,7 @@ map('c', '<c-n>', 'wildmenumode() ? "<c-n>" : "<down>"', {expr = true})
 
 cmd 'autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false, timeout = 500}'
 map('n', '<space>', 'za', {})
-
--- g.indent_guides_enable_on_vim_startup = 1
+map('n', '<leader>c', '<cmd>close<CR>', {})
 
 require 'my.plugins'
 require 'my.search'
