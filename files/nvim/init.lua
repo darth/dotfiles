@@ -21,6 +21,7 @@ w.colorcolumn = '81'
 o.wildmenu = true
 o.wildmode = 'list:longest'
 o.backspace = 'indent,eol,start'
+w.signcolumn = 'auto:1-2'
 map('c', '<c-p>', 'wildmenumode() ? "<c-p>" : "<up>"', {expr = true})
 map('c', '<c-n>', 'wildmenumode() ? "<c-n>" : "<down>"', {expr = true})
 
