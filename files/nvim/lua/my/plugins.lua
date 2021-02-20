@@ -53,6 +53,7 @@ paq {
 if (vim.env.DEVMODE) then
   paq 'neovim/nvim-lspconfig'
   paq 'onsails/lspkind-nvim'
+  paq 'ojroques/nvim-lspfuzzy'
   paq 'hrsh7th/vim-vsnip'
   paq 'hrsh7th/nvim-compe'
   paq 'squareys/vim-cmake'

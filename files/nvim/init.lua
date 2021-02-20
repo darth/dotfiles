@@ -67,6 +67,7 @@ if (env.DEVMODE) then
     snip_prev = '<c-k>'
   }
   require 'my.lsp'
+  require'lspfuzzy'.setup {}
   require'lspkind'.init {}
   require 'my.vimtex'
 end
