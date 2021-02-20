@@ -24,6 +24,9 @@ paq 'kana/vim-textobj-user'
 paq 'kana/vim-textobj-function'
 paq 'kana/vim-textobj-entire'
 
+paq 'andymass/vim-matchup'
+paq 'alvan/vim-closetag'
+
 paq 'nathanaelkane/vim-indent-guides'
 paq 'kyazdani42/nvim-web-devicons'
 paq 'akinsho/nvim-bufferline.lua'
