@@ -43,4 +43,16 @@ local function preserve(command)
   fn.cursor(l, c)
 end
 
-return {opts = _opts, augroup = augroup, map = map, preserve = preserve}
+local function command_alias(alias, command)
+  cmd(string.format([[
+    cabbrev <expr> %s ((getcmdtype() is# ":" && getcmdline() is# "%s") ? ("%s") : ("%s"))
+  ]], alias, alias, command, alias))
+end
+
+return {
+  opts = _opts,
+  augroup = augroup,
+  map = map,
+  preserve = preserve,
+  command_alias = command_alias
+}
