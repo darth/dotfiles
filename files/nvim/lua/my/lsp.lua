@@ -1,4 +1,12 @@
 local fn = vim.fn
+local api = vim.api
+
+api.nvim_exec([[
+  sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsError
+  sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsWarning
+  sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsInformation
+  sign define LspDiagnosticsSignHint text=➤ texthl=LspDiagnosticsHint
+]], false)
 
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
@@ -34,7 +42,7 @@ local on_attach = function(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
+    api.nvim_exec([[
       :hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
       :hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
       :hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
