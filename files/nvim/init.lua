@@ -42,6 +42,7 @@ require 'my.textobj'
 require 'my.unimpaired'
 require 'my.bufdel'
 require 'my.fugitive'
+require 'my.grepper'
 require'my.indent'.setup {width = 2}
 require'my.terminal'.setup {perc = 0.8, keymap = '<leader>t'}
 require'bufferline'.setup {options = {always_show_bufferline = false}}

@@ -32,6 +32,8 @@ paq 'hoob3rt/lualine.nvim'
 paq 'junegunn/fzf'
 paq 'junegunn/fzf.vim'
 
+paq 'mhinz/vim-grepper'
+
 paq 'vim-utils/vim-husk'
 paq 'editorconfig/editorconfig-vim'
 
