@@ -1,5 +1,6 @@
 local utils = require 'my.utils'
 local map = utils.map
+local augroup = utils.augroup
 local fn = vim.fn
 local cmd = vim.cmd
 
@@ -29,15 +30,16 @@ local state = {buf = nil, win = {border = nil, term = nil}}
 local function close()
   for _, w in ipairs({state.win.term, state.win.border}) do
     fn.nvim_set_current_win(w)
-    cmd 'noautocmd q'
+    augroup('TT', {})
+    cmd 'q'
   end
 end
 
 local function open(perc, keymap)
-  local bufexists = state.buf and vim.fn.bufexists(state.buf) == 1
+  local bufexists = state.buf and fn.bufexists(state.buf) == 1
   local win = -1
   if (bufexists) then
-    win = vim.fn.bufwinnr(state.buf)
+    win = fn.bufwinnr(state.buf)
   else
     state.buf = fn.nvim_create_buf(false, false)
   end
@@ -56,12 +58,11 @@ local function open(perc, keymap)
       style = 'minimal'
     })
     if (not bufexists) then
-      vim.fn.termopen('TT=1 ' .. vim.o.shell)
+      fn.termopen('TT=1 ' .. vim.o.shell)
       map('nt', keymap, '<cmd>lua require("my.terminal").close()<CR>',
           {buffer = state.buf, silent = true})
     end
-    cmd('autocmd! BufLeave <buffer=' .. state.buf ..
-            '> :lua require("my.terminal").close()')
+    augroup('TT', {{'BufLeave', '<buffer=' .. state.buf ..  '>', 'lua require("my.terminal").close()'}})
     cmd 'startinsert'
   else
     close()
