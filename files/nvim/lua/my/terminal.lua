@@ -49,6 +49,7 @@ local function open(perc, keymap)
     local height = math.floor(vim.o.lines * perc)
     local row = (vim.o.lines - height) / 2
     state.win.border = border(col, row, width, height)
+    fn.nvim_win_set_option(state.win.border, 'signcolumn', 'no')
     state.win.term = fn.nvim_open_win(state.buf, true, {
       relative = 'editor',
       width = width,
@@ -57,6 +58,7 @@ local function open(perc, keymap)
       col = col,
       style = 'minimal'
     })
+    fn.nvim_win_set_option(state.win.term, 'signcolumn', 'no')
     if (not bufexists) then
       fn.termopen('TT=1 ' .. vim.o.shell)
       map('nt', keymap, '<cmd>lua require("my.terminal").close()<CR>',
