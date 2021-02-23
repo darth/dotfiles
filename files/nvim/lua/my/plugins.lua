@@ -31,6 +31,7 @@ paq 'nathanaelkane/vim-indent-guides'
 paq 'kyazdani42/nvim-web-devicons'
 paq 'akinsho/nvim-bufferline.lua'
 paq 'hoob3rt/lualine.nvim'
+paq 'xuyuanp/scrollbar.nvim'
 paq 'psliwka/vim-smoothie'
 
 paq 'junegunn/fzf'
