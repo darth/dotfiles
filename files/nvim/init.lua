@@ -49,7 +49,7 @@ require 'my.grepper'
 require 'my.matchup'
 require'my.indent'.setup {width = 2}
 require'my.terminal'.setup {perc = 0.8, keymap = '<leader>t'}
-require'bufferline'.setup {options = {always_show_bufferline = false}}
+require'bufferline'.setup {options = {separator_style = "slant"}}
 
 cmd 'runtime fzf.vim'
 
