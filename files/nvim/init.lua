@@ -25,6 +25,8 @@ w.signcolumn = 'auto:1-2'
 map('c', '<c-p>', 'wildmenumode() ? "<c-p>" : "<up>"', {expr = true})
 map('c', '<c-n>', 'wildmenumode() ? "<c-n>" : "<down>"', {expr = true})
 
+g.smoothie_experimental_mappings = true
+
 cmd 'autocmd TextYankPost * lua vim.highlight.on_yank {timeout = 500}'
 map('n', '<space>', 'za', {})
 map('n', '<leader>c', '<cmd>close<CR>', {})
