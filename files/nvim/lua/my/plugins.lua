@@ -27,7 +27,7 @@ paq 'kana/vim-textobj-entire'
 paq 'andymass/vim-matchup'
 paq 'alvan/vim-closetag'
 
-paq 'nathanaelkane/vim-indent-guides'
+paq 'glepnir/indent-guides.nvim'
 paq 'kyazdani42/nvim-web-devicons'
 paq 'akinsho/nvim-bufferline.lua'
 paq 'hoob3rt/lualine.nvim'
