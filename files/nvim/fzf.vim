@@ -1,3 +1,4 @@
+let g:fzf_command_prefix = 'Fzf'
 let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 let g:fzf_action = {
 \ 'ctrl-r': 'read',
