@@ -7,7 +7,7 @@ local b = utils.opts.b
 local w = utils.opts.w
 local map = utils.map
 
-o.shortmess = 'I'
+o.shortmess = o.shortmess .. 'I'
 o.hidden = true
 b.undofile = true
 o.mouse = 'a'
