@@ -18,6 +18,7 @@ local on_attach = function(client, bufnr)
   map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  map('n', '<space>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', opts)
   map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',
       opts)
