@@ -21,7 +21,7 @@ w.colorcolumn = '81'
 o.wildmenu = true
 o.wildmode = 'list:longest'
 o.backspace = 'indent,eol,start'
-w.signcolumn = 'auto:1-2'
+w.signcolumn = 'yes:1'
 map('c', '<c-p>', 'wildmenumode() ? "<c-p>" : "<up>"', {expr = true})
 map('c', '<c-n>', 'wildmenumode() ? "<c-n>" : "<down>"', {expr = true})
 
@@ -48,6 +48,7 @@ require 'my.fugitive'
 require 'my.grepper'
 require 'my.matchup'
 require 'my.scrollbar'
+require 'my.closetag'
 require'my.indent'.setup {width = 2}
 require'my.terminal'.setup {perc = 0.8, keymap = '<leader>t'}
 require'bufferline'.setup {options = {separator_style = "slant"}}

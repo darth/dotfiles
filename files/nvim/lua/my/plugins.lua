@@ -18,8 +18,6 @@ paq 'tpope/vim-projectionist'
 paq 'tpope/vim-dispatch'
 paq 'radenling/vim-dispatch-neovim'
 
-paq 'airblade/vim-gitgutter'
-
 paq 'kana/vim-textobj-user'
 paq 'kana/vim-textobj-function'
 paq 'kana/vim-textobj-entire'
