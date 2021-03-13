@@ -1,3 +1,4 @@
+local api = vim.api
 local fn = vim.fn
 local cmd = vim.cmd
 
@@ -27,20 +28,20 @@ local function map(modes, lhs, rhs, opts)
   if (options.buffer) then
     local bufnr = options.buffer
     options.buffer = nil
-    f = function(...) fn.nvim_buf_set_keymap(bufnr, ...) end
+    f = function(...) api.nvim_buf_set_keymap(bufnr, ...) end
   else
-    f = fn.nvim_set_keymap
+    f = api.nvim_set_keymap
   end
   for m in modes:gmatch '.' do f(m, lhs, rhs, options) end
 end
 
 local function preserve(command)
-  local s = fn.getreg('/')
-  local l = fn.line('.')
-  local c = fn.col('.')
+  local s = api.getreg('/')
+  local l = api.line('.')
+  local c = api.col('.')
   cmd(command)
-  fn.setreg('/', s)
-  fn.cursor(l, c)
+  api.setreg('/', s)
+  api.cursor(l, c)
 end
 
 local function command_alias(alias, command)
