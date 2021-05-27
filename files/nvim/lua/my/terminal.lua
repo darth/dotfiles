@@ -43,6 +43,7 @@ local function open(perc, keymap)
     win = fn.bufwinnr(state.buf)
   else
     state.buf = api.nvim_create_buf(false, false)
+    api.nvim_buf_set_option(state.buf, 'ft', 'ToggleTerminal')
   end
   if (win == -1) then
     local width = math.floor(vim.o.columns * perc)
