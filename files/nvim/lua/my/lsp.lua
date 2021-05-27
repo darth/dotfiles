@@ -8,6 +8,8 @@ api.nvim_exec([[
   sign define LspDiagnosticsSignHint text=➤ texthl=LspDiagnosticsHint
 ]], false)
 
+require('lspconfig/sourcegraph_js')
+
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   -- Mappings.
