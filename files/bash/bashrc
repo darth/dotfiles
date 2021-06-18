@@ -67,6 +67,9 @@ fi
 #{{{ pyenv
 if is_exec pyenv; then
   if [ -z "${PYENV_SHELL}" ]; then
+    export PYENV_ROOT="${HOME}/.pyenv"
+    prepend_to_var PATH "${PYENV_ROOT}/bin"
+    eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
     if is_exec pyenv-virtuenv-init; then
       eval "$(pyenv virtualenv-init -)"
