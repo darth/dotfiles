@@ -132,9 +132,10 @@ alias eg='[ -d .git ] && e +MagitOnly'
 [ "${TT}" ] && alias nvr='nvr -cc q'
 #}}}
 #{{{ pager
-export PAGER='less -RF --mouse'
-export BAT_PAGER="${PAGER}"
-export DELTA_PAGER="${PAGER}"
+export LESS='-RF --mouse'
+if [ -z "${PAGER}" ]; then
+  export PAGER="less"
+fi
 #}}}
 #{{{ powerline
 if [ -r ~/.bash-powerline.sh ]; then
