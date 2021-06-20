@@ -11,7 +11,6 @@ fi
 #}}}
 #{{{ setup locale
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 #}}}
 #{{{ setup common elements of PATH
 prepend_to_var PATH '/sbin'
