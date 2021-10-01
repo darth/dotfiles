@@ -13,3 +13,6 @@
 [submodule "files/external/nord-dircolors"]
 	path = files/external/nord-dircolors
 	url = https://github.com/arcticicestudio/nord-dircolors
+[submodule "files/nvim"]
+	path = files/nvim
+	url = https://github.com/darth/nvim_config
