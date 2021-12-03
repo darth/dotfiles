@@ -16,3 +16,6 @@
 [submodule "files/nvim"]
 	path = files/nvim
 	url = ../nvim_config
+[submodule "files/bat/themes/nord"]
+	path = files/bat/themes/nord
+	url = https://github.com/crabique/Nord-plist
