@@ -81,24 +81,33 @@ if [ -z "${PS1}" ]; then
   return
 fi
 #{{{ INTERACTIVE
-#{{{ macOS specific
+#{{{ completion
 if [ "${IS_MACOS}" ]; then
   if [ -n "${BREW_PREFIX}" ]; then
     if [ -r "${BREW_PREFIX}/etc/profile.d/bash_completion.sh" ]; then
       export BASH_COMPLETION_COMPAT_DIR="${BREW_PREFIX}/etc/bash_completion.d"
       . "${BREW_PREFIX}/etc/profile.d/bash_completion.sh"
     fi
+  fi
+  _completion_loader ssh
+else
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+if is_exec stack; then
+  eval "$(stack --bash-completion-script stack)"
+fi
+#}}}
+#{{{ macOS specific
+if [ "${IS_MACOS}" ]; then
+  if [ -n "${BREW_PREFIX}" ]; then
     if [ -d "${BREW_PREFIX}/opt/python" ]; then
       export PKG_CONFIG_PATH=${BREW_PREFIX}/opt/python/Frameworks/Python.framework/Versions/Current/lib/pkgconfig/
     fi
   fi
-
-  if is_exec stack; then
-    eval "$(stack --bash-completion-script stack)"
-  fi
-
-  _completion_loader ssh
-
   alias sudoedit='sudo -e'
   alias lua-format="lua-format -c ${HOME}/.config/luaformatter/config.yaml"
 fi
