@@ -109,7 +109,6 @@ if [ "${IS_MACOS}" ]; then
     fi
   fi
   alias sudoedit='sudo -e'
-  alias lua-format="lua-format -c ${HOME}/.config/luaformatter/config.yaml"
 fi
 #}}}
 #{{{ fzf
